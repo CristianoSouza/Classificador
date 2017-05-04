@@ -2,16 +2,31 @@ import numpy as np
 import sys, os
 from cross_validation import CrossValidation
 from dataSet import DataSet
+sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/hybrid")
 sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/rna")
+sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/knn")
+
 from rna_classifier import RnaClassifier
+from hybrid_classifier import HybridClassifier
 
 
 #dts = DataSet("base_iris.csv")
 #dts.load_data()
 
 print("load data")
+knn = KnnModule()
+
+rna = RnaModule()
+rna.setNumberNeuronsImputLayer(4)
+rna.setNumberNeuronsHiddenLayer(4)
+rna.setNumberNeuronsOutputLayer(1)
+
+
+classifier = RnaClassifier()
 
 cross = CrossValidation()
+cross.setClassifier(classifier)
+cross.run()
 
 #for i_fold in range(0,10):
 

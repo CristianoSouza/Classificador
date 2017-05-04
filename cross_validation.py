@@ -26,26 +26,26 @@ class CrossValidation(object):
 	def run(self):
 		print("Iniciando Cross validation:")
 		#for self.iteration in range(1,11):
-		self.fold_execution()
+		self.foldExecution()
 
-	def fold_execution(self):
+	def foldExecution(self):
 		print("-- FOLD " + str(self.iteration) + " --")
-		self.load_training_data()
-		self.load_test_data()
+		self.loadTrainingData()
+		self.loadTestData()
 
 		self.classifier.setDataSet(self.training_sub_data_set)
 		self.classifier.setTestDataSet(self.teste_sub_data_set)
 
-		self.classifier.run()
+		#self.classifier.run()
 		
-		self.evaluate.setTestDataSet(self.teste_sub_data_set)
-		self.evaluate.run()
+		#self.evaluate.setTestDataSet(self.teste_sub_data_set)
+		#self.evaluate.run()
 
-	def load_training_data(self):
+	def loadTrainingData(self):
 		for i in range(1,11):
 			if( (11 - i) != self.iteration):
 				print("Carregando sub base " + str(i) + "...")
-				new_sub_data_set = self.dts.load_sub_data_set("sub_data_set_" + str(i) + ".csv")
+				new_sub_data_set = self.dts.loadSubDataSet("sub_data_set_" + str(i) + ".csv")
 				
 				print("AAAA")
 				print(new_sub_data_set.values)
@@ -53,12 +53,12 @@ class CrossValidation(object):
 				if (i==1):
 					self.training_sub_data_set = new_sub_data_set
 				else:
-					self.training_sub_data_set = self.dts.concat_sub_data_set(self.training_sub_data_set, new_sub_data_set)
+					self.training_sub_data_set = self.dts.concatSubDataSet(self.training_sub_data_set, new_sub_data_set)
 		print(self.training_sub_data_set)
 
-	def load_test_data(self):
+	def loadTestData(self):
 		print("Carregando sub base para teste: sub base " + str(11-self.iteration) + "...")
-		self.teste_sub_data_set = self.dts.load_sub_data_set("sub_data_set_" + str(11-self.iteration) + ".csv")
+		self.teste_sub_data_set = self.dts.loadSubDataSet("sub_data_set_" + str(11-self.iteration) + ".csv")
 		print(self.teste_sub_data_set)
 
 	def setMethod(self, method):

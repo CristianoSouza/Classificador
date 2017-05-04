@@ -12,17 +12,17 @@ class DataSet(object):
 	def __init__(self):
 		print "init"
 
-	def set_file_name(self, file_name):
+	def setFileName(self, file_name):
 		self.file_name = file_name
 
-	def load_data(self):
+	def loadData(self):
 		self.dataframe_data_set = pandas.read_csv("bases/" + self.file_name)
-		self.partition_data_set()
+		self.partitionDataSet()
 
-	def get_data_set(self):
+	def getDataSet(self):
 		return self.data_set
 
-	def select_examples(self):
+	def selectExamples(self):
 		lista = range(0, self.dataframe_data_set.shape[0])
 		data_set = []
 		data_set_posicoes = []
@@ -39,12 +39,12 @@ class DataSet(object):
 		print('posicoes:', data_set_posicoes)
 		return data_set, data_set_posicoes
 
-	def partition_data_set(self):
+	def partitionDataSet(self):
 		print('Quatidade de exemplos:', self.dataframe_data_set.shape[0])
 		self.partition_size = (self.dataframe_data_set.shape[0] / 10)
 		print('10 Particoes de tamanho: ', self.partition_size)	
 
-		examples, examples_posicoes = self.select_examples()
+		examples, examples_posicoes = self.selectExamples()
 		for i in range(0,10):
 			print('------------')	
 			print('Particao ', i )
@@ -66,9 +66,13 @@ class DataSet(object):
 
 			sub_dataframe.to_csv("bases/sub_bases/sub_data_set_" + str(i+1) + ".csv", sep=',')
 
-	def load_sub_data_set(self, file_name):
+	def loadSubDataSet(self, file_name):
 		sub_dataframe_data_set = pandas.read_csv("bases/sub_bases/" + file_name)
-		return sub_dataframe_data_set.values
+		return sub_dataframe_data_set
+
+	def concatSubDataSet(self, data_frame1, data_frame2):
+		frames = [data_frame1, data_frame2]
+		return pandas.concat(frames)
 
 
  
