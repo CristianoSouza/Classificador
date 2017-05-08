@@ -15,6 +15,18 @@ class HybridClassifier(object):
 	def __init__(self):
 		print("init")
 
+	def run(self):
+		print("run hybrid classifier")
+		self.rna.setDataSet(self.data_set)
+		self.rna.setTestDataSet(self.test_data_set)
+
+		self.rna.generateModel()
+		self.predictions = self.rna.predict()
+		self.saveResults()
+
+	def saveResults(self):
+		print("save results")
+
 	def setDataSet(self, data_set):
 		self.data_set = data_set
 
@@ -38,3 +50,6 @@ class HybridClassifier(object):
 
 	def getRna(self):
 		return self.rna
+
+	def setIteration(self, iteration):
+		self.iteration = iteration

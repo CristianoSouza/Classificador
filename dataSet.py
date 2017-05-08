@@ -29,10 +29,14 @@ class DataSet(object):
 		for i in range(0,10):
 			sub_data_set = []
 			posicoes = random.sample(lista,self.partition_size)
-			print(posicoes)
+
+			for a in range(0, len(self.dataframe_data_set.values)):
+				self.dataframe_data_set.set_value(a,'posicaoOriginal', a)
+
 			for j in range(0,len(posicoes)):
 				lista.remove(posicoes[j])
 				sub_data_set.append(self.dataframe_data_set.values[posicoes[j],:])
+
 			data_set.append(sub_data_set)
 			data_set_posicoes.append(posicoes)
 			print('values:', data_set[i])
@@ -45,16 +49,17 @@ class DataSet(object):
 		print('10 Particoes de tamanho: ', self.partition_size)	
 
 		examples, examples_posicoes = self.selectExamples()
+
 		for i in range(0,10):
 			print('------------')	
 			print('Particao ', i )
 			sub_dataframe = pandas.DataFrame(
 				data= examples[i],
 				#index=range((i*self.partition_size),((i*self.partition_size) + self.partition_size) ), 
-				index= examples_posicoes[i],
+				index= range(0,len(examples[i])),
 				columns= self.dataframe_data_set.columns )
 			print(sub_dataframe)
-
+			print()
 			file_path = "bases/sub_bases/"
 
 			directory = os.path.dirname(file_path)
@@ -73,6 +78,12 @@ class DataSet(object):
 	def concatSubDataSet(self, data_frame1, data_frame2):
 		frames = [data_frame1, data_frame2]
 		return pandas.concat(frames)
+
+	def loadResult(self):
+		a = pandas.read_csv("bases/sub_bases/sub_data_set_10.csv")
+		print(a.values) 
+
+
 
 
  

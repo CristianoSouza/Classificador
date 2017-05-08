@@ -36,7 +36,9 @@ class CrossValidation(object):
 		self.classifier.setDataSet(self.training_sub_data_set)
 		self.classifier.setTestDataSet(self.teste_sub_data_set)
 
+		self.classifier.setIteration(self.iteration)
 		self.classifier.run()
+		self.classifier.saveResults()
 		
 		#self.evaluate.setTestDataSet(self.teste_sub_data_set)
 		#self.evaluate.run()

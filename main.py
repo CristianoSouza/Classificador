@@ -12,8 +12,11 @@ from hybrid_classifier import HybridClassifier
 from rna_module import RnaModule
 from knn_module import KnnModule
 
-#dts = DataSet("base_iris.csv")
-#dts.load_data()
+dts = DataSet()
+dts.setFileName("base_iris.csv")
+dts.loadData()
+#dts.loadResult()
+
 
 print("load data")
 knn = KnnModule()
@@ -32,6 +35,6 @@ rna_classifier = RnaClassifier()
 rna_classifier.setRna(rna)
 
 cross = CrossValidation()
-#cross.setClassifier(rna_classifier)
-cross.setClassifier(knn_classifier)
+cross.setClassifier(rna_classifier)
+#cross.setClassifier(knn_classifier)
 cross.run()
