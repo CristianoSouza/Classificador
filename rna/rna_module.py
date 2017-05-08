@@ -23,26 +23,37 @@ class RnaModule(object):
 	activation_function_hidden_layer = "relu"
 	activation_function_output_layer = "sigmoid"
 
-	def __init__(self, data_set, test_data_set):
-		print((len(data_set[1])-1))
-		self.data_set_samples = data_set[:,0:(len(data_set[0])-1)]
-		self.data_set_labels = data_set[:,(len(data_set[0])-1)]
-		self.test_data_set_samples = test_data_set[:,0:(len(test_data_set[0])-1)]
-		self.test_data_set_labels = test_data_set[:,(len(test_data_set[0])-1)]
+	model = None
 
-		print(self.data_set_samples)
-		print(self.data_set_labels)
-		print(self.test_data_set_samples)
-		print(self.test_data_set_labels)
+	def __init__(self):
+		print("init rna module")
 
 	def generateModel(self):
-		model = Sequential()
-		model.add(Dense(self.number_neurons_imput_layer, input_dim=4, init='normal', activation=self.activation_function_imput_layer))
-		model.add(Dense(self.number_neurons_hidden_layer, input_dim=4, init='normal', activation=self.activation_function_hidden_layer))
-		model.add(Dense(self.number_neurons_output_layer, init='normal', activation=self.activation_function_output_layer))
-		
-		#Compile model
-		model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+		self.model = Sequential()
+		self.model.add(Dense(self.number_neurons_imput_layer, input_dim=4, init='normal', activation=self.activation_function_imput_layer))
+		self.model.add(Dense(self.number_neurons_hidden_layer, input_dim=4, init='normal', activation=self.activation_function_hidden_layer))
+		self.model.add(Dense(self.number_neurons_output_layer, init='normal', activation=self.activation_function_output_layer))
+	
+		self.model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+		print(self.data_set_samples)
+		csv_logger = CSVLogger('training.log')
+		fit = self.model.fit(self.data_set_samples, self.data_set_labels, nb_epoch=150, batch_size=10, callbacks=[csv_logger])
+
+	def predict(self):
+		predictions = self.model.predict(self.test_data_set_samples)
+		return predictions
+
+	def setDataSet(self, data_set):
+		self.data_set_samples = data_set.values[:,1:(len(data_set.values[0])-1)]
+		self.data_set_labels = data_set.values[:,(len(data_set.values[0])-1)]
+		#print(self.data_set_samples)
+		#print(self.data_set_labels)
+	
+	def setTestDataSet(self, test_data_set):
+		self.test_data_set_samples = test_data_set.values[:,1:(len(test_data_set.values[0])-1)]
+		self.test_data_set_labels = test_data_set.values[:,(len(test_data_set.values[0])-1)]		
+		#print(self.test_data_set_samples)
+		#print(self.test_data_set_labels)
 
 	def setNumberNeuronsImputLayer(self, number):
 		self.number_neurons_imput_layer = number
@@ -62,14 +73,13 @@ class RnaModule(object):
 	def getNumberNeuronsOutputLayer(self):
 		return self.number_neurons_output_layer
 
-
 	def setActivationFunctionImputLayer(self, activation_function):
 		self.activation_function_imput_layer = activation_function
 
 	def getActivationFunctionImputLayer(self):
 		return self.activation_function_imput_layer
 
-	def setActivationFunctionsHiddenLayer(self, activation_function):
+	def setActivationFunctionHiddenLayer(self, activation_function):
 		self.activation_function_hidden_layer = activation_function
 
 	def getActivationFunctionHiddenLayer(self):

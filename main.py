@@ -6,34 +6,32 @@ sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/hybrid")
 sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/rna")
 sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/knn")
 
+from knn_classifier import KnnClassifier
 from rna_classifier import RnaClassifier
 from hybrid_classifier import HybridClassifier
-
+from rna_module import RnaModule
+from knn_module import KnnModule
 
 #dts = DataSet("base_iris.csv")
 #dts.load_data()
 
 print("load data")
 knn = KnnModule()
+knn_classifier = KnnClassifier()
+knn_classifier.setKnn(knn)
 
 rna = RnaModule()
 rna.setNumberNeuronsImputLayer(4)
+rna.setActivationFunctionImputLayer("tanh")
 rna.setNumberNeuronsHiddenLayer(4)
+rna.setActivationFunctionHiddenLayer("tanh")
 rna.setNumberNeuronsOutputLayer(1)
+rna.setActivationFunctionOutputLayer("tanh")
 
-
-classifier = RnaClassifier()
+rna_classifier = RnaClassifier()
+rna_classifier.setRna(rna)
 
 cross = CrossValidation()
-cross.setClassifier(classifier)
+#cross.setClassifier(rna_classifier)
+cross.setClassifier(knn_classifier)
 cross.run()
-
-#for i_fold in range(0,10):
-
-#	sub_data_set = dts.load_sub_data_set("sub_data_set_" + str(i_fold+1 ) + ".csv")
-
-#	print(sub_data_set[:,1:])
-
-	#rna = RnaModule(dts.get_data_set(), sub)
-
-	#knn = KnnModule(dts.get_data_set(), dts.get_test_data_set())

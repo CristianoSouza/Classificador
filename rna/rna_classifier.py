@@ -10,7 +10,15 @@ class RnaClassifier(object):
 	def __init__(self):
 		print "aa"
 
-	def run():
+	def run(self):
+		print("RUN RNA classifier")
+		self.rna.setDataSet(self.data_set)
+		self.rna.setTestDataSet(self.test_data_set)
+
+		self.rna.generateModel()
+		predictions = self.rna.predict()
+
+		print predictions
 
 
 	def setDataSet(self, data_set):

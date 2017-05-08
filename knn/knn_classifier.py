@@ -9,7 +9,13 @@ class KnnClassifier(object):
 	knn = None
 
 	def __init__(self):
-		print "aa"
+		print "Knn classifier"
+
+	def run(self):
+		print "RUN Knn classifier"
+		self.knn.setDataSet(self.data_set)
+		self.knn.setTestDataSet(self.test_data_set)
+		self.knn.run()
 
 	def setDataSet(self, data_set):
 		self.data_set = data_set
