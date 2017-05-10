@@ -1,5 +1,6 @@
 import sys, os
 import pandas
+import numpy
 
 sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/../knn")
 sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/../rna")
@@ -9,6 +10,7 @@ from rna_module import RnaModule
 from dataSet import DataSet
 
 class HybridClassifier(object):
+	iteration = 0
 	data_set = None
 	test_data_set = None
 	knn = None
@@ -27,26 +29,31 @@ class HybridClassifier(object):
 		self.rna.setTestDataSet(self.test_data_set)
 
 		self.rna.generateModel()
-		self.predictions = self.rna.predict()
+		self.predictions_rna = self.rna.predict()
 		
-		for i in range(0,len(self.predictions)):
+		list_position_rna_classified_samples = []
+		list_position_intermediate_range_samples = []
+		for i in range(0,len(self.predictions_rna)):
 			print("Valor original: ") 
 			print(self.test_data_set.values[i,len(self.test_data_set.values[i]) - 2])
 			print("Valor da predicao: ") 
-			print(self.predictions[i])
+			print(self.predictions_rna[i])
 
-			if(self.predictions[i] > self.upper_threshold):
+			if(self.predictions_rna[i] > self.upper_threshold):
 				print("CLASSIFICACAO CONFIAVEL!")
 				self.test_data_set.set_value(i, 'classe', 1)
 				self.rna_classified_samples.append(self.test_data_set.values[i,:])
-			elif( self.predictions[i] < self.lower_threshold):
+				list_position_rna_classified_samples.append(self.test_data_set.values[i,0])
+			elif( self.predictions_rna[i] < self.lower_threshold):
 				print("CLASSIFICACAO CONFIAVEL!")
 				self.test_data_set.set_value(i, 'classe', 0)
 				self.rna_classified_samples.append(self.test_data_set.values[i,:])
+				list_position_rna_classified_samples.append(self.test_data_set.values[i,0])
 			else:
 				print("FAIXA INTERMEDIARIA!")
 				self.intermediate_range_samples.append(self.test_data_set.values[i,:])
-
+				list_position_intermediate_range_samples.append(self.test_data_set.values[i,0])
+		
 		print("Exemplos classificados pela RNA:")
 		print(self.rna_classified_samples)
 		print("Exemplos da faixa intermediaria:")
@@ -54,25 +61,52 @@ class HybridClassifier(object):
 
 		print(self.test_data_set.columns)
 
-		print(self.rna_classified_samples[0][0:7])
 		print("----")
-		print(self.rna_classified_samples[0][0])
-
-
+		print(list_position_rna_classified_samples)
+ 
 		#print(self.rna_classified_samples.index(1))
 
 		dataframe_rna_classified_samples = pandas.DataFrame(
 				data= self.rna_classified_samples,
-				index= self.rna_classified_samples[0].index('0'),
-				columns= self.test_data_set.columns )
+				index= list_position_rna_classified_samples,
+				columns= self.test_data_set.columns)
 
 		print(dataframe_rna_classified_samples)
-		exit()
-		#self.knn.setDataSet()
-		#self.knn.setTestDataSet()
 
-	def saveResults(self):
-		print("save results")
+		DataSet.saveResults("hybrid/rna_classification", self.iteration, dataframe_rna_classified_samples)
+
+		dataframe_intermediate_range_samples = pandas.DataFrame(
+			data= self.intermediate_range_samples,
+			index= list_position_intermediate_range_samples,
+			columns= self.test_data_set.columns)
+
+		print(dataframe_intermediate_range_samples)
+
+		#exit()
+		self.knn.setDataSet(self.data_set)
+		self.knn.setTestDataSet(dataframe_intermediate_range_samples)
+
+		self.predictions_knn = self.knn.run()
+		print(dataframe_intermediate_range_samples)
+		print(self.predictions_knn) 
+		for i in range(0,len(self.predictions_knn)):
+			print("Predicao knn: ") 
+			print(self.predictions_knn[i])
+			dataframe_intermediate_range_samples.set_value(list_position_intermediate_range_samples[i], 'classe', self.predictions_knn[i])
+			print(dataframe_intermediate_range_samples.values[i])
+			self.test_data_set.set_value(list_position_intermediate_range_samples[i], 'classe', self.predictions_knn[i])
+			#dataframe_intermediate_range_samples.values[i][]
+			#print("valor original: ")
+			#print(self.test_data_set.values[list_position_intermediate_range_samples[i],len(self.test_data_set.values[i]) - 2])
+			#print("valor da rna:" )
+			#print(self.predictions_rna[list_position_intermediate_range_samples[i]])
+
+		print(dataframe_intermediate_range_samples)
+		print(self.test_data_set)
+
+		DataSet.saveResults("hybrid/knn_classification", self.iteration, dataframe_intermediate_range_samples)
+
+		DataSet.saveResults("hybrid/final_method_classification", self.iteration, self.test_data_set)
 
 	def setDataSet(self, data_set):
 		self.data_set = data_set

@@ -29,7 +29,7 @@ class KnnModule(object):
 		self.test_data_set_samples = test_data_set.values[:,1:(len(test_data_set.values[0])-2)]
 		self.test_data_set_labels = test_data_set.values[:,(len(test_data_set.values[0])-2)]		
 		#print(self.test_data_set_samples)
-		#print(self.test_data_set_labels)		
+		#print(self.test_data_set_labels)	
 
 	def setKNeighbors(self, k_neighbors):
 		self.k_neighbors = k_neighbors

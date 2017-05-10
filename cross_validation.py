@@ -7,6 +7,8 @@ from hybrid_classifier import HybridClassifier
 from evaluate_module import EvaluateModule
 sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/rna")
 from rna_classifier import RnaClassifier
+sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/knn")
+from knn_classifier import KnnClassifier
 
 
 class CrossValidation(object):
@@ -38,8 +40,18 @@ class CrossValidation(object):
 		self.classifier.setIteration(self.iteration)
 		self.classifier.run()
 		
-		#self.evaluate.setTestDataSet(self.teste_sub_data_set)
-		#self.evaluate.run()
+		self.evaluate.setTestDataSet(self.teste_sub_data_set)
+		self.evaluate.setIteration(self.iteration)
+		if(isinstance(self.classifier, RnaClassifier)):
+			print("rna")
+			self.evaluate.setPath("rna/")
+		elif(isinstance(self.classifier, KnnClassifier)):
+			print("knn")
+			self.evaluate.setPath("knn/")
+		elif(isinstance(self.classifier, HybridClassifier)):
+			print("hybrid")
+			self.evaluate.setPath("hybrid/final_method_classification/")
+		self.evaluate.run()
 
 	def loadTrainingData(self):
 		for i in range(1,11):

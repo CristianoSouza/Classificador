@@ -81,9 +81,9 @@ class DataSet(object):
 		frames = [data_frame1, data_frame2]
 		return pandas.concat(frames)
 
-	def loadResult(self):
-		a = pandas.read_csv("bases/sub_bases/sub_data_set_10.csv")
-		print(a.values) 
+	@classmethod
+	def loadResult(self, iteration, path):
+		return pandas.read_csv("results/" + path + "cross_" + str(iteration) + "_final_result.csv")
 
 	@classmethod
 	def saveResults(self, method, iteration, data_frame):
@@ -96,7 +96,7 @@ class DataSet(object):
 		else:
 			print("exists")	
 
-		data_frame.to_csv( file_path + "cross_" + str(iteration) + "_final_result.csv", sep=',')
+		data_frame.to_csv( file_path + "cross_" + str(iteration) + "_final_result.csv", sep=',', index=False)
 
 
 
