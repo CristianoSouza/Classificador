@@ -20,7 +20,6 @@ class CrossValidation(object):
 
 	def __init__(self):
 		print("init")
-		self.dts = DataSet()
 		self.evaluate = EvaluateModule()
 
 	def run(self):
@@ -38,7 +37,6 @@ class CrossValidation(object):
 
 		self.classifier.setIteration(self.iteration)
 		self.classifier.run()
-		self.classifier.saveResults()
 		
 		#self.evaluate.setTestDataSet(self.teste_sub_data_set)
 		#self.evaluate.run()
@@ -47,7 +45,7 @@ class CrossValidation(object):
 		for i in range(1,11):
 			if( (11 - i) != self.iteration):
 				print("Carregando sub base " + str(i) + "...")
-				new_sub_data_set = self.dts.loadSubDataSet("sub_data_set_" + str(i) + ".csv")
+				new_sub_data_set = DataSet.loadSubDataSet("sub_data_set_" + str(i) + ".csv")
 				
 				print("AAAA")
 				print(new_sub_data_set.values)
@@ -55,12 +53,12 @@ class CrossValidation(object):
 				if (i==1):
 					self.training_sub_data_set = new_sub_data_set
 				else:
-					self.training_sub_data_set = self.dts.concatSubDataSet(self.training_sub_data_set, new_sub_data_set)
+					self.training_sub_data_set = DataSet.concatSubDataSet(self.training_sub_data_set, new_sub_data_set)
 		print(self.training_sub_data_set)
 
 	def loadTestData(self):
 		print("Carregando sub base para teste: sub base " + str(11-self.iteration) + "...")
-		self.teste_sub_data_set = self.dts.loadSubDataSet("sub_data_set_" + str(11-self.iteration) + ".csv")
+		self.teste_sub_data_set = DataSet.loadSubDataSet("sub_data_set_" + str(11-self.iteration) + ".csv")
 		print(self.teste_sub_data_set)
 
 	def setMethod(self, method):

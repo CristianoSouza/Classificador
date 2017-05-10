@@ -17,6 +17,7 @@ dts.setFileName("base_iris.csv")
 dts.loadData()
 #dts.loadResult()
 
+os.system('cls' if os.name == 'nt' else 'clear')
 
 print("load data")
 knn = KnnModule()
@@ -34,7 +35,14 @@ rna.setActivationFunctionOutputLayer("tanh")
 rna_classifier = RnaClassifier()
 rna_classifier.setRna(rna)
 
+hybrid_classifier = HybridClassifier()
+hybrid_classifier.setLowerThreshold(-0.2)
+hybrid_classifier.setUpperThreshold(0.6)
+hybrid_classifier.setRna(rna)
+hybrid_classifier.setKnn(knn)
+
 cross = CrossValidation()
-cross.setClassifier(rna_classifier)
+#cross.setClassifier(rna_classifier)
 #cross.setClassifier(knn_classifier)
+cross.setClassifier(hybrid_classifier)
 cross.run()

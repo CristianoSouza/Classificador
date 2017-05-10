@@ -71,10 +71,12 @@ class DataSet(object):
 
 			sub_dataframe.to_csv("bases/sub_bases/sub_data_set_" + str(i+1) + ".csv", sep=',')
 
+	@classmethod
 	def loadSubDataSet(self, file_name):
 		sub_dataframe_data_set = pandas.read_csv("bases/sub_bases/" + file_name)
 		return sub_dataframe_data_set
 
+	@classmethod
 	def concatSubDataSet(self, data_frame1, data_frame2):
 		frames = [data_frame1, data_frame2]
 		return pandas.concat(frames)
@@ -82,6 +84,20 @@ class DataSet(object):
 	def loadResult(self):
 		a = pandas.read_csv("bases/sub_bases/sub_data_set_10.csv")
 		print(a.values) 
+
+	@classmethod
+	def saveResults(self, method, iteration, data_frame):
+		file_path = "results/" + method + "/"
+
+		directory = os.path.dirname(file_path)
+		if not os.path.exists(directory):
+			print("nao existe")
+			os.makedirs(directory)
+		else:
+			print("exists")	
+
+		data_frame.to_csv( file_path + "cross_" + str(iteration) + "_final_result.csv", sep=',')
+
 
 
 
