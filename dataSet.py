@@ -24,40 +24,54 @@ class DataSet(object):
 
 	def selectExamples(self):
 		lista = range(0, self.dataframe_data_set.shape[0])
+
+		for a in range(0, self.dataframe_data_set.shape[0]):
+			#self.dataframe_data_set.set_value(a,'po', 15)
+			self.dataframe_data_set.loc[a, 'posicaoOriginal'] = a
+
+		print("saiu for")
+
 		data_set = []
 		data_set_posicoes = []
 		for i in range(0,10):
 			sub_data_set = []
 			posicoes = random.sample(lista,self.partition_size)
-
-			for a in range(0, len(self.dataframe_data_set.values)):
-				self.dataframe_data_set.set_value(a,'posicaoOriginal', a)
-
+			print(i)
+			arquivo = open("bases/sub_bases/sub_data_set_" + str(i+1) + ".csv", 'w') 
+			for k in range(0,len(self.dataframe_data_set.columns)):
+				texto = str(self.dataframe_data_set.columns[k])
+				arquivo.write(texto) 
+				if(k+1 < len(self.dataframe_data_set.columns)):
+					arquivo.write(""",""") 
+				else:
+					arquivo.write("""
+""")
 			for j in range(0,len(posicoes)):
+				print("Vai remover!")
 				lista.remove(posicoes[j])
-				sub_data_set.append(self.dataframe_data_set.values[posicoes[j],:])
+				print("Removeu!")
+				print(j)
+				print ("Adicionando...")
+				for k in range(0,len(self.dataframe_data_set.values[posicoes[j],:])):
+					texto = str(self.dataframe_data_set.values[posicoes[j],k])
+					arquivo.write(texto) 
+					if(k+1 < len(self.dataframe_data_set.values[posicoes[j],:])):
+						arquivo.write(""",""") 
+					else:
+						arquivo.write("""
+""") 
+				#sub_data_set.append(self.dataframe_data_set.values[posicoes[j],:])
+				print ("Adicionado!!")
+				#print(sub_data_set)
+			arquivo.close()
 
-			data_set.append(sub_data_set)
-			data_set_posicoes.append(posicoes)
-			print('values:', data_set[i])
-		print('posicoes:', data_set_posicoes)
-		return data_set, data_set_posicoes
 
-	def partitionDataSet(self):
-		print('Quatidade de exemplos:', self.dataframe_data_set.shape[0])
-		self.partition_size = (self.dataframe_data_set.shape[0] / 10)
-		print('10 Particoes de tamanho: ', self.partition_size)	
-
-		examples, examples_posicoes = self.selectExamples()
-
-		for i in range(0,10):
-			print('------------')	
-			print('Particao ', i )
-			sub_dataframe = pandas.DataFrame(
-				data= examples[i],
+			'''sub_dataframe = pandas.DataFrame(
+				data= sub_data_set,
 				#index=range((i*self.partition_size),((i*self.partition_size) + self.partition_size) ), 
-				index= range(0,len(examples[i])),
+				index= range(0,len(sub_data_set)),
 				columns= self.dataframe_data_set.columns )
+				
 			print(sub_dataframe)
 			print()
 			file_path = "bases/sub_bases/"
@@ -70,6 +84,13 @@ class DataSet(object):
 				print("exists")	
 
 			sub_dataframe.to_csv("bases/sub_bases/sub_data_set_" + str(i+1) + ".csv", sep=',')
+'''
+	def partitionDataSet(self):
+		print('Quatidade de exemplos:', self.dataframe_data_set.shape[0])
+		self.partition_size = (self.dataframe_data_set.shape[0] / 10)
+		print('10 Particoes de tamanho: ', self.partition_size)	
+
+		self.selectExamples()
 
 	@classmethod
 	def loadSubDataSet(self, file_name):

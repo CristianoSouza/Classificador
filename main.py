@@ -13,19 +13,20 @@ from rna_module import RnaModule
 from knn_module import KnnModule
 
 dts = DataSet()
-#dts.setFileName("base_iris.csv")
-#dts.loadData()
+dts.setFileName("base_iris.csv")
+#dts.setFileName("NSL_KDD-master/20PercentTrainingSet.csv")
+dts.loadData()
 #dts.loadResult()
 
-os.system('cls' if os.name == 'nt' else 'clear')
-
+#os.system('cls' if os.name == 'nt' else 'clear')
+'''
 print("load data")
 knn = KnnModule()
 knn_classifier = KnnClassifier()
 knn_classifier.setKnn(knn)
 
 rna = RnaModule()
-rna.setNumberNeuronsImputLayer(4)
+rna.setNumberNeuronsImputLayer(10)
 rna.setActivationFunctionImputLayer("tanh")
 rna.setNumberNeuronsHiddenLayer(4)
 rna.setActivationFunctionHiddenLayer("tanh")
@@ -45,4 +46,4 @@ cross = CrossValidation()
 cross.setClassifier(rna_classifier)
 #cross.setClassifier(knn_classifier)
 #cross.setClassifier(hybrid_classifier)
-cross.run()
+cross.run()'''
