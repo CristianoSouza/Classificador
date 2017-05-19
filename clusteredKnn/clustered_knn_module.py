@@ -8,21 +8,21 @@ class ClusteredKnnModule(object):
 	data_set_labels = []
 	test_data_set_samples = []
 	test_data_set_labels = []
-	k_neighbors = 1
+	k_neighbors = 5
 
 	def __init__(self):
 		print("init knn module")
 
 	def run(self):
-		clf = neighbors.KNeighborsClusteringClassifier(self.k_neighbors, weights='distance')
-		#clf.fit(self.data_set_samples, self.data_set_labels)
+		clf = neighbors.KNeighborsClassifier(self.k_neighbors, weights='distance')
+		clf.fit(self.data_set_samples, self.data_set_labels)
 		print("BASEEE:")
 		print(self.data_set_samples)
 		print("BASEEE:")
 		print(self.test_data_set_samples)
 		print("BASEEE:")
 		print(self.test_data_set_labels)
-		#predictions = clf.predict(self.test_data_set_samples)
+		predictions = clf.predict(self.test_data_set_samples)
 		return predictions
 
 	def setDataSet(self, data_set):
