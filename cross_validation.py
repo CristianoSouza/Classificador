@@ -40,7 +40,7 @@ class CrossValidation(object):
 		self.classifier.setIteration(self.iteration)
 		self.classifier.run()
 		
-		self.evaluate.setTestDataSet(self.teste_sub_data_set)
+		'''self.evaluate.setTestDataSet(self.teste_sub_data_set)
 		self.evaluate.setIteration(self.iteration)
 		if(isinstance(self.classifier, RnaClassifier)):
 			print("rna")
@@ -52,7 +52,7 @@ class CrossValidation(object):
 			print("hybrid")
 			self.evaluate.setPath("hybrid/final_method_classification/")
 		self.evaluate.run()
-
+'''
 	def loadTrainingData(self):
 		for i in range(1,11):
 			if( (11 - i) != self.iteration):
