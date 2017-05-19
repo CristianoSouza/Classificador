@@ -67,8 +67,9 @@ class DataSet(object):
 				lista.remove(posicoes[j])
 				texto = ""
 				print(str(i) + " - " + str(j))
+				linha = self.dataframe_data_set.values[posicoes[j],:]
 				for k in range(0,len_attributes):
-					texto += str(self.dataframe_data_set.values[posicoes[j],k])
+					texto += str(linha[k])
 					if(k+1 < len_attributes):
 						texto += ""","""
 					else:
