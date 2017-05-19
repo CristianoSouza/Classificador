@@ -24,12 +24,23 @@ class DataSet(object):
 
 	def selectExamples(self):
 		lista = range(0, self.dataframe_data_set.shape[0])
-
-		for a in range(0, self.dataframe_data_set.shape[0]):
-			#self.dataframe_data_set.set_value(a,'po', 15)
-			self.dataframe_data_set.loc[a, 'posicaoOriginal'] = a
+		tamanho = len(lista)
+		print lista
+		#for a in range(0,tamanho):
+			#self.dataframe_data_set.scdet_value(a,'po', 15)
+		#	self.dataframe_data_set.loc[a, 'posicaoOriginal'] = a
+		#	print a
 
 		print("saiu for")
+
+		file_path = "bases/sub_bases/"
+
+		directory = os.path.dirname(file_path)
+		if not os.path.exists(directory):
+			print("nao existe")
+			os.makedirs(directory)
+		else:
+			print("exists")	
 
 		data_set = []
 		data_set_posicoes = []
@@ -47,11 +58,8 @@ class DataSet(object):
 					arquivo.write("""
 """)
 			for j in range(0,len(posicoes)):
-				print("Vai remover!")
 				lista.remove(posicoes[j])
-				print("Removeu!")
-				print(j)
-				print ("Adicionando...")
+				print(str(i) + " - " + str(j))
 				for k in range(0,len(self.dataframe_data_set.values[posicoes[j],:])):
 					texto = str(self.dataframe_data_set.values[posicoes[j],k])
 					arquivo.write(texto) 
@@ -61,7 +69,6 @@ class DataSet(object):
 						arquivo.write("""
 """) 
 				#sub_data_set.append(self.dataframe_data_set.values[posicoes[j],:])
-				print ("Adicionado!!")
 				#print(sub_data_set)
 			arquivo.close()
 
@@ -94,7 +101,7 @@ class DataSet(object):
 
 	@classmethod
 	def loadSubDataSet(self, file_name):
-		sub_dataframe_data_set = pandas.read_csv("bases/sub_bases/" + file_name)
+		sub_dataframe_data_set = pandas.read_csv("bases/sub_bases_20_nslkdd/" + file_name)
 		return sub_dataframe_data_set
 
 	@classmethod

@@ -13,8 +13,8 @@ from rna_module import RnaModule
 from knn_module import KnnModule
 
 dts = DataSet()
-dts.setFileName("base_iris.csv")
-#dts.setFileName("NSL_KDD-master/20PercentTrainingSet.csv")
+#dts.setFileName("base_iris.csv")
+dts.setFileName("NSL_KDD-master/KDDTrain+.csv")
 dts.loadData()
 #dts.loadResult()
 
@@ -43,7 +43,7 @@ hybrid_classifier.setRna(rna)
 hybrid_classifier.setKnn(knn)
 
 cross = CrossValidation()
-cross.setClassifier(rna_classifier)
-#cross.setClassifier(knn_classifier)
+#cross.setClassifier(rna_classifier)
+cross.setClassifier(knn_classifier)
 #cross.setClassifier(hybrid_classifier)
 cross.run()'''
