@@ -24,12 +24,13 @@ class DataSet(object):
 
 	def selectExamples(self):
 		lista = range(0, self.dataframe_data_set.shape[0])
+
 		tamanho = len(lista)
 		print lista
 		#for a in range(0,tamanho):
 			#self.dataframe_data_set.scdet_value(a,'po', 15)
 		#	self.dataframe_data_set.loc[a, 'posicaoOriginal'] = a
-		#	print a
+
 
 		print("saiu for")
 
@@ -44,6 +45,7 @@ class DataSet(object):
 
 		data_set = []
 		data_set_posicoes = []
+		len_attributes = len(self.dataframe_data_set.values[0,:])
 		for i in range(0,10):
 			sub_data_set = []
 			posicoes = random.sample(lista,self.partition_size)
@@ -56,14 +58,16 @@ class DataSet(object):
 					arquivo.write(""",""") 
 				else:
 					arquivo.write("""
-""")
+""")	
 			for j in range(0,len(posicoes)):
 				lista.remove(posicoes[j])
+
 				print(str(i) + " - " + str(j))
 				for k in range(0,len(self.dataframe_data_set.values[posicoes[j],:])):
+
 					texto = str(self.dataframe_data_set.values[posicoes[j],k])
 					arquivo.write(texto) 
-					if(k+1 < len(self.dataframe_data_set.values[posicoes[j],:])):
+					if(k+1 < len_attributes):
 						arquivo.write(""",""") 
 					else:
 						arquivo.write("""

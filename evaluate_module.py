@@ -19,7 +19,7 @@ class EvaluateModule(object):
 		print("RUN evaluate method")
 		result_dataframe = DataSet.loadResult(self.iteration, self.path)
 		print(result_dataframe)
-		posicao_classe = len(result_dataframe.values[0]) -2
+		posicao_classe = len(result_dataframe.values[0]) -1
 		for i in range(0,len(result_dataframe.values)):
 			if(self.test_data_set.values[i,posicao_classe] == 0):
 				if (result_dataframe.values[i,posicao_classe] == 0):

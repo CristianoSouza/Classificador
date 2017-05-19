@@ -2,8 +2,8 @@
              Predicao      
 		 ATAQUE    NORMAL  
 	   |--------||--------|
-ATAQUE |   0    ||   0    |
+ATAQUE |   3    ||   0    |
 	   |--------||--------|
-NORMAL |   0    ||   8    |
+NORMAL |   0    ||   5    |
 	   |--------||--------|
 		
