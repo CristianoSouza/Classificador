@@ -17,8 +17,8 @@ from clustered_knn_module import ClusteredKnnModule
 
 dts = DataSet()
 #dts.setFileName("base_iris.csv")
-#dts.setFileName("NSL_KDD-master/20PercentTrainingSet.csv")
-dts.setFileName("NSL_KDD-master/KDDTrain+.csv")
+dts.setFileName("NSL_KDD-master/20PercentTrainingSet.csv")
+#dts.setFileName("NSL_KDD-master/KDDTrain+.csv")
 dts.loadData()
 #dts.loadResult()
 
