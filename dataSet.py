@@ -27,13 +27,13 @@ class DataSet(object):
 
 		tamanho = len(lista)
 		print lista
-		'''for a in range(0,tamanho):
+		for a in range(0,tamanho):
 			#self.dataframe_data_set.scdet_value(a,'po', 15)
 			self.dataframe_data_set.loc[a, 'posicaoOriginal'] = a
 
 
 		print("saiu for")
-'''
+
 		file_path = "bases/sub_bases/"
 
 		directory = os.path.dirname(file_path)
@@ -61,7 +61,6 @@ class DataSet(object):
 				else:
 					arquivo.write("""
 """)	
-			arquivo.close()
 
 			for j in range(0,len_posicoes):
 				lista.remove(posicoes[j])
@@ -74,10 +73,9 @@ class DataSet(object):
 						texto += ""","""
 					else:
 						texto +="""
-""" 
-				arquivo = open("bases/sub_bases/sub_data_set_" + str(i+1) + ".csv", 'w') 
+"""  
 				arquivo.write(texto) 
-				arquivo.close()
+			arquivo.close()
 				#sub_data_set.append(self.dataframe_data_set.values[posicoes[j],:])
 				#print(sub_data_set)
 
