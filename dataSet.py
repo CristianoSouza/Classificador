@@ -8,13 +8,16 @@ class DataSet(object):
 	test_file_name = ""
 	dataframe_data_set = []
 	partition_size = 0
-	file_path = "bases/sub_bases/"
+	file_path = ""
 
 	def __init__(self):
 		print "init"
 
 	def setFileName(self, file_name):
 		self.file_name = file_name
+
+	def setFilePath(self, file_path):
+		self.file_path = file_path
 
 	def loadData(self):
 		self.dataframe_data_set = pandas.read_csv("bases/" + self.file_name)
@@ -74,8 +77,28 @@ class DataSet(object):
 """  
 				arquivo.write(texto) 
 			arquivo.close()
-				#sub_data_set.append(self.dataframe_data_set.values[posicoes[j],:])
-				#print(sub_data_set)
+
+		print(lista)
+		if lista:
+			print("nao vazia")
+			for i in range(0,len(lista)):
+				arquivo = open("bases/sub_bases/sub_data_set_" + str(i+1) + ".csv", 'a') 
+				print(i)
+				print(lista[i])
+				texto = ""
+				linha = self.dataframe_data_set.values[lista[i],:]
+				for k in range(0,len_attributes):
+					texto += str(linha[k])
+					if(k+1 < len_attributes):
+						texto += ""","""
+					else:
+						texto +="""
+"""  
+				arquivo.write(texto) 
+				arquivo.close()
+
+		#sub_data_set.append(self.dataframe_data_set.values[posicoes[j],:])
+		#print(sub_data_set)
 
 
 			'''sub_dataframe = pandas.DataFrame(
@@ -106,7 +129,7 @@ class DataSet(object):
 
 	@classmethod
 	def loadSubDataSet(self, file_name):
-		sub_dataframe_data_set = pandas.read_csv(self.file_path + file_name)
+		sub_dataframe_data_set = pandas.read_csv(file_name)
 		return sub_dataframe_data_set
 
 	@classmethod

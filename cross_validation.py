@@ -19,6 +19,7 @@ class CrossValidation(object):
 	training_sub_data_set = None
 	evaluate = None
 	method = None
+	file_path = ""
 
 	def __init__(self):
 		print("init")
@@ -57,7 +58,7 @@ class CrossValidation(object):
 		for i in range(1,11):
 			if( (11 - i) != self.iteration):
 				print("Carregando sub base " + str(i) + "...")
-				new_sub_data_set = DataSet.loadSubDataSet("sub_data_set_" + str(i) + ".csv")
+				new_sub_data_set = DataSet.loadSubDataSet(self.file_path + "sub_data_set_" + str(i) + ".csv")
 				
 				print("AAAA")
 				print(new_sub_data_set.values)
@@ -70,7 +71,8 @@ class CrossValidation(object):
 
 	def loadTestData(self):
 		print("Carregando sub base para teste: sub base " + str(11-self.iteration) + "...")
-		self.teste_sub_data_set = DataSet.loadSubDataSet("sub_data_set_" + str(11-self.iteration) + ".csv")
+
+		self.teste_sub_data_set = DataSet.loadSubDataSet(self.file_path + "sub_data_set_" + str(11-self.iteration) + ".csv")
 		print(self.teste_sub_data_set)
 
 	def setMethod(self, method):
@@ -84,3 +86,7 @@ class CrossValidation(object):
 
 	def getClassifier(self):
 		return classifier
+
+	def setFilePath(self, file_path):
+		self.file_path = file_path
+
