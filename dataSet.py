@@ -8,6 +8,7 @@ class DataSet(object):
 	test_file_name = ""
 	dataframe_data_set = []
 	partition_size = 0
+	file_path = "bases/sub_bases/"
 
 	def __init__(self):
 		print "init"
@@ -34,9 +35,9 @@ class DataSet(object):
 
 		print("saiu for")
 '''
-		file_path = "bases/sub_bases/"
 
-		directory = os.path.dirname(file_path)
+
+		directory = os.path.dirname(self.file_path)
 		if not os.path.exists(directory):
 			print("nao existe")
 			os.makedirs(directory)
@@ -110,7 +111,7 @@ class DataSet(object):
 
 	@classmethod
 	def loadSubDataSet(self, file_name):
-		sub_dataframe_data_set = pandas.read_csv("bases/sub_bases/" + file_name)
+		sub_dataframe_data_set = pandas.read_csv(self.file_path + file_name)
 		return sub_dataframe_data_set
 
 	@classmethod
