@@ -18,14 +18,13 @@ from clustered_knn_module import ClusteredKnnModule
 dts = DataSet()
 dts.setFilePath("bases/sub_bases/")
 #dts.setFileName("base_iris.csv")
-#dts.setFileName("base_iris.csv")
-dts.setFileName("NSL_KDD-master/20PercentTrainingSet.csv")
+#dts.setFileName("NSL_KDD-master/20PercentTrainingSet.csv")
 #dts.setFileName("NSL_KDD-master/KDDTrain+.csv")
-dts.loadData()
+#dts.loadData()
 #dts.loadResult()
 
 #os.system('cls' if os.name == 'nt' else 'clear')
-'''
+
 print("load data")
 knn = KnnModule()
 knn_classifier = KnnClassifier()
@@ -54,11 +53,11 @@ hybrid_classifier.setKnn(knn)
 
 cross = CrossValidation()
 #cross.setFilePath("bases/sub_bases_20_nslkdd/")
-cross.setFilePath("bases/sub_bases_iris_base/")
+cross.setFilePath("bases/sub_bases_iris/")
 #cross.setFilePath("bases/sub_bases/")
 
 #cross.setClassifier(rna_classifier)
 #cross.setClassifier(knn_classifier)
 cross.setClassifier(clustered_knn_classifier)
 #cross.setClassifier(hybrid_classifier)
-cross.run()'''
+cross.run()
