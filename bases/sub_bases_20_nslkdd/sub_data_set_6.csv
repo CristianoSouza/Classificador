@@ -1,4 +1,4 @@
-duration,protocol_type,service,flag,src_bytes,dst_bytes,land,wrong_fragment,urgent,hot,num_failed_logins,logged_in,num_compromised,root_shell,su_attempted,num_root,num_file_creations,num_shells,num_access_files,num_outbound_cmds,is_host_login,is_guest_login,count,srv_count,serror_rate,srv_serror_rate,rerror_rate,srv_rerror_rate,same_srv_rate,diff_srv_rate,srv_diff_host_rate,dst_host_count,dst_host_srv_count,dst_host_same_srv_rate,dst_host_diff_srv_rate,dst_host_same_src_port_rate,dst_host_srv_diff_host_rate,dst_host_serror_rate, dst_host_srv_serror_rate, dst_host_rerror_rate, dst_host_srv_rerror_rate, classe,posicaoOriginal
+duration,protocol_type,service,flag,src_bytes,dst_bytes,land,wrong_fragment,urgent,hot,num_failed_logins,logged_in,num_compromised,root_shell,su_attempted,num_root,num_file_creations,num_shells,num_access_files,num_outbound_cmds,is_host_login,is_guest_login,count,srv_count,serror_rate,srv_serror_rate,rerror_rate,srv_rerror_rate,same_srv_rate,diff_srv_rate,srv_diff_host_rate,dst_host_count,dst_host_srv_count,dst_host_same_srv_rate,dst_host_diff_srv_rate,dst_host_same_src_port_rate,dst_host_srv_diff_host_rate,dst_host_serror_rate, dst_host_srv_serror_rate, dst_host_rerror_rate, dst_host_srv_rerror_rate,classe,posicaoOriginal
 0,tcp,private,S0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,218,13,1.0,1.0,0.0,0.0,0.06,0.06,0.0,255,10,0.04,0.08,0.0,0.0,1.0,1.0,0.0,0.0,1,6368.0
 0,udp,domain_u,SF,130,44,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,236,235,0.0,0.0,0.0,0.0,1.0,0.01,0.0,125,92,0.74,0.02,0.14,0.0,0.0,0.0,0.0,0.0,0,9696.0
 0,tcp,http,SF,313,15298,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,4,8,0.0,0.0,0.0,0.0,1.0,0.0,0.25,255,255,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,9368.0
@@ -516,7 +516,7 @@ duration,protocol_type,service,flag,src_bytes,dst_bytes,land,wrong_fragment,urge
 0,tcp,ftp_data,SF,4316,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,8,8,0.0,0.0,0.0,0.0,1.0,0.0,0.0,92,38,0.41,0.04,0.41,0.0,0.0,0.0,0.0,0.0,0,5097.0
 0,udp,private,SF,105,145,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,1,0.0,0.0,0.0,0.0,0.14,0.29,0.0,255,219,0.86,0.01,0.0,0.0,0.0,0.0,0.0,0.0,0,7089.0
 0,tcp,other,REJ,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,370,1,0.06,0.0,0.91,1.0,0.0,1.0,0.0,255,1,0.0,1.0,0.0,0.0,0.08,0.0,0.91,1.0,1,8058.0
-0,tcp,ftp_data,SF,0,5696,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,1,0.0,0.0,0.0,0.0,1.0,0.0,0.0,1,81,1.0,0.0,1.0,0.02,0.0,0.0,0.0,0.0,buffer_overflow,5579.0
+0,tcp,ftp_data,SF,0,5696,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,1,0.0,0.0,0.0,0.0,1.0,0.0,0.0,1,81,1.0,0.0,1.0,0.02,0.0,0.0,0.0,0.0,1,5579.0
 0,tcp,private,S0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,142,14,1.0,1.0,0.0,0.0,0.1,0.06,0.0,255,20,0.08,0.07,0.0,0.0,1.0,1.0,0.0,0.0,1,7039.0
 0,tcp,http,SF,306,1319,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,8,13,0.0,0.0,0.0,0.0,1.0,0.0,0.31,218,255,1.0,0.0,0.0,0.02,0.0,0.0,0.0,0.0,0,1204.0
 0,tcp,ftp_data,SF,172,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,12,12,0.0,0.0,0.0,0.0,1.0,0.0,0.0,255,131,0.51,0.03,0.52,0.0,0.0,0.01,0.0,0.0,0,15025.0

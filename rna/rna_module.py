@@ -43,13 +43,12 @@ class RnaModule(object):
 		csv_logger = CSVLogger('training.log')
 		
 
-		x = keras.preprocessing.text.Tokenizer(num_words=None, filters=keras.preprocessing.text.base_filter(), lower=True, split=" ", char_level=False)
+		x = keras.preprocessing.text.Tokenizer(num_words=None, filters= filters='!"#$%&()*+,-./:;<=>?@[\\]^_`{|}~\t\n', lower=True, split=" ", char_level=False)
 		print(x)
 		exit()
 		fit = self.model.fit(self.data_set_samples, self.data_set_labels, nb_epoch=150, batch_size=10, callbacks=[csv_logger])
 
 	def predict(self):
-
 		predictions = self.model.predict(self.test_data_set_samples)
 		return predictions
 

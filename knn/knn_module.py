@@ -8,7 +8,7 @@ class KnnModule(object):
 	data_set_labels = []
 	test_data_set_samples = []
 	test_data_set_labels = []
-	k_neighbors = 1
+	k_neighbors = 5
 
 	def __init__(self):
 		print("init knn module")

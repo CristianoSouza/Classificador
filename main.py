@@ -1,6 +1,7 @@
 import numpy as np
 import sys, os
 from cross_validation import CrossValidation
+from preprocessor import Preprocessor
 from dataSet import DataSet
 sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/hybrid")
 sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/clusteredKnn")
@@ -18,10 +19,9 @@ from clustered_knn_module import ClusteredKnnModule
 dts = DataSet()
 dts.setFilePath("bases/sub_bases/")
 #dts.setFileName("base_iris.csv")
-dts.setFileName("teste.csv")
 #dts.setFileName("NSL_KDD-master/20PercentTrainingSet.csv")
 #dts.setFileName("NSL_KDD-master/KDDTrain+.csv")
-dts.loadData()
+#dts.loadData()
 #dts.loadResult()
 
 #os.system('cls' if os.name == 'nt' else 'clear')
@@ -36,10 +36,10 @@ clustered_knn_classifier = ClusteredKnnClassifier()
 clustered_knn_classifier.setKnn(clustered_knn)
 
 rna = RnaModule()
-rna.setNumberNeuronsImputLayer(40)
+rna.setNumberNeuronsImputLayer(41)
 rna.setActivationFunctionImputLayer("tanh")
-rna.setImputDimNeurons(40)
-rna.setNumberNeuronsHiddenLayer(40)
+rna.setDimImputLayer(41)
+rna.setNumberNeuronsHiddenLayer(120)
 rna.setActivationFunctionHiddenLayer("tanh")
 rna.setNumberNeuronsOutputLayer(1)
 rna.setActivationFunctionOutputLayer("tanh")
@@ -53,14 +53,17 @@ hybrid_classifier.setUpperThreshold(0.6)
 hybrid_classifier.setRna(rna)
 hybrid_classifier.setKnn(knn)
 
-cross = CrossValidation()
-#cross.setFilePath("bases/sub_bases_20_nslkdd/")
-#cross.setFilePath("bases/sub_bases_iris_base/")
-#cross.setFilePath("bases/sub_bases_trains+_nslkdd/")
-cross.setFilePath("bases/sub_bases/")
+preprocessor = Preprocessor()
+preprocessor.setColumnsCategory(['protocol_type','service','flag'])
 
+cross = CrossValidation()
+cross.setPreprocessor(preprocessor)
+cross.setFilePath("bases/sub_bases_20_nslkdd/")
+#cross.setFilePath("bases/sub_bases_train+_nslkdd/")
+#cross.setFilePath("bases/sub_bases_iris/")
+#cross.setFilePath("bases/sub_bases/")
 #cross.setClassifier(rna_classifier)
-#cross.setClassifier(knn_classifier)
+cross.setClassifier(knn_classifier)
 #cross.setClassifier(clustered_knn_classifier)
-cross.setClassifier(hybrid_classifier)
+#cross.setClassifier(hybrid_classifier)
 cross.run()

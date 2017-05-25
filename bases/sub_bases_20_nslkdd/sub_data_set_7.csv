@@ -1,4 +1,4 @@
-duration,protocol_type,service,flag,src_bytes,dst_bytes,land,wrong_fragment,urgent,hot,num_failed_logins,logged_in,num_compromised,root_shell,su_attempted,num_root,num_file_creations,num_shells,num_access_files,num_outbound_cmds,is_host_login,is_guest_login,count,srv_count,serror_rate,srv_serror_rate,rerror_rate,srv_rerror_rate,same_srv_rate,diff_srv_rate,srv_diff_host_rate,dst_host_count,dst_host_srv_count,dst_host_same_srv_rate,dst_host_diff_srv_rate,dst_host_same_src_port_rate,dst_host_srv_diff_host_rate,dst_host_serror_rate, dst_host_srv_serror_rate, dst_host_rerror_rate, dst_host_srv_rerror_rate, classe,posicaoOriginal
+duration,protocol_type,service,flag,src_bytes,dst_bytes,land,wrong_fragment,urgent,hot,num_failed_logins,logged_in,num_compromised,root_shell,su_attempted,num_root,num_file_creations,num_shells,num_access_files,num_outbound_cmds,is_host_login,is_guest_login,count,srv_count,serror_rate,srv_serror_rate,rerror_rate,srv_rerror_rate,same_srv_rate,diff_srv_rate,srv_diff_host_rate,dst_host_count,dst_host_srv_count,dst_host_same_srv_rate,dst_host_diff_srv_rate,dst_host_same_src_port_rate,dst_host_srv_diff_host_rate,dst_host_serror_rate, dst_host_srv_serror_rate, dst_host_rerror_rate, dst_host_srv_rerror_rate,classe,posicaoOriginal
 0,tcp,ftp_data,S0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,30,10,1.0,1.0,0.0,0.0,0.33,0.07,0.0,255,10,0.04,0.06,0.01,0.0,1.0,1.0,0.0,0.0,1,5046.0
 0,tcp,other,S1,8325,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,1,1.0,1.0,0.0,0.0,1.0,0.0,0.0,229,1,0.0,0.12,0.42,0.0,0.01,1.0,0.0,0.0,0,15223.0
 0,tcp,private,REJ,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,358,1,0.0,0.0,1.0,1.0,0.0,0.52,0.0,255,1,0.0,0.52,1.0,0.0,0.0,0.0,1.0,1.0,1,8256.0
@@ -1000,7 +1000,7 @@ duration,protocol_type,service,flag,src_bytes,dst_bytes,land,wrong_fragment,urge
 0,udp,private,SF,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,15,9,0.0,0.0,0.0,0.0,0.6,0.33,0.0,255,9,0.04,0.78,0.26,0.0,0.1,0.0,0.64,0.0,1,1221.0
 0,tcp,http,SF,208,767,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,6,6,0.17,0.17,0.0,0.0,1.0,0.0,0.0,255,255,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,2491.0
 0,udp,private,SF,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,4,0.0,0.0,0.0,0.0,1.0,0.0,0.0,255,4,0.02,0.72,0.36,0.0,0.02,0.0,0.62,0.0,1,5924.0
-169,tcp,telnet,SF,1567,2857,0,0,0,3,0,1,4,1,0,0,1,0,0,0,0,0,1,1,0.0,0.0,0.0,0.0,1.0,0.0,0.0,1,1,1.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,buffer_overflow,15931.0
+169,tcp,telnet,SF,1567,2857,0,0,0,3,0,1,4,1,0,0,1,0,0,0,0,0,1,1,0.0,0.0,0.0,0.0,1.0,0.0,0.0,1,1,1.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,1,15931.0
 0,tcp,bgp,S0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,132,24,1.0,1.0,0.0,0.0,0.18,0.05,0.0,255,24,0.09,0.05,0.0,0.0,1.0,1.0,0.0,0.0,1,19281.0
 0,tcp,http,SF,221,1481,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,11,11,0.0,0.0,0.0,0.0,1.0,0.0,0.0,255,255,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,1679.0
 0,tcp,finger,S0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,246,11,1.0,1.0,0.0,0.0,0.04,0.06,0.0,255,11,0.04,0.06,0.0,0.0,1.0,1.0,0.0,0.0,1,6630.0
@@ -1032,7 +1032,7 @@ duration,protocol_type,service,flag,src_bytes,dst_bytes,land,wrong_fragment,urge
 0,tcp,private,S0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,143,7,1.0,1.0,0.0,0.0,0.05,0.06,0.0,255,5,0.02,0.06,0.0,0.0,1.0,1.0,0.0,0.0,1,7471.0
 0,tcp,ftp_data,SF,12165,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,2,0.0,0.0,0.0,0.0,1.0,0.0,1.0,13,79,0.62,0.15,0.62,0.03,0.0,0.01,0.0,0.0,0,18658.0
 0,tcp,ftp_data,SF,641,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,1,0.0,0.0,0.0,0.0,1.0,0.0,0.0,255,9,0.04,0.65,0.04,0.0,0.0,0.0,0.0,0.0,0,24773.0
-0,tcp,ftp_data,SF,0,467968,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0.0,0.0,0.0,0.0,1.0,0.0,0.0,2,2,1.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,multihop,20813.0
+0,tcp,ftp_data,SF,0,467968,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0.0,0.0,0.0,0.0,1.0,0.0,0.0,2,2,1.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,1,20813.0
 0,tcp,courier,S0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,118,11,1.0,1.0,0.0,0.0,0.09,0.06,0.0,255,11,0.04,0.07,0.0,0.0,1.0,1.0,0.0,0.0,1,2515.0
 0,tcp,http,S1,279,13574,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,2,2,0.5,0.5,0.0,0.0,1.0,0.0,0.0,13,255,1.0,0.0,0.08,0.05,0.08,0.0,0.0,0.0,0,15020.0
 0,tcp,http,SF,310,8502,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,2,2,0.0,0.0,0.0,0.0,1.0,0.0,0.0,255,255,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,3418.0

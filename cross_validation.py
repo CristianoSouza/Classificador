@@ -20,6 +20,7 @@ class CrossValidation(object):
 	evaluate = None
 	method = None
 	file_path = ""
+	preprocessor = None
 
 	def __init__(self):
 		print("init")
@@ -31,29 +32,38 @@ class CrossValidation(object):
 		self.foldExecution()
 
 	def foldExecution(self):
-		print("-- FOLD " + str(self.iteration) + " --")
-		self.loadTrainingData()
-		self.loadTestData()
+		for self.iteration in range(1,11):
+			print("iteracao")
 
-		self.classifier.setDataSet(self.training_sub_data_set)
-		self.classifier.setTestDataSet(self.teste_sub_data_set)
+			print("-- FOLD " + str(self.iteration) + " --")
+			self.loadTrainingData()
+			self.loadTestData()
 
-		self.classifier.setIteration(self.iteration)
-		self.classifier.run()
-		
-		'''self.evaluate.setTestDataSet(self.teste_sub_data_set)
-		self.evaluate.setIteration(self.iteration)
-		if(isinstance(self.classifier, RnaClassifier)):
-			print("rna")
-			self.evaluate.setPath("rna/")
-		elif(isinstance(self.classifier, KnnClassifier)):
-			print("knn")
-			self.evaluate.setPath("knn/")
-		elif(isinstance(self.classifier, HybridClassifier)):
-			print("hybrid")
-			self.evaluate.setPath("hybrid/final_method_classification/")
-		self.evaluate.run()
-'''
+			self.preprocessor.setDataSet(self.training_sub_data_set)
+			self.preprocessor.setTestDataSet(self.teste_sub_data_set)
+
+			self.training_sub_data_set, self.teste_sub_data_set = self.preprocessor.transformCategory()
+
+			data_set = self.teste_sub_data_set
+			self.classifier.setDataSet(self.training_sub_data_set)
+			self.classifier.setTestDataSet(self.teste_sub_data_set)
+
+			self.classifier.setIteration(self.iteration)
+			self.classifier.run()
+			
+			self.evaluate.setTestDataSet(data_set)
+			self.evaluate.setIteration(self.iteration)
+			if(isinstance(self.classifier, RnaClassifier)):
+				print("rna")
+				self.evaluate.setPath("rna/")
+			elif(isinstance(self.classifier, KnnClassifier)):
+				print("knn")
+				self.evaluate.setPath("knn/")
+			elif(isinstance(self.classifier, HybridClassifier)):
+				print("hybrid")
+				self.evaluate.setPath("hybrid/final_method_classification/")
+			self.evaluate.run()
+
 	def loadTrainingData(self):
 		for i in range(1,11):
 			if( (11 - i) != self.iteration):
@@ -70,7 +80,7 @@ class CrossValidation(object):
 		print(self.training_sub_data_set)
 
 	def loadTestData(self):
-		print("Carregando sub base para teste: sub base " + str(11-self.iteration) + "...")
+		print("Carregando sub base para teste: sub base " + str(9-self.iteration) + "...")
 
 		self.teste_sub_data_set = DataSet.loadSubDataSet(self.file_path + "sub_data_set_" + str(11-self.iteration) + ".csv")
 		print(self.teste_sub_data_set)
@@ -86,6 +96,12 @@ class CrossValidation(object):
 
 	def getClassifier(self):
 		return classifier
+
+	def setPreprocessor(self, preprocessor):
+		self.preprocessor = preprocessor
+
+	def getPreprocessor(self):
+		return preprocessor	
 
 	def setFilePath(self, file_path):
 		self.file_path = file_path
