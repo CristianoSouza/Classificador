@@ -105,4 +105,4 @@ class RnaModule(object):
 		self.dim_imput_layer = dim_imput_layer
 
 	def getDimImputLayer(self):
-		return self.dim_imput_layer
+		return self.dim_imput_layer 
