@@ -20,6 +20,7 @@ class CrossValidation(object):
 	evaluate = None
 	method = None
 	file_path = ""
+	preprocessor = None
 
 	def __init__(self):
 		print("init")
@@ -35,13 +36,17 @@ class CrossValidation(object):
 		self.loadTrainingData()
 		self.loadTestData()
 
+		self.preprocessor.setDataSet(self.training_sub_data_set)
+		self.preprocessor.setTestDataSet(self.teste_sub_data_set)
+		self.training_sub_data_set, self.teste_sub_data_set = self.preprocessor.transformCategory()
+
 		self.classifier.setDataSet(self.training_sub_data_set)
 		self.classifier.setTestDataSet(self.teste_sub_data_set)
 
 		self.classifier.setIteration(self.iteration)
 		self.classifier.run()
 		
-		'''self.evaluate.setTestDataSet(self.teste_sub_data_set)
+		self.evaluate.setTestDataSet(self.teste_sub_data_set)
 		self.evaluate.setIteration(self.iteration)
 		if(isinstance(self.classifier, RnaClassifier)):
 			print("rna")
@@ -53,7 +58,7 @@ class CrossValidation(object):
 			print("hybrid")
 			self.evaluate.setPath("hybrid/final_method_classification/")
 		self.evaluate.run()
-'''
+
 	def loadTrainingData(self):
 		for i in range(1,11):
 			if( (11 - i) != self.iteration):
@@ -86,6 +91,12 @@ class CrossValidation(object):
 
 	def getClassifier(self):
 		return classifier
+
+	def setPreprocessor(self, preprocessor):
+		self.preprocessor = preprocessor
+
+	def getPreprocessor(self):
+		return preprocessor	
 
 	def setFilePath(self, file_path):
 		self.file_path = file_path
