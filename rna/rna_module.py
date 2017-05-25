@@ -113,3 +113,7 @@ class RnaModule(object):
 
 	def getNumberNeuronsImputLayer(self):
 		return self.imput_dim_neurons
+
+	def getDimImputLayer(self):
+		return self.dim_imput_layer 
+

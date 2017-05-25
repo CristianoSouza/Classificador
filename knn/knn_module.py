@@ -20,7 +20,7 @@ class KnnModule(object):
 		print(self.data_set_samples)
 		print("BASEEE:")
 		print(self.test_data_set_samples)
-		print("BASEEE:")
+		print("BASEEE:")  
 		print(self.test_data_set_labels)
 		predictions = clf.predict(self.test_data_set_samples)
 		return predictions
