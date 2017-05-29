@@ -42,10 +42,6 @@ class RnaModule(object):
 		print(self.data_set_samples)
 		csv_logger = CSVLogger('training.log')
 		
-
-		x = keras.preprocessing.text.Tokenizer(num_words=None, filters= filters='!"#$%&()*+,-./:;<=>?@[\\]^_`{|}~\t\n', lower=True, split=" ", char_level=False)
-		print(x)
-		exit()
 		fit = self.model.fit(self.data_set_samples, self.data_set_labels, nb_epoch=150, batch_size=10, callbacks=[csv_logger])
 
 	def predict(self):
@@ -114,6 +110,4 @@ class RnaModule(object):
 	def getNumberNeuronsImputLayer(self):
 		return self.imput_dim_neurons
 
-	def getDimImputLayer(self):
-		return self.dim_imput_layer 
 

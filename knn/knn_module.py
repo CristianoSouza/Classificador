@@ -14,6 +14,12 @@ class KnnModule(object):
 		print("init knn module")
 
 	def run(self):
+		print("BASEEE:")
+		print(self.data_set_samples)
+		print("BASEEE:")
+		print(self.test_data_set_samples)
+		print("BASEEE:")  
+		print(self.test_data_set_labels)
 		clf = neighbors.KNeighborsClassifier(self.k_neighbors, weights='distance')
 		clf.fit(self.data_set_samples, self.data_set_labels)
 		print("BASEEE:")

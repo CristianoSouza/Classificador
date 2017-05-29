@@ -39,10 +39,11 @@ class CrossValidation(object):
 			self.loadTrainingData()
 			self.loadTestData()
 
-			self.preprocessor.setDataSet(self.training_sub_data_set)
-			self.preprocessor.setTestDataSet(self.teste_sub_data_set)
+			if self.preprocessor:
+				self.preprocessor.setDataSet(self.training_sub_data_set)
+				self.preprocessor.setTestDataSet(self.teste_sub_data_set)
 
-			self.training_sub_data_set, self.teste_sub_data_set = self.preprocessor.transformCategory()
+				self.training_sub_data_set, self.teste_sub_data_set = self.preprocessor.transformCategory()
 
 			data_set = self.teste_sub_data_set
 			self.classifier.setDataSet(self.training_sub_data_set)
