@@ -42,7 +42,6 @@ class RnaModule(object):
 		print(self.data_set_samples)
 		csv_logger = CSVLogger('training.log')
 		
-
 		fit = self.model.fit(self.data_set_samples, self.data_set_labels, nb_epoch=150, batch_size=10, callbacks=[csv_logger])
 
 	def predict(self):
@@ -116,4 +115,5 @@ class RnaModule(object):
 
 	def getDimImputLayer(self):
 		return self.dim_imput_layer 
+
 
