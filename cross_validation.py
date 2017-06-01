@@ -52,7 +52,8 @@ class CrossValidation(object):
 			self.classifier.setIteration(self.iteration)
 			self.classifier.run()
 			
-			self.evaluate.setTestDataSet(data_set)
+			self.loadTestData()
+			self.evaluate.setTestDataSet(self.teste_sub_data_set)
 			self.evaluate.setIteration(self.iteration)
 			if(isinstance(self.classifier, RnaClassifier)):
 				print("rna")
