@@ -1,9 +1,0 @@
-		MATRIZ DE CONFUSAO
-             Predicao      
-		 ATAQUE    NORMAL  
-	   |--------||--------|
-ATAQUE |   1176    ||   6    |
-	   |--------||--------|
-NORMAL |   9    ||   1327    |
-	   |--------||--------|
-		
