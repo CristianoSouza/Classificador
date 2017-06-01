@@ -26,24 +26,21 @@ class EvaluateModule(object):
 		print(result_dataframe)
 		posicao_classe = len(result_dataframe.values[0]) -2
 		for i in range(0,len(result_dataframe.values)):
-			print("Real: " + str(self.test_data_set.values[i,posicao_classe]) + " -- predito: " + str(result_dataframe.values[i,posicao_classe]))
+			#print("Real: " + str(self.test_data_set.values[i,posicao_classe]) + " -- predito: " + str(result_dataframe.values[i,posicao_classe]))
 			if(self.test_data_set.values[i,posicao_classe] == '0' or self.test_data_set.values[i,posicao_classe] == 0 ):
-				
-				print("zero")
 				if (result_dataframe.values[i,posicao_classe] == 0 or result_dataframe.values[i,posicao_classe] == '0'):
-					print("FALSO E CLASSIFICOU COMO FALSO")
+					#print("FALSO E CLASSIFICOU COMO FALSO")
 					self.number_true_negatives+=1
 				else:
-					print("FALSO E CLASSIFICOU COMO VERDADEIRO")
+					#print("FALSO E CLASSIFICOU COMO VERDADEIRO")
 					self.number_false_positives+=1
 
 			elif(self.test_data_set.values[i,posicao_classe] == '1' or self.test_data_set.values[i,posicao_classe] == 1):
-				print("um")
 				if (result_dataframe.values[i,posicao_classe] == 1 or result_dataframe.values[i,posicao_classe] == '1'):
-					print("VERDADEIRO E CLASSIFICOU COMO VERDADEIRO")
+					#print("VERDADEIRO E CLASSIFICOU COMO VERDADEIRO")
 					self.number_true_positives+=1
 				else:
-					print("VERDADEIRO E CLASSIFICOU COMO FALSO")
+					#print("VERDADEIRO E CLASSIFICOU COMO FALSO")
 					self.number_false_negatives+=1
 
 		arquivo = open('results/' + self.path + 'final_info_' + str(self.iteration) + '.txt', 'w') 
