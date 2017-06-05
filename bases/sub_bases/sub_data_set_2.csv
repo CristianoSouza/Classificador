@@ -1,4 +1,4 @@
-duration,protocol_type,service,flag,src_bytes,dst_bytes,land,wrong_fragment,urgent,hot,num_failed_logins,logged_in,num_compromised,root_shell,su_attempted,num_root,num_file_creations,num_shells,num_access_files,num_outbound_cmds,is_host_login,is_guest_login,count,srv_count,serror_rate,srv_serror_rate,rerror_rate,srv_rerror_rate,same_srv_rate,diff_srv_rate,srv_diff_host_rate,dst_host_count,dst_host_srv_count,dst_host_same_srv_rate,dst_host_diff_srv_rate,dst_host_same_src_port_rate,dst_host_srv_diff_host_rate,dst_host_serror_rate, dst_host_srv_serror_rate, dst_host_rerror_rate, dst_host_srv_rerror_rate,classe,posicaoOriginal
+duration,protocol_type,service,flag,src_bytes,dst_bytes,land,wrong_fragment,urgent,hot,num_failed_logins,logged_in,num_compromised,root_shell,su_attempted,num_root,num_file_creations,num_shells,num_access_files,num_outbound_cmds,is_host_login,is_guest_login,count,srv_count,serror_rate,srv_serror_rate,rerror_rate,srv_rerror_rate,same_srv_rate,diff_srv_rate,srv_diff_host_rate,dst_host_count,dst_host_srv_count,dst_host_same_srv_rate,dst_host_diff_srv_rate,dst_host_same_src_port_rate,dst_host_srv_diff_host_rate,dst_host_serror_rate, dst_host_srv_serror_rate, dst_host_rerror_rate, dst_host_srv_rerror_rate, classe,posicaoOriginal
 0,tcp,http,SF,161,30205,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,10,10,0.0,0.0,0.0,0.0,1.0,0.0,0.0,255,255,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,22322.0
 0,icmp,eco_i,SF,18,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0.0,0.0,0.0,0.0,1.0,0.0,0.0,1,54,1.0,0.0,1.0,1.0,0.0,0.0,0.0,0.0,1,19741.0
 0,tcp,http,SF,221,8440,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,16,21,0.0,0.0,0.0,0.0,1.0,0.0,0.19,16,255,1.0,0.0,0.06,0.06,0.0,0.0,0.0,0.0,0,4514.0
@@ -1414,7 +1414,7 @@ duration,protocol_type,service,flag,src_bytes,dst_bytes,land,wrong_fragment,urge
 0,tcp,ftp_data,SF,13239,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,4,4,0.0,0.0,0.0,0.0,1.0,0.0,0.0,100,63,0.33,0.04,0.33,0.03,0.0,0.0,0.0,0.0,0,594.0
 0,tcp,ftp,RSTO,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,245,4,0.0,0.0,1.0,1.0,0.02,0.07,0.0,255,4,0.02,0.08,0.0,0.0,0.0,0.0,1.0,1.0,1,23822.0
 0,tcp,http,SF,146,423,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,1,0.0,0.0,0.0,0.0,1.0,0.0,0.0,2,2,1.0,0.0,0.5,0.0,0.0,0.0,0.5,0.5,0,5393.0
-29,tcp,ftp,SF,329,1063,0,0,0,6,0,1,0,0,0,0,0,0,0,0,0,1,1,1,0.0,0.0,0.0,0.0,1.0,0.0,0.0,255,60,0.24,0.02,0.0,0.0,0.0,0.0,0.03,0.1,0,25183.0
+cross 29,tcp,ftp,SF,329,1063,0,0,0,6,0,1,0,0,0,0,0,0,0,0,0,1,1,1,0.0,0.0,0.0,0.0,1.0,0.0,0.0,255,60,0.24,0.02,0.0,0.0,0.0,0.0,0.03,0.1,0,25183.0
 0,tcp,time,S0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,201,1,1.0,1.0,0.0,0.0,0.0,0.06,0.0,255,20,0.08,0.06,0.0,0.0,1.0,1.0,0.0,0.0,1,3164.0
 0,tcp,private,S0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,188,15,1.0,1.0,0.0,0.0,0.08,0.06,0.0,255,5,0.02,0.07,0.0,0.0,1.0,1.0,0.0,0.0,1,24894.0
 0,tcp,uucp,S0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,124,2,1.0,1.0,0.0,0.0,0.02,0.06,0.0,255,2,0.01,0.05,0.0,0.0,1.0,1.0,0.0,0.0,1,15934.0
