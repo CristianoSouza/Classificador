@@ -1,0 +1,9 @@
+		MATRIZ DE CONFUSAO
+             Predicao      
+		 ATAQUE    NORMAL  
+	   |--------||--------|
+ATAQUE |   2    ||   2    |
+	   |--------||--------|
+NORMAL |   1    ||   3    |
+	   |--------||--------|
+		

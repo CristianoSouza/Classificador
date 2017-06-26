@@ -9,6 +9,8 @@ sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/rna")
 from rna_classifier import RnaClassifier
 sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/knn")
 from knn_classifier import KnnClassifier
+sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/clusteredKnn")
+from clustered_knn_classifier import ClusteredKnnClassifier
 
 
 class CrossValidation(object):
@@ -61,10 +63,14 @@ class CrossValidation(object):
 			elif(isinstance(self.classifier, KnnClassifier)):
 				print("knn")
 				self.evaluate.setPath("knn/")
+			elif(isinstance(self.classifier, ClusteredKnnClassifier)):
+				print("clustered knn")
+				self.evaluate.setPath("clusteredKnn/")
 			elif(isinstance(self.classifier, HybridClassifier)):
 				print("hybrid")
 				self.evaluate.setPath("hybrid/final_method_classification/")
 			self.evaluate.run()
+			#exit()
 
 	def loadTrainingData(self):
 		for i in range(1,11):
@@ -82,7 +88,7 @@ class CrossValidation(object):
 		print(self.training_sub_data_set)
 
 	def loadTestData(self):
-		print("Carregando sub base para teste: sub base " + str(9-self.iteration) + "...")
+		print("Carregando sub base para teste: sub base " + str(11-self.iteration) + "...")
 
 		self.teste_sub_data_set = DataSet.loadSubDataSet(self.file_path + "sub_data_set_" + str(11-self.iteration) + ".csv")
 		print(self.teste_sub_data_set)

@@ -29,7 +29,7 @@ class ClusteredKnnClassifier(object):
 		for i in range(0,len(self.predictions)):
 			self.test_data_set.set_value(i,'classe',self.predictions[i])
 
-		DataSet.saveResults("knn", self.iteration, self.test_data_set)
+		DataSet.saveResults("clusteredKnn", self.iteration, self.test_data_set)
 
 	def setDataSet(self, data_set):
 		self.data_set = data_set

@@ -11,6 +11,7 @@ class ClusteredKnnModule(object):
 	test_data_set_labels = []
 	distance = []
 	clusters = []
+	clusters_training = []
 	indices = []
 	k_neighbors = 5
 
@@ -20,65 +21,119 @@ class ClusteredKnnModule(object):
 	def run(self):
 		print(self.data_set_samples[0])
 		#exit()
-		self.findClusters()
-		self.findNearestNeighbors()
+		self.findClusters(self.data_set_samples)
+		self.findNearestNeighbors(self.data_set_samples)
 		print(self.distance)
+		print(self.distance[5])
+		print(self.data_set_samples)
+		print(self.data_set_labels)
 
-		clf = neighbors.KNeighborsClassifier(self.k_neighbors, weights='distance')
-		clf.fit(self.data_set_samples, self.data_set_labels)
+		for i in range(0,72):
+			print(self.distance[i], " - ", self.data_set_labels[i])
+		#exit()
+		clf = neighbors.KNeighborsClassifier(self.k_neighbors)
+		clf.fit(self.distance, self.data_set_labels)
 
-		predictions = clf.predict(self.test_data_set_samples)
-		return predictions
-
-	def findClusters(self):
-		kmeans = MiniBatchKMeans(n_clusters=2, random_state=0).fit(self.data_set_samples)
-		for i in range(0,10):
-			print(kmeans.labels_[i])
-		#print(kmeans.labels_)
-		predicao = kmeans.predict(self.data_set_samples)
-		print(predicao)
-		print("Centros de cluster")
-		print(kmeans.cluster_centers_)
-		distance_clusters = kmeans.fit_transform(self.data_set_samples)
-
-		print("Preparando clusters...")
-		print( len(kmeans.cluster_centers_))
-		for i in range(0, len(kmeans.cluster_centers_)):
-			print(i)
-			self.clusters.append([])
-			self.indices.append([])
-
-		print(self.clusters)
-		for i in range(0,len(self.data_set_samples)):
-			dist = 0
-			for j in distance_clusters[i]:
-				dist+= j 
-			self.distance.append(dist)
-
-			self.indices[kmeans.labels_[i]].append(i)
-			self.clusters[kmeans.labels_[i]].append(self.data_set_samples[i]) 
-
+		#exit()
+		print("INICIANDO FASE DE TESTE...")
+		self.findClusters(self.test_data_set_samples, self.data_set_samples)
+		self.findNearestNeighbors(self.test_data_set_samples)
 		print(self.distance)
-		print(self.clusters)
-
-	def findNearestNeighbors(self):
-		print("Procurando distancia para vizinho mais proximo...")
-		print(len(self.clusters))
-	 	for i in range(0, len(self.clusters)):
-			clf = neighbors.NearestNeighbors(n_neighbors=2)
-			print("Cluster:")
-			print(self.clusters[i])
-			clf.fit(self.clusters[i])
-			for j in  range(0, len(self.clusters[i])):
-				print("Exemplo: ", self.clusters[i][j])
-				print("original", self.data_set_samples[self.indices[i][j]])
-				neighbor = clf.kneighbors(self.clusters[i][j], return_distance=True)
-				print("distancia neighbor", neighbor[0][0][1])
-				print(self.indices[i][j])
-				self.distance[self.indices[i][j]]+= neighbor[0][0][1]
-
+		
+		predictions = clf.predict(self.distance)
+		print(predictions)
 		print(self.distance)
 		exit()
+		return predictions
+
+	def findClusters(self, data_set,  data_set_training=None):
+		self.clusters = []
+		self.clusters_training = []
+		self.indices = []
+		self.distance = []
+		self.labels = []
+		
+		if (data_set_training == None):
+			data_set_training = data_set
+		else:
+			mergedlist = []
+			mergedlist.extend(data_set)
+			mergedlist.extend(data_set_training)
+			data_set_training = mergedlist
+			print(data_set_training)
+
+		kmeans = MiniBatchKMeans(n_clusters=2, random_state=0).fit(data_set_training)
+		#predicao = kmeans.predict(data_set_training)
+
+		print("Centros de cluster")
+		print(kmeans.cluster_centers_)
+		distance_clusters = kmeans.fit_transform(data_set_training)
+		print(distance_clusters)
+		print(len(distance_clusters))
+		print(len(data_set))
+		#distance_clusters_data_set = distance_clusters[0:len(data_set)]
+		print(distance_clusters)
+
+		print("Preparando clusters...")
+		for i in range(0, len(kmeans.cluster_centers_)):
+			self.clusters.append([])
+			self.clusters_training.append([])
+			self.indices.append([])
+
+		for i in range(0, len(data_set_training)):
+			self.clusters_training[kmeans.labels_[i]].append(data_set_training[i]) 
+
+		print(len(data_set))
+		print(len(distance_clusters))
+		print(len(kmeans.labels_))
+		predicao = kmeans.predict(data_set_training)
+
+		for i in range(0,len(data_set)):
+			dist = 0
+			print("exemplo: ", i+1)
+			for j in distance_clusters[i]:
+				print("Distancia para cluster: ", j )
+				dist+= j 
+
+
+				#print(j)
+			#self.distance.append(dist)
+			self.distance.append([dist])
+			
+			print(data_set[i])
+			print(kmeans.labels_[i])
+			print(predicao[i])
+			print(dist)
+			print("------------")
+			self.indices[kmeans.labels_[i]].append(i)
+			self.clusters[kmeans.labels_[i]].append(data_set[i]) 
+
+		#exit()
+		#print(self.distance)
+		#print(self.clusters)
+
+		return distance_clusters
+
+	def findNearestNeighbors(self, data_set):
+		print("Procurando distancia para vizinho mais proximo...")
+		print(len(self.clusters))
+		print(len(self.clusters[1]))
+
+
+		for i in range(0, len(self.clusters)):
+			clf = neighbors.NearestNeighbors(n_neighbors=2)
+			for j in  range(0, len(self.clusters[i])):
+				clf.fit(self.clusters_training[i])
+				neighbor = clf.kneighbors(self.clusters[i][j], return_distance=True)
+				self.distance[self.indices[i][j]]+= neighbor[0][0][1]
+				print("indice: ", self.indices[i][j])
+				print("Exemplo: ", self.clusters[i][j])
+				print("original", data_set[self.indices[i][j]])
+				print("distancia neighbor", neighbor[0][0][1])
+				print("Distancia: ", self.distance[self.indices[i][j]])
+				print(self.indices[i][j])
+
+		print(self.distance)
 
 	def setDataSetClustering(self, data_set):
 		self.data_set_samples = data_set.values[:,0:(len(data_set.values[0])-1)]
@@ -101,3 +156,137 @@ class ClusteredKnnModule(object):
 
 	def getKNeighbors(self):
 		return self.k_neighbors
+
+	'''def findNearestNeighbors(self, data_set, labels):
+		print("Procurando distancia para vizinho mais proximo...")
+		print(len(self.clusters))
+		print(len(self.clusters[1]))
+	 	for i in range(0, len(self.clusters)):
+	 		clf = neighbors.KNeighborsClassifier()
+			#clf = neighbors.NearestNeighbors(n_neighbors=2)
+			clf.fit(self.clusters_training[i], self.labels[i])
+			a = clf.kneighbors(n_neighbors=1)
+			print(a) 
+
+			exit()
+			print("Cluster:")
+			print(self.clusters_training[i])
+			#clf.fit(self.clusters_training[i])
+			for j in  range(0, len(self.clusters[i])):
+				print("Exemplo: ", self.clusters[i][j])
+				print("indice: ", self.indices[i][j])
+				print("original", data_set[self.indices[i][j]])
+				print("label: ", self.labels[i][j])
+				print("label original: ", labels[self.indices[i][j]] )
+				#neighbor = clf.kneighbors(self.clusters[i][j], return_distance=True)
+				#print("distancia neighbor", neighbor[0][0][1])
+				print(self.indices[i][j])
+				#self.distance[self.indices[i][j]]+= neighbor[0][0][1]
+		exit()
+		#print(self.distance)
+
+
+	def findClusters(self, data_set, data_set_labels,  data_set_training=None):
+		self.clusters = []
+		self.clusters_training = []
+		self.indices = []
+		self.distance = []
+		self.labels = []
+		
+		if (data_set_training == None):
+			data_set_training = data_set
+		else:
+			mergedlist = []
+			mergedlist.extend(data_set)
+			mergedlist.extend(data_set_training)
+			data_set_training = mergedlist
+			print(data_set_training)
+
+		kmeans = MiniBatchKMeans(n_clusters=2, random_state=0).fit(data_set_training)
+		#predicao = kmeans.predict(data_set_training)
+
+		print("Centros de cluster")
+		print(kmeans.cluster_centers_)
+		distance_clusters = kmeans.fit_transform(data_set_training)
+		print(distance_clusters)
+		print(len(distance_clusters))
+		print(len(data_set))
+		#distance_clusters_data_set = distance_clusters[0:len(data_set)]
+		print(distance_clusters)
+
+		print("Preparando clusters...")
+		for i in range(0, len(kmeans.cluster_centers_)):
+			self.clusters.append([])
+			self.labels.append([])
+			self.clusters_training.append([])
+			self.indices.append([])
+
+		for i in range(0, len(data_set_training)):
+			self.clusters_training[kmeans.labels_[i]].append(data_set_training[i]) 
+
+		print(len(data_set))
+		print(len(distance_clusters))
+		print(len(kmeans.labels_))
+		predicao = kmeans.predict(data_set_training)
+
+		for i in range(0,len(data_set)):
+			dist = 0
+			for j in distance_clusters[i]:
+				dist+= j 
+				#print(j)
+			#self.distance.append(dist)
+			self.distance.append([dist])
+			#print(dist)
+			#print(kmeans.labels_[i])
+			#print(predicao[i])
+			#print("------------")
+			self.indices[kmeans.labels_[i]].append(i)
+			self.clusters[kmeans.labels_[i]].append(data_set[i]) 
+			self.labels[kmeans.labels_[i]].append(data_set_labels[i]) 
+
+		#exit()
+		#print(self.distance)
+		#print(self.clusters)
+
+		return distance_clusters
+
+	def findNearestNeighbors(self, data_set, labels=None):
+		print("Procurando distancia para vizinho mais proximo...")
+		print(len(self.clusters))
+		print(len(self.clusters[1]))
+
+		if(labels == None):
+			for i in range(0, len(self.clusters)):
+				clf = neighbors.NearestNeighbors(n_neighbors=2)
+				for j in  range(0, len(self.clusters[i])):
+					clf.fit(self.clusters_training[i])
+					neighbor = clf.kneighbors(self.clusters[i][j], return_distance=True)
+					print("distancia neighbor", neighbor[0][0][1])
+					self.distance[self.indices[i][j]]+= neighbor[0][0][1]
+		else:
+		 	for i in range(0, len(self.clusters)):
+		 		clf = neighbors.KNeighborsClassifier()
+			
+				clf.fit(self.clusters_training[i], self.labels[i])
+				neighbor = clf.kneighbors(n_neighbors=1)
+
+				#exit()
+				print("Cluster:")
+				print(self.clusters_training[i])
+				#clf.fit(self.clusters_training[i])
+				for j in  range(0, len(self.clusters[i])):
+					print("Exemplo: ", self.clusters[i][j])
+					print("indice: ", self.indices[i][j])
+					print("original", data_set[self.indices[i][j]])
+					print("label: ", self.labels[i][j])
+					print("label original: ", labels[self.indices[i][j]] )
+					#neighbor = clf.kneighbors(self.clusters[i][j], return_distance=True)
+					#print("distancia neighbor", neighbor[0][0][1])
+					print(self.indices[i][j])
+					print("vizinho: ",neighbor[0][j])
+					#exit()
+					self.distance[self.indices[i][j]]+= neighbor[0][j]
+		#exit()
+		print(self.distance)
+
+	'''
