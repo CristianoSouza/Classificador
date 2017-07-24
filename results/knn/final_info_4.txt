@@ -1,9 +1,23 @@
 		MATRIZ DE CONFUSAO
-             Predicao      
-		 ATAQUE    NORMAL  
-	   |--------||--------|
-ATAQUE |   6    ||   0    |
-	   |--------||--------|
-NORMAL |   0    ||   2    |
-	   |--------||--------|
-		
+	             Predicao      
+			 ACC    ERR  
+|--------||--------|
+
+dos 	|   37    || 	2 | 		
+|--------||--------|
+normal 	|   50    || 	1 | 		
+|--------||--------|
+probe 	|   6    || 	2 | 		
+|--------||--------|
+r2l 	|   1    || 	0 | 		
+|--------||--------|
+TOTAL DE EXEMPPLOS: 101 	|   
+|--------||--------|
+TOTAL DE EXEMPPLOS CORRETOS: 94 	|   
+|--------||--------|
+TOTAL DE EXEMPPLOS ERRADOS: 5 	|   
+|--------||--------|
+PORCENTAGEM ACERTOS: 93.0693069307 	|   
+|--------||--------|
+PORCENTAGEM ERROS: 4.9504950495 	|   
+|--------||--------|

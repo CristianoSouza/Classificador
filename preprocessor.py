@@ -24,6 +24,12 @@ class Preprocessor(object):
 		print(self.classes)
 		return self.data_set, self.test_data_set 
 
+	@classmethod
+	def getClassesPerColumns(self, data_set, column):
+		le = LabelEncoder()
+		le.fit(data_set[column])
+		return le.classes_
+
 	def setColumnsCategory(self, columns_category):
 		self.columns_category = columns_category
 

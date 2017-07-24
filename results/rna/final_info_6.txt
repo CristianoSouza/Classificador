@@ -1,9 +1,37 @@
 		MATRIZ DE CONFUSAO
-             Predicao      
-		 ATAQUE    NORMAL  
-	   |--------||--------|
-ATAQUE |   3    ||   0    |
-	   |--------||--------|
-NORMAL |   0    ||   5    |
-	   |--------||--------|
-		
+	             Predicao      
+			 ACC    ERR  
+|--------||--------|
+
+back 	|   0    || 	2 | 		
+|--------||--------|
+buffer_overflow 	|   0    || 	0 | 		
+|--------||--------|
+ipsweep 	|   0    || 	5 | 		
+|--------||--------|
+neptune 	|   0    || 	31 | 		
+|--------||--------|
+normal 	|   0    || 	53 | 		
+|--------||--------|
+portsweep 	|   0    || 	4 | 		
+|--------||--------|
+rootkit 	|   0    || 	0 | 		
+|--------||--------|
+satan 	|   0    || 	0 | 		
+|--------||--------|
+smurf 	|   0    || 	3 | 		
+|--------||--------|
+teardrop 	|   0    || 	1 | 		
+|--------||--------|
+warezclient 	|   0    || 	2 | 		
+|--------||--------|
+TOTAL DE EXEMPPLOS: 101 	|   
+|--------||--------|
+TOTAL DE EXEMPPLOS CORRETOS: 0 	|   
+|--------||--------|
+TOTAL DE EXEMPPLOS ERRADOS: 101 	|   
+|--------||--------|
+PORCENTAGEM ACERTOS: 0.0 	|   
+|--------||--------|
+PORCENTAGEM ERROS: 100.0 	|   
+|--------||--------|

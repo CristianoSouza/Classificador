@@ -11,6 +11,8 @@ sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/knn")
 from knn_classifier import KnnClassifier
 sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/clusteredKnn")
 from clustered_knn_classifier import ClusteredKnnClassifier
+sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/clusteredDensityKnn")
+from clustered_density_knn_classifier import ClusteredDensityKnnClassifier
 
 
 class CrossValidation(object):
@@ -66,11 +68,14 @@ class CrossValidation(object):
 			elif(isinstance(self.classifier, ClusteredKnnClassifier)):
 				print("clustered knn")
 				self.evaluate.setPath("clusteredKnn/")
+			elif(isinstance(self.classifier, ClusteredDensityKnnClassifier)):
+				print("clustered density knn")
+				self.evaluate.setPath("clusteredDensityKnn/")
 			elif(isinstance(self.classifier, HybridClassifier)):
 				print("hybrid")
 				self.evaluate.setPath("hybrid/final_method_classification/")
 			self.evaluate.run()
-			#exit()
+			exit()
 
 	def loadTrainingData(self):
 		for i in range(1,11):
@@ -110,6 +115,12 @@ class CrossValidation(object):
 
 	def getPreprocessor(self):
 		return preprocessor	
+
+	def setEvaluateModule(self, evaluate):
+		self.evaluate = evaluate
+
+	def getEvaluateModule(self):
+		return evaluate	
 
 	def setFilePath(self, file_path):
 		self.file_path = file_path

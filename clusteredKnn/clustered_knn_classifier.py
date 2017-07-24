@@ -18,8 +18,11 @@ class ClusteredKnnClassifier(object):
 		print "RUN Knn classifier"
 		self.knn.setDataSet(self.data_set)
 		self.knn.setTestDataSet(self.test_data_set)
+
 		print("aaaa")
-		print(self.test_data_set)
+		print(self.data_set.values[0])
+		#exit()
+		#print(self.test_data_set)
 		self.predictions = self.knn.run()
 		print("Predicao knn: ") 
 		print(self.predictions)
@@ -28,7 +31,6 @@ class ClusteredKnnClassifier(object):
 	def saveResults(self):
 		for i in range(0,len(self.predictions)):
 			self.test_data_set.set_value(i,'classe',self.predictions[i])
-
 		DataSet.saveResults("clusteredKnn", self.iteration, self.test_data_set)
 
 	def setDataSet(self, data_set):
