@@ -40,6 +40,11 @@ class EvaluateModule(object):
 
 		acc_classes = []
 		err_classes = []
+		print(self.test_data_set.values)
+		print(result_dataframe.values)
+		print(len(self.test_data_set.values))
+		print(len(result_dataframe.values))
+		#exit()
 		if(len(self.classes) <=2 ):
 			posicao_classe = len(result_dataframe.values[0]) -2
 			for i in range(0,len(result_dataframe.values)):

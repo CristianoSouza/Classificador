@@ -1,9 +1,18 @@
 		MATRIZ DE CONFUSAO
-             Predicao      
-		 ATAQUE    NORMAL  
-	   |--------||--------|
-ATAQUE |   0    ||   4    |
-	   |--------||--------|
-NORMAL |   0    ||   4    |
-	   |--------||--------|
-		
+	             Predicao      
+			 ATAQUE    NORMAL  
+		   |--------||--------|
+	ATAQUE |   48    ||   1    |
+		   |--------||--------|
+	NORMAL |   1    ||   50    |
+		   |--------||--------|
+			TOTAL DE EXEMPLOS: 100 	|   
+|--------||--------|
+TOTAL DE EXEMPLOS CORRETOS: 98 	|   
+|--------||--------|
+TOTAL DE EXEMPLOS ERRADOS: 2 	|   
+|--------||--------|
+PORCENTAGEM ACERTOS: 98.0 	|   
+|--------||--------|
+PORCENTAGEM ERROS: 2.0 	|   
+|--------||--------|

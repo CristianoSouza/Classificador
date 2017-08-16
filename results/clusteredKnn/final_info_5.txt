@@ -3,9 +3,9 @@
 			 ACC    ERR  
 |--------||--------|
 
- 	|   50    || 	0 | 		
+ 	|   3    || 	47 | 		
 |--------||--------|
- 	|   0    || 	51 | 		
+ 	|   51    || 	0 | 		
 |--------||--------|
  	|   0    || 	0 | 		
 |--------||--------|
@@ -13,11 +13,11 @@
 |--------||--------|
 TOTAL DE EXEMPLOS: 101 	|   
 |--------||--------|
-TOTAL DE EXEMPLOS CORRETOS: 50 	|   
+TOTAL DE EXEMPLOS CORRETOS: 54 	|   
 |--------||--------|
-TOTAL DE EXEMPLOS ERRADOS: 51 	|   
+TOTAL DE EXEMPLOS ERRADOS: 47 	|   
 |--------||--------|
-PORCENTAGEM ACERTOS: 49.504950495 	|   
+PORCENTAGEM ACERTOS: 53.4653465347 	|   
 |--------||--------|
-PORCENTAGEM ERROS: 50.495049505 	|   
+PORCENTAGEM ERROS: 46.5346534653 	|   
 |--------||--------|

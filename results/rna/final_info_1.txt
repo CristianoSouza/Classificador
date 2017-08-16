@@ -1,37 +1,18 @@
 		MATRIZ DE CONFUSAO
 	             Predicao      
-			 ACC    ERR  
+			 ATAQUE    NORMAL  
+		   |--------||--------|
+	ATAQUE |   38    ||   3    |
+		   |--------||--------|
+	NORMAL |   1    ||   58    |
+		   |--------||--------|
+			TOTAL DE EXEMPLOS: 100 	|   
 |--------||--------|
-
-back 	|   0    || 	1 | 		
+TOTAL DE EXEMPLOS CORRETOS: 96 	|   
 |--------||--------|
-buffer_overflow 	|   0    || 	1 | 		
+TOTAL DE EXEMPLOS ERRADOS: 4 	|   
 |--------||--------|
-ipsweep 	|   0    || 	6 | 		
+PORCENTAGEM ACERTOS: 96.0 	|   
 |--------||--------|
-neptune 	|   0    || 	32 | 		
-|--------||--------|
-normal 	|   0    || 	51 | 		
-|--------||--------|
-portsweep 	|   0    || 	2 | 		
-|--------||--------|
-rootkit 	|   0    || 	1 | 		
-|--------||--------|
-satan 	|   0    || 	1 | 		
-|--------||--------|
-smurf 	|   0    || 	3 | 		
-|--------||--------|
-teardrop 	|   0    || 	1 | 		
-|--------||--------|
-warezclient 	|   0    || 	2 | 		
-|--------||--------|
-TOTAL DE EXEMPPLOS: 101 	|   
-|--------||--------|
-TOTAL DE EXEMPPLOS CORRETOS: 0 	|   
-|--------||--------|
-TOTAL DE EXEMPPLOS ERRADOS: 101 	|   
-|--------||--------|
-PORCENTAGEM ACERTOS: 0.0 	|   
-|--------||--------|
-PORCENTAGEM ERROS: 100.0 	|   
+PORCENTAGEM ERROS: 4.0 	|   
 |--------||--------|

@@ -94,21 +94,24 @@ class ClusteredKnnModule(object):
 
 	def findNearestNeighborsTraining(self, data_set):
 		for i in range(0, len(self.clusters)):
-			clf = neighbors.NearestNeighbors(n_neighbors=2)
-			clf.fit(self.clusters[i])
-			for j in  range(0, len(self.clusters[i])):
-				#print(len(self.clusters_training[i]))
-				neighbor = clf.kneighbors(self.clusters[i][j], return_distance=True)
-				print(neighbor[0][0][1])
+			if(len(self.clusters[i]) > 1):
+				clf = neighbors.NearestNeighbors(n_neighbors=2)
+				clf.fit(self.clusters[i])
+				for j in  range(0, len(self.clusters[i])):
+					#print(len(self.clusters_training[i]))
+					neighbor = clf.kneighbors(self.clusters[i][j], return_distance=True)
+					print(neighbor[0][0][1])
 
-				self.distance[self.indices[i][j]]+= neighbor[0][0][1]
-				print("indice: ", self.indices[i][j])
-				print("Exemplo: ", self.clusters[i][j])
-				print("original", data_set[self.indices[i][j]])
-				print("distancia neighbor", neighbor[0][0][1])
-				print("Distancia: ", self.distance[self.indices[i][j]])
-				print(self.indices[i][j])
-				#exit()
+					self.distance[self.indices[i][j]]+= neighbor[0][0][1]
+					print("indice: ", self.indices[i][j])
+					print("Exemplo: ", self.clusters[i][j])
+					print("original", data_set[self.indices[i][j]])
+					print("distancia neighbor", neighbor[0][0][1])
+					print("Distancia: ", self.distance[self.indices[i][j]])
+					print(self.indices[i][j])
+					#exit()
+			else:
+				print("se cluster so tem um elemento, este elemento nao possui vizinho mais proximo")
 
 	def findClustersTesting(self, test_data_set, data_set_training):
 		self.distance = []
@@ -159,20 +162,26 @@ class ClusteredKnnModule(object):
 
 	def findNearestNeighborsTesting(self, test_data_set):
 		for i in range(0, len(self.clusters_training)):
-			clf = neighbors.NearestNeighbors(n_neighbors=2)
-			clf.fit(self.clusters_training[i])
-			for j in  range(0, len(self.clusters[i])):
-				#print(len(self.clusters_training[i]))
-				neighbor = clf.kneighbors(self.clusters[i][j], return_distance=True)
-				print(neighbor[0][0][1])
+		
+			if(len(self.clusters_training[i]) > 1):
+				clf = neighbors.NearestNeighbors(n_neighbors=2)
+				clf.fit(self.clusters_training[i])
+				for j in  range(0, len(self.clusters[i])):
+					#print(len(self.clusters_training[i]))
+					neighbor = clf.kneighbors(self.clusters[i][j], return_distance=True)
+					print(neighbor[0][0][1])
 
-				self.distance[self.indices[i][j]]+= neighbor[0][0][1]
-				print("indice: ", self.indices[i][j])
-				print("Exemplo: ", self.clusters[i][j])
-				print("original", test_data_set[self.indices[i][j]])
-				print("distancia neighbor", neighbor[0][0][1])
-				print("Distancia: ", self.distance[self.indices[i][j]])
-				print(self.indices[i][j])
+					self.distance[self.indices[i][j]]+= neighbor[0][0][1]
+					print("indice: ", self.indices[i][j])
+					print("Exemplo: ", self.clusters[i][j])
+					print("original", test_data_set[self.indices[i][j]])
+					print("distancia neighbor", neighbor[0][0][1])
+					print("Distancia: ", self.distance[self.indices[i][j]])
+					print(self.indices[i][j])
+			else:
+				print("se cluster so tem um elemento, este elemento nao possui vizinho mais proximo")
+				
+				#exit()
 				#exit()
 	'''def findClusters(self, data_set,  data_set_training=None):
 		self.clusters = []
