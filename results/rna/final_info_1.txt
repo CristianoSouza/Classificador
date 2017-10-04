@@ -4,15 +4,15 @@
 		   |--------||--------|
 	ATAQUE |   38    ||   3    |
 		   |--------||--------|
-	NORMAL |   1    ||   58    |
+	NORMAL |   0    ||   59    |
 		   |--------||--------|
 			TOTAL DE EXEMPLOS: 100 	|   
 |--------||--------|
-TOTAL DE EXEMPLOS CORRETOS: 96 	|   
+TOTAL DE EXEMPLOS CORRETOS: 97 	|   
 |--------||--------|
-TOTAL DE EXEMPLOS ERRADOS: 4 	|   
+TOTAL DE EXEMPLOS ERRADOS: 3 	|   
 |--------||--------|
-PORCENTAGEM ACERTOS: 96.0 	|   
+PORCENTAGEM ACERTOS: 97.0 	|   
 |--------||--------|
-PORCENTAGEM ERROS: 4.0 	|   
+PORCENTAGEM ERROS: 3.0 	|   
 |--------||--------|

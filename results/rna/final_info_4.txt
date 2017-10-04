@@ -2,9 +2,9 @@
 	             Predicao      
 			 ATAQUE    NORMAL  
 		   |--------||--------|
-	ATAQUE |   52    ||   0    |
+	ATAQUE |   51    ||   1    |
 		   |--------||--------|
-	NORMAL |   2    ||   46    |
+	NORMAL |   1    ||   47    |
 		   |--------||--------|
 			TOTAL DE EXEMPLOS: 100 	|   
 |--------||--------|

@@ -34,9 +34,7 @@ class EvaluateModule(object):
 	
 		print(result_dataframe)
 
-		if(self.classes == None):
-			self.classes = Preprocessor.getClassesPerColumns(self.test_data_set,'classe')
-			print("if")
+		self.classes = Preprocessor.getClassesPerColumns(self.test_data_set,'classe')
 
 		acc_classes = []
 		err_classes = []
