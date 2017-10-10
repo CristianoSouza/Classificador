@@ -35,6 +35,10 @@ class EvaluateModule(object):
 		print(result_dataframe)
 
 		self.classes = Preprocessor.getClassesPerColumns(self.test_data_set,'classe')
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0795618c0561c0700bb87873c02c939d003b390c
 		acc_classes = []
 		err_classes = []
 		print(self.test_data_set.values)

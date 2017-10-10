@@ -1,4 +1,4 @@
-import numpy as np
+
 import sys, os
 from cross_validation import CrossValidation
 from preprocessor import Preprocessor
