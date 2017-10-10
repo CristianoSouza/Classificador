@@ -37,30 +37,35 @@ class HybridClassifier(object):
 		list_position_rna_classified_samples = []
 		list_position_intermediate_range_samples = []
 		print(len(self.predictions_rna))
+		tamanho_data_set = len(self.test_data_set.values)
+		posicao_classe = len(self.test_data_set.values[0]) - 2
 		#exit()
 		for i in range(0,len(self.predictions_rna)):
+			print("indice: " + str(i) + "  total: " + str(tamanho_data_set))
 			print("Valor original: ") 
-			print(self.test_data_set.values[i,len(self.test_data_set.values[i]) - 2])
+			print(self.test_data_set.values[i,posicao_classe])
 			print("Valor da predicao: ") 
 			print(self.predictions_rna[i])
 
 			if(self.predictions_rna[i] > self.upper_threshold):
 				print("CLASSIFICACAO CONFIAVEL!")
 				self.test_data_set.set_value(i, 'classe', 1)
-				self.rna_classified_samples.append(self.test_data_set.values[i,:])
-				list_position_rna_classified_samples.append(i)
+				#self.rna_classified_samples.append(self.test_data_set.values[i,:])
+				#list_position_rna_classified_samples.append(i)
 			elif( self.predictions_rna[i] < self.lower_threshold):
 				print("CLASSIFICACAO CONFIAVEL!")
 				self.test_data_set.set_value(i, 'classe', 0)
-				self.rna_classified_samples.append(self.test_data_set.values[i,:])
-				list_position_rna_classified_samples.append(i)
+				#self.rna_classified_samples.append(self.test_data_set.values[i,:])
+				#list_position_rna_classified_samples.append(i)
 			else:
 				print("FAIXA INTERMEDIARIA!")
 				self.intermediate_range_samples.append(self.test_data_set.values[i,:])
 				list_position_intermediate_range_samples.append(i)
-		
+	
+
 		print("Exemplos classificados pela RNA:")
-		print(self.rna_classified_samples)
+		#print(self.rna_classified_samples)
+		#exit()
 		print("Exemplos da faixa intermediaria:")
 		print(self.intermediate_range_samples)
 
@@ -72,7 +77,7 @@ class HybridClassifier(object):
  
 		#print(self.rna_classified_samples.index(1))
 
-		dataframe_rna_classified_samples = pandas.DataFrame(
+		'''dataframe_rna_classified_samples = pandas.DataFrame(
 				data= self.rna_classified_samples,
 				index= list_position_rna_classified_samples,
 				columns= self.test_data_set.columns)
@@ -80,7 +85,8 @@ class HybridClassifier(object):
 		print(dataframe_rna_classified_samples)
 
 		DataSet.saveResults("hybrid/rna_classification", self.iteration, dataframe_rna_classified_samples)
-
+		'''
+		
 		dataframe_intermediate_range_samples = pandas.DataFrame(
 			data= self.intermediate_range_samples,
 			index= list_position_intermediate_range_samples,

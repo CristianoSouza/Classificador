@@ -75,7 +75,7 @@ class CrossValidation(object):
 				print("hybrid")
 				self.evaluate.setPath("hybrid/final_method_classification/")
 			self.evaluate.run()
-			#exit()
+			exit()
 
 	def loadTrainingData(self):
 		for i in range(1,11):

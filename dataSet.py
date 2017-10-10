@@ -154,6 +154,15 @@ class DataSet(object):
 
 		data_frame.to_csv( file_path + "cross_" + str(iteration) + "_final_result.csv", sep=',', index=False)
 
+	@classmethod
+	def checkPath(self, file_path):
+		directory = os.path.dirname(self.file_path)
+		if not os.path.exists(directory):
+			print("nao existe")
+			os.makedirs(directory)
+		else:
+			print("exists")	
+
 
 
 
