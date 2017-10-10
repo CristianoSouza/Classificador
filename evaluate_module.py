@@ -34,21 +34,19 @@ class EvaluateModule(object):
 	
 		print(result_dataframe)
 
-		if(self.classes == None):
-			self.classes = Preprocessor.getClassesPerColumns(self.test_data_set,'classe')
-			print("if")
-
+		self.classes = Preprocessor.getClassesPerColumns(self.test_data_set,'classe')
 		acc_classes = []
 		err_classes = []
 		print(self.test_data_set.values)
 		print(result_dataframe.values)
 		print(len(self.test_data_set.values))
-		print(len(result_dataframe.values))
+	 	total = len(result_dataframe.values)
 		#exit()
 		if(len(self.classes) <=2 ):
 			posicao_classe = len(result_dataframe.values[0]) -2
 			for i in range(0,len(result_dataframe.values)):
 				self.total_samples+= 1
+				print("Eemplo: " + str(i) + "Total: " + str(total) )
 				print("Real: " + str(self.test_data_set.values[i,posicao_classe]) + " -- predito: " + str(result_dataframe.values[i,posicao_classe]))
 				if(self.test_data_set.values[i,posicao_classe] == '0' or self.test_data_set.values[i,posicao_classe] == 0 ):
 					if (result_dataframe.values[i,posicao_classe] == 0 or result_dataframe.values[i,posicao_classe] == '0'):
