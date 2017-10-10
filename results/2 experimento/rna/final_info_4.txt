@@ -1,0 +1,24 @@
+		MATRIZ DE CONFUSAO
+	             Predicao      
+			 ATAQUE    NORMAL  
+		   |--------||--------|
+<<<<<<< HEAD
+	ATAQUE |   5787    ||   138    |
+		   |--------||--------|
+	NORMAL |   83    ||   6589    |
+=======
+	ATAQUE |   51    ||   1    |
+		   |--------||--------|
+	NORMAL |   1    ||   47    |
+>>>>>>> 0795618c0561c0700bb87873c02c939d003b390c
+		   |--------||--------|
+			TOTAL DE EXEMPLOS: 12597 	|   
+|--------||--------|
+TOTAL DE EXEMPLOS CORRETOS: 12376 	|   
+|--------||--------|
+TOTAL DE EXEMPLOS ERRADOS: 221 	|   
+|--------||--------|
+PORCENTAGEM ACERTOS: 98.2456140351 	|   
+|--------||--------|
+PORCENTAGEM ERROS: 1.75438596491 	|   
+|--------||--------|
