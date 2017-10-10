@@ -4,15 +4,10 @@
 		   |--------||--------|
 	ATAQUE |   5524    ||   315    |
 		   |--------||--------|
-<<<<<<< HEAD
 	NORMAL |   17    ||   6741    |
-=======
-	NORMAL |   2    ||   47    |
->>>>>>> 0795618c0561c0700bb87873c02c939d003b390c
 		   |--------||--------|
 			TOTAL DE EXEMPLOS: 12597 	|   
 |--------||--------|
-<<<<<<< HEAD
 TOTAL DE EXEMPLOS CORRETOS: 12265 	|   
 |--------||--------|
 TOTAL DE EXEMPLOS ERRADOS: 332 	|   
@@ -20,13 +15,4 @@ TOTAL DE EXEMPLOS ERRADOS: 332 	|
 PORCENTAGEM ACERTOS: 97.3644518536 	|   
 |--------||--------|
 PORCENTAGEM ERROS: 2.63554814638 	|   
-=======
-TOTAL DE EXEMPLOS CORRETOS: 93 	|   
-|--------||--------|
-TOTAL DE EXEMPLOS ERRADOS: 7 	|   
-|--------||--------|
-PORCENTAGEM ACERTOS: 93.0 	|   
-|--------||--------|
-PORCENTAGEM ERROS: 7.0 	|   
->>>>>>> 0795618c0561c0700bb87873c02c939d003b390c
-|--------||--------|
+

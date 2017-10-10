@@ -2,19 +2,12 @@
 	             Predicao      
 			 ATAQUE    NORMAL  
 		   |--------||--------|
-<<<<<<< HEAD
 	ATAQUE |   5611    ||   140    |
 		   |--------||--------|
 	NORMAL |   32    ||   6814    |
-=======
-	ATAQUE |   0    ||   44    |
-		   |--------||--------|
-	NORMAL |   0    ||   56    |
->>>>>>> 0795618c0561c0700bb87873c02c939d003b390c
 		   |--------||--------|
 			TOTAL DE EXEMPLOS: 12597 	|   
 |--------||--------|
-<<<<<<< HEAD
 TOTAL DE EXEMPLOS CORRETOS: 12425 	|   
 |--------||--------|
 TOTAL DE EXEMPLOS ERRADOS: 172 	|   
@@ -22,13 +15,3 @@ TOTAL DE EXEMPLOS ERRADOS: 172 	|
 PORCENTAGEM ACERTOS: 98.6345955386 	|   
 |--------||--------|
 PORCENTAGEM ERROS: 1.36540446138 	|   
-=======
-TOTAL DE EXEMPLOS CORRETOS: 56 	|   
-|--------||--------|
-TOTAL DE EXEMPLOS ERRADOS: 44 	|   
-|--------||--------|
-PORCENTAGEM ACERTOS: 56.0 	|   
-|--------||--------|
-PORCENTAGEM ERROS: 44.0 	|   
->>>>>>> 0795618c0561c0700bb87873c02c939d003b390c
-|--------||--------|
