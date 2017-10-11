@@ -1,23 +1,18 @@
 		MATRIZ DE CONFUSAO
 	             Predicao      
-			 ACC    ERR  
+			 ATAQUE    NORMAL  
+		   |--------||--------|
+	ATAQUE |   5824    ||   15    |
+		   |--------||--------|
+	NORMAL |   24    ||   6734    |
+		   |--------||--------|
+			TOTAL DE EXEMPLOS: 12597 	|   
 |--------||--------|
-
-dos 	|   31    || 	2 | 		
+TOTAL DE EXEMPLOS CORRETOS: 12558 	|   
 |--------||--------|
-normal 	|   49    || 	2 | 		
+TOTAL DE EXEMPLOS ERRADOS: 39 	|   
 |--------||--------|
-probe 	|   9    || 	3 | 		
+PORCENTAGEM ACERTOS: 99.6904024768 	|   
 |--------||--------|
-r2l 	|   2    || 	2 | 		
-|--------||--------|
-TOTAL DE EXEMPPLOS: 101 	|   
-|--------||--------|
-TOTAL DE EXEMPPLOS CORRETOS: 91 	|   
-|--------||--------|
-TOTAL DE EXEMPPLOS ERRADOS: 9 	|   
-|--------||--------|
-PORCENTAGEM ACERTOS: 90.099009901 	|   
-|--------||--------|
-PORCENTAGEM ERROS: 8.91089108911 	|   
+PORCENTAGEM ERROS: 0.30959752322 	|   
 |--------||--------|

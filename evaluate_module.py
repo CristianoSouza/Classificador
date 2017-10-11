@@ -15,6 +15,7 @@ class EvaluateModule(object):
 	total_samples= 0
 	acc_samples= 0
 	err_samples=0
+	tempo_execucao = 0
 
 
 	def __init__(self):
@@ -35,30 +36,17 @@ class EvaluateModule(object):
 		print(result_dataframe)
 
 		self.classes = Preprocessor.getClassesPerColumns(self.test_data_set,'classe')
-<<<<<<< HEAD
-=======
 
->>>>>>> 0795618c0561c0700bb87873c02c939d003b390c
 		acc_classes = []
 		err_classes = []
 		print(self.test_data_set.values)
 		print(result_dataframe.values)
 		print(len(self.test_data_set.values))
-<<<<<<< HEAD
-		total = len(result_dataframe.values)
-=======
-	 	total = len(result_dataframe.values)
->>>>>>> 4115a56f1233ea7f889a52ca57ba2e2713568dd3
 		#exit()
 		if(len(self.classes) <=2 ):
 			posicao_classe = len(result_dataframe.values[0]) -2
 			for i in range(0,len(result_dataframe.values)):
 				self.total_samples+= 1
-<<<<<<< HEAD
-				print("Exemplo: " + str(i) + "   Total: " + str(total))
-=======
-				print("Eemplo: " + str(i) + "Total: " + str(total) )
->>>>>>> 4115a56f1233ea7f889a52ca57ba2e2713568dd3
 				print("Real: " + str(self.test_data_set.values[i,posicao_classe]) + " -- predito: " + str(result_dataframe.values[i,posicao_classe]))
 				if(self.test_data_set.values[i,posicao_classe] == '0' or self.test_data_set.values[i,posicao_classe] == 0 ):
 					if (result_dataframe.values[i,posicao_classe] == 0 or result_dataframe.values[i,posicao_classe] == '0'):
@@ -144,6 +132,7 @@ class EvaluateModule(object):
 		texto+= """PORCENTAGEM ERROS: """ + str((100/float(self.total_samples)) * self.err_samples) + """ 	|   
 |--------||--------|
 """			
+		texto+="""TEMPO DE EXECUCAO: """ + str(self.tempo_execucao) + """  ||| """
 		arquivo.write(texto) 
 		arquivo.close()
 		'''
@@ -234,3 +223,6 @@ class EvaluateModule(object):
 
 	def getClasses(self):
 		return self.classes
+
+	def setTempoExecucao(tempo_execucao):
+		self.tempo_execucao = tempo_execucao

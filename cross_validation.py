@@ -2,6 +2,7 @@ import numpy as np
 import sys, os
 from dataSet import DataSet
 import pandas
+import time
 sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/hybrid")
 from hybrid_classifier import HybridClassifier
 from evaluate_module import EvaluateModule
@@ -38,7 +39,7 @@ class CrossValidation(object):
 	def foldExecution(self):
 		for self.iteration in range(1,11):
 			print("iteracao")
-
+			tempo_inicio = time.time()
 			print("-- FOLD " + str(self.iteration) + " --")
 			self.loadTrainingData()
 			self.loadTestData()
@@ -74,8 +75,10 @@ class CrossValidation(object):
 			elif(isinstance(self.classifier, HybridClassifier)):
 				print("hybrid")
 				self.evaluate.setPath("hybrid/final_method_classification/")
+			tempo_execucao = time.time() - tempo_inicial
+			self.evaluate.setTempoExecucao(tempo_execucao)
 			self.evaluate.run()
-			exit()
+			
 
 	def loadTrainingData(self):
 		for i in range(1,11):
