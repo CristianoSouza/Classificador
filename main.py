@@ -29,14 +29,15 @@ dts.setFilePath("bases/sub_bases/")
 #dts.setFileName("NSL_KDD-master/KDDTrain+.csv")
 #dts.setFileName("NSL_KDD-master/SmallTrainingSet.csv")
 #dts.setFileName("NSL_KDD-master/SmallTrainingSetFiveClass.csv")
-#dts.loadData()
+dts.setFileName("KDD99/kdd99_10%.csv")
+dts.loadData()
 
 
 #os.system('cls' if os.name == 'nt' else 'clear')
 
 print("load data")
 
-
+'''
 #CONFIGURACAO DO KNN
 knn = KnnModule()
 knn.setKNeighbors(1)
@@ -106,4 +107,4 @@ cross.setClassifier(knn_classifier)
 #cross.setClassifier(clustered_density_knn_classifier)
 #cross.setClassifier(hybrid_classifier)
 cross.setEvaluateModule(evaluate)
-cross.run()
+cross.run()'''
