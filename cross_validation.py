@@ -75,7 +75,7 @@ class CrossValidation(object):
 			elif(isinstance(self.classifier, HybridClassifier)):
 				print("hybrid")
 				self.evaluate.setPath("hybrid/final_method_classification/")
-			tempo_execucao = time.time() - tempo_inicial
+			tempo_execucao = time.time() - tempo_inicio
 			self.evaluate.setTempoExecucao(tempo_execucao)
 			self.evaluate.run()
 			
