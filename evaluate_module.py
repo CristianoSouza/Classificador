@@ -224,5 +224,5 @@ class EvaluateModule(object):
 	def getClasses(self):
 		return self.classes
 
-	def setTempoExecucao(tempo_execucao):
+	def setTempoExecucao(self, tempo_execucao):
 		self.tempo_execucao = tempo_execucao
