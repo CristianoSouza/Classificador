@@ -1,0 +1,23 @@
+		MATRIZ DE CONFUSAO
+	             Predicao      
+			 ACC    ERR  
+|--------||--------|
+
+dos 	|   0    || 	38 | 		
+|--------||--------|
+normal 	|   0    || 	51 | 		
+|--------||--------|
+probe 	|   0    || 	10 | 		
+|--------||--------|
+r2l 	|   0    || 	2 | 		
+|--------||--------|
+TOTAL DE EXEMPPLOS: 101 	|   
+|--------||--------|
+TOTAL DE EXEMPPLOS CORRETOS: 0 	|   
+|--------||--------|
+TOTAL DE EXEMPPLOS ERRADOS: 101 	|   
+|--------||--------|
+PORCENTAGEM ACERTOS: 0.0 	|   
+|--------||--------|
+PORCENTAGEM ERROS: 100.0 	|   
+|--------||--------|
