@@ -29,14 +29,15 @@ dts.setFilePath("bases/sub_bases/")
 #dts.setFileName("NSL_KDD-master/KDDTrain+.csv")
 #dts.setFileName("NSL_KDD-master/SmallTrainingSet.csv")
 #dts.setFileName("NSL_KDD-master/SmallTrainingSetFiveClass.csv")
-#dts.loadData()
+dts.setFileName("../../../KDD99/kddcup10%.csv")
+dts.loadData()
 
 
 #os.system('cls' if os.name == 'nt' else 'clear')
 
 print("load data")
 
-
+'''
 #CONFIGURACAO DO KNN
 knn = KnnModule()
 knn.setKNeighbors(1)
@@ -93,17 +94,17 @@ evaluate = EvaluateModule()
 cross = CrossValidation()
 cross.setPreprocessor(preprocessor)
 #cross.setFilePath("bases/sub_bases_20_nslkdd/")
-cross.setFilePath("bases/sub_bases_train+_nslkdd/")
+#cross.setFilePath("bases/sub_bases_train+_nslkdd/")
 #cross.setFilePath("bases/sub_bases_iris/")
 #cross.setFilePath("bases/sub_bases_winequality-red/")
 #cross.setFilePath("bases/sub_bases_SmallTrainingSet/")
-#cross.setFilePath("bases/sub_bases_small_training_set1000/")
+cross.setFilePath("bases/sub_bases_small_training_set1000/")
 #cross.setFilePath("bases/sub_bases_small_training_set_five_class/")
 #cross.setFilePath("bases/sub_bases/")
-#cross.setClassifier(rna_classifier)
-cross.setClassifier(knn_classifier)
+cross.setClassifier(rna_classifier)
+#cross.setClassifier(knn_classifier)
 #cross.setClassifier(clustered_knn_classifier)
 #cross.setClassifier(clustered_density_knn_classifier)
 #cross.setClassifier(hybrid_classifier)
 cross.setEvaluateModule(evaluate)
-cross.run()
+cross.run()'''
