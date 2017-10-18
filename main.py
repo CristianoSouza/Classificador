@@ -29,6 +29,7 @@ dts.setFilePath("bases/sub_bases/")
 #dts.setFileName("NSL_KDD-master/KDDTrain+.csv")
 #dts.setFileName("NSL_KDD-master/SmallTrainingSet.csv")
 #dts.setFileName("NSL_KDD-master/SmallTrainingSetFiveClass.csv")
+
 dts.setFileName("../../../KDD99/kddcup10%.csv")
 dts.loadData()
 
