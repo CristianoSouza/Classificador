@@ -33,13 +33,13 @@ class DataSet(object):
 		print lista
 		for a in range(0,tamanho):
 			#self.dataframe_data_set.scdet_value(a,'po', 15)
+			
 			if((self.dataframe_data_set.values[a][41] == 'smurf.') | (self.dataframe_data_set.values[a][41] == "smurf.")):
 				print("Smurf")
 				print(self.dataframe_data_set.values[a][41])
 				self.dataframe_data_set.loc[a, 'classe'] = '1'	
 				print(self.dataframe_data_set.values[a][41])
 			self.dataframe_data_set.loc[a, 'posicaoOriginal'] = a
-
 		print("saiu for")
 
 		directory = os.path.dirname(self.file_path)
