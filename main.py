@@ -26,12 +26,11 @@ dts.setFilePath("bases/sub_bases/")
 #dts.setFileName("SmallTrainingSet.csv")
 #dts.setFileName("winequality-red.csv")
 #dts.setFileName("NSL_KDD-master/20PercentTrainingSet.csv")
-#dts.setFileName("NSL_KDD-master/KDDTrain+.csv")
+#dts.setFileName("NSL_KDD-master/KDDTrain+binary_class.csv")
 #dts.setFileName("NSL_KDD-master/SmallTrainingSet.csv")
 #dts.setFileName("NSL_KDD-master/SmallTrainingSetFiveClass.csv")
 
 #dts.setFileName("../../../KDD99/kddcup10%.csv")
-#dts.loadData()
 
 
 #os.system('cls' if os.name == 'nt' else 'clear')
