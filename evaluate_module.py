@@ -133,6 +133,10 @@ class EvaluateModule(object):
 |--------||--------|
 """			
 		texto+="""TEMPO DE EXECUCAO: """ + str(self.tempo_execucao) + """  ||| """
+		arquivo.write(texto)
+		data_set_knn = DataSet.loadSubDataSet("results/hybrid/knn_classification/cross_"+ str(self.iteration) + "_final_result.csv") 
+		print(len(data_set_knn))
+		texto+= """Exemplos submetidos a segunda classificacao: """ + str(len(data_set_knn))
 		arquivo.write(texto) 
 		arquivo.close()
 		'''

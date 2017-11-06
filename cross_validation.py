@@ -60,6 +60,7 @@ class CrossValidation(object):
 			self.loadTestData()
 			self.evaluate.setTestDataSet(self.teste_sub_data_set)
 			self.evaluate.setIteration(self.iteration)
+
 			if(isinstance(self.classifier, RnaClassifier)):
 				print("rna")
 				self.evaluate.setPath("rna/")
@@ -75,6 +76,7 @@ class CrossValidation(object):
 			elif(isinstance(self.classifier, HybridClassifier)):
 				print("hybrid")
 				self.evaluate.setPath("hybrid/final_method_classification/")
+
 			tempo_execucao = time.time() - tempo_inicio
 			self.evaluate.setTempoExecucao(tempo_execucao)
 			self.evaluate.run()

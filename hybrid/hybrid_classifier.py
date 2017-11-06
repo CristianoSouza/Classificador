@@ -37,11 +37,12 @@ class HybridClassifier(object):
 		list_position_rna_classified_samples = []
 		list_position_intermediate_range_samples = []
 		print(len(self.predictions_rna))
+		tamanho_predicao = len(self.predictions_rna)
 		tamanho_data_set = len(self.test_data_set.values)
 		posicao_classe = len(self.test_data_set.values[0]) - 2
 		#exit()
 		for i in range(0,len(self.predictions_rna)):
-			print("indice: " + str(i) + "  total: " + str(tamanho_data_set))
+			print("indice: " + str(i) + "  total: " + str(tamanho_predicao))
 			print("Valor original: ") 
 			print(self.test_data_set.values[i,posicao_classe])
 			print("Valor da predicao: ") 

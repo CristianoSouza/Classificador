@@ -31,14 +31,9 @@ class DataSet(object):
 
 		tamanho = len(lista)
 		print lista
+		print tamanho
 		for a in range(0,tamanho):
 			#self.dataframe_data_set.scdet_value(a,'po', 15)
-			
-			if((self.dataframe_data_set.values[a][41] == 'smurf.') | (self.dataframe_data_set.values[a][41] == "smurf.")):
-				print("Smurf")
-				print(self.dataframe_data_set.values[a][41])
-				self.dataframe_data_set.loc[a, 'classe'] = '1'	
-				print(self.dataframe_data_set.values[a][41])
 			self.dataframe_data_set.loc[a, 'posicaoOriginal'] = a
 		print("saiu for")
 
@@ -129,7 +124,6 @@ class DataSet(object):
 		print('Quatidade de exemplos:', self.dataframe_data_set.shape[0])
 		self.partition_size = (self.dataframe_data_set.shape[0] / 10)
 		print('10 Particoes de tamanho: ', self.partition_size)	
-
 		self.selectExamples()
 
 	@classmethod
