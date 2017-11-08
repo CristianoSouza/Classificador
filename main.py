@@ -32,12 +32,14 @@ dts.setFilePath("bases/sub_bases/")
 
 #dts.setFileName("../../../KDD99/kddcup10%.csv")
 
-
+dts.setFileName("NSL_KDD-master/KDDTrain+binary_class_tcp.csv")
 #os.system('cls' if os.name == 'nt' else 'clear')
 
 print("load data")
+dts.loadData()
 
 
+'''
 #CONFIGURACAO DO KNN
 knn = KnnModule()
 knn.setKNeighbors(1)
@@ -108,3 +110,4 @@ cross.setFilePath("bases/sub_bases_train+_nslkdd/")
 cross.setClassifier(hybrid_classifier)
 cross.setEvaluateModule(evaluate)
 cross.run()
+'''
