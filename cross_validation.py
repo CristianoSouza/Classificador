@@ -109,6 +109,9 @@ class CrossValidation(object):
 	def getMethod(self):
 		return method
 
+	def setIteration(self, iteration):
+		self.iteration = iteration
+
 	def setClassifier(self, classifier):
 		self.classifier = classifier
 

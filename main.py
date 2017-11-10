@@ -32,12 +32,14 @@ dts.setFilePath("bases/sub_bases/")
 
 #dts.setFileName("../../../KDD99/kddcup10%.csv")
 
-
+dts.setFileName("NSL_KDD-master/KDDTrain+binary_class_12_attribute.csv")
 #os.system('cls' if os.name == 'nt' else 'clear')
 
 print("load data")
+dts.loadData()
 
 
+'''
 #CONFIGURACAO DO KNN
 knn = KnnModule()
 knn.setKNeighbors(1)
@@ -92,6 +94,10 @@ preprocessor.setColumnsCategory(['protocol_type','service','flag'])
 evaluate = EvaluateModule()
 
 cross = CrossValidation()
+
+#DEFINIR A ITERACAO QUE O CROSS VALIDATION ESTA
+cross.setIteration(7)
+
 cross.setPreprocessor(preprocessor)
 #cross.setFilePath("bases/sub_bases_20_nslkdd/")
 cross.setFilePath("bases/sub_bases_train+_nslkdd/")
@@ -108,3 +114,4 @@ cross.setFilePath("bases/sub_bases_train+_nslkdd/")
 cross.setClassifier(hybrid_classifier)
 cross.setEvaluateModule(evaluate)
 cross.run()
+'''
