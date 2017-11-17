@@ -32,7 +32,7 @@ dts.setFilePath("bases/sub_bases/")
 
 #dts.setFileName("../../../KDD99/kddcup10%.csv")
 
-dts.setFileName("NSL_KDD-master/KDDTrain+binary_class_12_attribute.csv")
+dts.setFileName("NSL_KDD-master/KDDTrain+binary_class_30_attribute.csv")
 #os.system('cls' if os.name == 'nt' else 'clear')
 
 print("load data")
