@@ -17,7 +17,6 @@ from clustered_density_knn_classifier import ClusteredDensityKnnClassifier
 
 
 class CrossValidation(object):
-	iteration = 1
 	dts = None
 	classifier = None
 	teste_sub_data_set = None
@@ -37,7 +36,8 @@ class CrossValidation(object):
 		self.foldExecution()
 
 	def foldExecution(self):
-		for self.iteration in range(1,11):
+		i = self.iteration
+		for self.iteration in range(i,11):
 			print("iteracao")
 			tempo_inicio = time.time()
 			print("-- FOLD " + str(self.iteration) + " --")
