@@ -50,16 +50,17 @@ class CrossValidation(object):
 
 				self.training_sub_data_set, self.teste_sub_data_set = self.preprocessor.transformCategory()
 
-			data_set = self.teste_sub_data_set
 			self.classifier.setDataSet(self.training_sub_data_set)
 			self.classifier.setTestDataSet(self.teste_sub_data_set)
 
 			self.classifier.setIteration(self.iteration)
 			self.classifier.run()
 			
+			del(self.training_sub_data_set)
 			self.loadTestData()
 			self.evaluate.setTestDataSet(self.teste_sub_data_set)
 			self.evaluate.setIteration(self.iteration)
+
 
 			if(isinstance(self.classifier, RnaClassifier)):
 				print("rna")
@@ -95,6 +96,7 @@ class CrossValidation(object):
 					self.training_sub_data_set = new_sub_data_set
 				else:
 					self.training_sub_data_set = DataSet.concatSubDataSet(self.training_sub_data_set, new_sub_data_set)
+				del(new_sub_data_set)
 		print(self.training_sub_data_set)
 
 	def loadTestData(self):

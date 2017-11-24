@@ -1,0 +1,5 @@
+  File "main.py", line 36
+    <<<<<<< HEAD
+     ^
+SyntaxError: invalid syntax
+srun: error: node5-ib: task 0: Exited with exit code 1

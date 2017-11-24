@@ -33,8 +33,6 @@ dts.setFilePath("bases/sub_bases/")
 #dts.setFileName("../../../KDD99/kddcup10%.csv")
 
 #dts.setFileName("NSL_KDD-master/KDDTrain+binary_class_12_attribute.csv")
-#dts.setFileName("NSL_KDD-master/KDDTrain+binary_class_30_attribute.csv")
-
 #os.system('cls' if os.name == 'nt' else 'clear')
 
 print("load data")
@@ -68,12 +66,12 @@ clustered_density_knn_classifier.setKnn(clustered_density_knn)
 
 #CONFIGURACAO DA REDE NEURAL 
 rna = RnaModule()
-rna.setNumberNeuronsImputLayer(6)
+rna.setNumberNeuronsImputLayer(20)
 #rna.setNumberNeuronsImputLayer(4)
 rna.setActivationFunctionImputLayer("tanh")
-rna.setImputDimNeurons(6)
+rna.setImputDimNeurons(20)
 #rna.setImputDimNeurons(4)
-rna.setNumberNeuronsHiddenLayer(6)
+rna.setNumberNeuronsHiddenLayer(20)
 rna.setActivationFunctionHiddenLayer("tanh")
 rna.setNumberNeuronsOutputLayer(1)
 rna.setActivationFunctionOutputLayer("tanh")
@@ -91,7 +89,8 @@ hybrid_classifier.setKnn(knn)
 
 #PREPROCESSADOR PARA ATRIBUTOS CATEGORICOS
 preprocessor = Preprocessor()
-preprocessor.setColumnsCategory(['protocol_type','service','flag'])
+#preprocessor.setColumnsCategory(['protocol_type','service','flag'])
+preprocessor.setColumnsCategory(['service','flag'])
 
 evaluate = EvaluateModule()
 
@@ -103,7 +102,9 @@ cross.setIteration(1)
 cross.setPreprocessor(preprocessor)
 #cross.setFilePath("bases/sub_bases_20_nslkdd/")
 #cross.setFilePath("bases/sub_bases_train+_nslkdd/")
-cross.setFilePath("bases/sub_bases_nslkdd_tcp_attribute/")
+#cross.setFilePath("bases/sub_bases_nslkdd_tcp_attribute/")
+cross.setFilePath("bases/sub_bases_nslkdd_12attribute/")
+#cross.setFilePath("bases/sub_bases_nslkdd_20attribute/")
 #cross.setFilePath("bases/sub_bases_iris/")
 #cross.setFilePath("bases/sub_bases_winequality-red/")
 #cross.setFilePath("bases/sub_bases_SmallTrainingSet/")
