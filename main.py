@@ -32,11 +32,7 @@ dts.setFilePath("bases/sub_bases/")
 
 #dts.setFileName("../../../KDD99/kddcup10%.csv")
 
-<<<<<<< HEAD
 #dts.setFileName("NSL_KDD-master/KDDTrain+binary_class_12_attribute.csv")
-=======
-dts.setFileName("NSL_KDD-master/KDDTrain+binary_class_30_attribute.csv")
->>>>>>> 51edcb0de09c9f5df5f8744d5b5a1e55abfa0a10
 #os.system('cls' if os.name == 'nt' else 'clear')
 
 print("load data")
@@ -70,12 +66,12 @@ clustered_density_knn_classifier.setKnn(clustered_density_knn)
 
 #CONFIGURACAO DA REDE NEURAL 
 rna = RnaModule()
-rna.setNumberNeuronsImputLayer(6)
+rna.setNumberNeuronsImputLayer(20)
 #rna.setNumberNeuronsImputLayer(4)
 rna.setActivationFunctionImputLayer("tanh")
-rna.setImputDimNeurons(6)
+rna.setImputDimNeurons(20)
 #rna.setImputDimNeurons(4)
-rna.setNumberNeuronsHiddenLayer(6)
+rna.setNumberNeuronsHiddenLayer(20)
 rna.setActivationFunctionHiddenLayer("tanh")
 rna.setNumberNeuronsOutputLayer(1)
 rna.setActivationFunctionOutputLayer("tanh")
@@ -93,7 +89,8 @@ hybrid_classifier.setKnn(knn)
 
 #PREPROCESSADOR PARA ATRIBUTOS CATEGORICOS
 preprocessor = Preprocessor()
-preprocessor.setColumnsCategory(['protocol_type','service','flag'])
+#preprocessor.setColumnsCategory(['protocol_type','service','flag'])
+preprocessor.setColumnsCategory(['service','flag'])
 
 evaluate = EvaluateModule()
 
@@ -105,7 +102,9 @@ cross.setIteration(1)
 cross.setPreprocessor(preprocessor)
 #cross.setFilePath("bases/sub_bases_20_nslkdd/")
 #cross.setFilePath("bases/sub_bases_train+_nslkdd/")
-cross.setFilePath("bases/sub_bases_nslkdd_tcp_attribute/")
+#cross.setFilePath("bases/sub_bases_nslkdd_tcp_attribute/")
+cross.setFilePath("bases/sub_bases_nslkdd_12attribute/")
+#cross.setFilePath("bases/sub_bases_nslkdd_20attribute/")
 #cross.setFilePath("bases/sub_bases_iris/")
 #cross.setFilePath("bases/sub_bases_winequality-red/")
 #cross.setFilePath("bases/sub_bases_SmallTrainingSet/")
@@ -114,9 +113,9 @@ cross.setFilePath("bases/sub_bases_nslkdd_tcp_attribute/")
 #cross.setFilePath("bases/sub_bases/")
 
 #cross.setClassifier(rna_classifier)
-cross.setClassifier(knn_classifier)
+#cross.setClassifier(knn_classifier)
 #cross.setClassifier(clustered_knn_classifier)
 #cross.setClassifier(clustered_density_knn_classifier)
-#cross.setClassifier(hybrid_classifier)
+cross.setClassifier(hybrid_classifier)
 cross.setEvaluateModule(evaluate)
 cross.run()
