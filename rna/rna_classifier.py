@@ -1,6 +1,9 @@
 from rna_module import RnaModule
+import sys
 import pandas
 import os
+
+sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/..")
 from dataSet import DataSet
 
 class RnaClassifier(object):
@@ -10,6 +13,7 @@ class RnaClassifier(object):
 	rna = None
 	predictions = None
 	iteration = 0
+        result_path = ""
 
 	def __init__(self):
 		print "aa"
@@ -28,7 +32,7 @@ class RnaClassifier(object):
 		for i in range(0,len(self.predictions)):
 			self.test_data_set.set_value(i,'classe',self.predictions[i])
 
-		DataSet.saveResults("rna", self.iteration, self.test_data_set)	
+		DataSet.saveResults(self.result_path, self.iteration, self.test_data_set)	
 
 	def setDataSet(self, data_set):
 		self.data_set = data_set
@@ -50,3 +54,6 @@ class RnaClassifier(object):
 
 	def setIteration(self, iteration):
 		self.iteration = iteration
+
+        def setResultPath(self, result_path):
+                self.result_path = result_path

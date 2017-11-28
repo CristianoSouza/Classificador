@@ -137,21 +137,19 @@ class DataSet(object):
 		return pandas.concat(frames)
 
 	@classmethod
-	def loadResult(self, iteration, path):
-		return pandas.read_csv("results/" + path + "cross_" + str(iteration) + "_final_result.csv")
+	def loadResult(self, result_path, iteration):
+		return pandas.read_csv(str(result_path) + "cross_" + str(iteration) + "_final_result.csv")
 
 	@classmethod
-	def saveResults(self, method, iteration, data_frame):
-		file_path = "results/" + method + "/"
-
-		directory = os.path.dirname(file_path)
+	def saveResults(self, result_path, iteration,  data_frame):
+		directory = os.path.dirname(result_path)
 		if not os.path.exists(directory):
 			print("nao existe")
 			os.makedirs(directory)
 		else:
 			print("exists")	
 
-		data_frame.to_csv( file_path + "cross_" + str(iteration) + "_final_result.csv", sep=',', index=False)
+		data_frame.to_csv( str(result_path) + "cross_" + str(iteration) + "_final_result.csv", sep=',', index=False)
 
 	@classmethod
 	def checkPath(self, file_path):

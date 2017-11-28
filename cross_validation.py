@@ -24,14 +24,17 @@ class CrossValidation(object):
 	evaluate = None
 	method = None
 	file_path = ""
-	preprocessor = None
+	result_path = ""
+        preprocessor = None
 
 	def __init__(self):
 		print("init")
 		self.evaluate = EvaluateModule()
 
 	def run(self):
-		print("Iniciando Cross validation:")
+		
+                self.classifier.setResultPath(self.result_path)
+                print("Iniciando Cross validation:")
 		#for self.iteration in range(1,11):
 		self.foldExecution()
 
@@ -64,19 +67,19 @@ class CrossValidation(object):
 
 			if(isinstance(self.classifier, RnaClassifier)):
 				print("rna")
-				self.evaluate.setPath("rna/")
+				self.evaluate.setResultPath( self.result_path)
 			elif(isinstance(self.classifier, KnnClassifier)):
 				print("knn")
-				self.evaluate.setPath("knn/")
+				self.evaluate.setResultPath(self.result_path)
 			elif(isinstance(self.classifier, ClusteredKnnClassifier)):
 				print("clustered knn")
-				self.evaluate.setPath("clusteredKnn/")
+				#self.evaluate.setPath("clusteredKnn/")
 			elif(isinstance(self.classifier, ClusteredDensityKnnClassifier)):
 				print("clustered density knn")
-				self.evaluate.setPath("clusteredDensityKnn/")
+				#self.evaluate.setPath("clusteredDensityKnn/")
 			elif(isinstance(self.classifier, HybridClassifier)):
 				print("hybrid")
-				self.evaluate.setPath("hybrid/final_method_classification/")
+				self.evaluate.setResultPath( self.result_path)
 
 			tempo_execucao = time.time() - tempo_inicio
 			self.evaluate.setTempoExecucao(tempo_execucao)
@@ -134,4 +137,7 @@ class CrossValidation(object):
 
 	def setFilePath(self, file_path):
 		self.file_path = file_path
+
+        def setResultPath(self, result_path):
+                self.result_path = result_path
 

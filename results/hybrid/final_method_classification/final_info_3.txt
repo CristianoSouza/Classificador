@@ -1,0 +1,37 @@
+		MATRIZ DE CONFUSAO
+	             Predicao      
+			 ATAQUE    NORMAL  
+		   |--------||--------|
+	ATAQUE |   5840    ||   6    |
+		   |--------||--------|
+	NORMAL |   18    ||   6733    |
+		   |--------||--------|
+			TOTAL DE EXEMPLOS: 12597 	|   
+|--------||--------|
+TOTAL DE EXEMPLOS CORRETOS: 12573 	|   
+|--------||--------|
+TOTAL DE EXEMPLOS ERRADOS: 24 	|   
+|--------||--------|
+PORCENTAGEM ACERTOS: 99.8094784472 	|   
+|--------||--------|
+PORCENTAGEM ERROS: 0.190521552751 	|   
+|--------||--------|
+TEMPO DE EXECUCAO: 1593.20970201  ||| 		MATRIZ DE CONFUSAO
+	             Predicao      
+			 ATAQUE    NORMAL  
+		   |--------||--------|
+	ATAQUE |   5840    ||   6    |
+		   |--------||--------|
+	NORMAL |   18    ||   6733    |
+		   |--------||--------|
+			TOTAL DE EXEMPLOS: 12597 	|   
+|--------||--------|
+TOTAL DE EXEMPLOS CORRETOS: 12573 	|   
+|--------||--------|
+TOTAL DE EXEMPLOS ERRADOS: 24 	|   
+|--------||--------|
+PORCENTAGEM ACERTOS: 99.8094784472 	|   
+|--------||--------|
+PORCENTAGEM ERROS: 0.190521552751 	|   
+|--------||--------|
+TEMPO DE EXECUCAO: 1593.20970201  ||| Exemplos submetidos a segunda classificacao: 6966

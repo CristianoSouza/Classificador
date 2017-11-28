@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "main_rna_12attribute.py", line 8, in <module>
+srun: error: node5-ib: task 0: Exited with exit code 1
+    from cross_validation import CrossValidation
+  File "/home/wzalewski/lapsec/Classificador/experimentos/12_attribute/rna/../../../cross_validation.py", line 7, in <module>
+    from hybrid_classifier import HybridClassifier
+  File "/home/wzalewski/lapsec/Classificador/experimentos/12_attribute/rna/../../../hybrid/hybrid_classifier.py", line 8, in <module>
+    from knn_module import KnnModule
+ImportError: No module named knn_module

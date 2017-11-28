@@ -2,11 +2,13 @@ import sys, os
 import pandas
 import numpy
 
-sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/../knn")
-sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/../rna")
+sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/../../knn")
+sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/../../rna")
 
 from knn_module import KnnModule
 from rna_module import RnaModule
+
+sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/..")
 from dataSet import DataSet
 
 class HybridClassifier(object):
@@ -19,12 +21,13 @@ class HybridClassifier(object):
 	lower_threshold = -0.7
 	intermediate_range_samples = []
 	rna_classified_samples = []
+        result_path = ""
 
 	def __init__(self):
 		print("init")
 
 	def run(self):
-		#self.rna_classified_samples= []
+		self.rna_classified_samples= []
 		self.intermediate_range_samples = []
 
 		print("run hybrid classifier")
@@ -33,10 +36,9 @@ class HybridClassifier(object):
 
 		self.rna.generateModel()
 		self.predictions_rna = self.rna.predict()
-		del(self.rna)
 		#del(self.data_set)
 		
-		#list_position_rna_classified_samples = []
+		list_position_rna_classified_samples = []
 		list_position_intermediate_range_samples = []
 		print(len(self.predictions_rna))
 		tamanho_predicao = len(self.predictions_rna)
@@ -53,13 +55,13 @@ class HybridClassifier(object):
 			if(self.predictions_rna[i] > self.upper_threshold):
 				#print("CLASSIFICACAO CONFIAVEL!")
 				self.test_data_set.set_value(i, 'classe', 1)
-				#self.rna_classified_samples.append(self.test_data_set.values[i,:])
-				#list_position_rna_classified_samples.append(i)
+			        self.rna_classified_samples.append(self.test_data_set.values[i,:])
+				list_position_rna_classified_samples.append(i)
 			elif( self.predictions_rna[i] < self.lower_threshold):
 				#print("CLASSIFICACAO CONFIAVEL!")
 				self.test_data_set.set_value(i, 'classe', 0)
-				#self.rna_classified_samples.append(self.test_data_set.values[i,:])
-				#list_position_rna_classified_samples.append(i)
+				self.rna_classified_samples.append(self.test_data_set.values[i,:])
+				list_position_rna_classified_samples.append(i)
 			else:
 				#print("FAIXA INTERMEDIARIA!")
 				self.intermediate_range_samples.append(self.test_data_set.values[i,:])
@@ -80,29 +82,29 @@ class HybridClassifier(object):
  
 		#print(self.rna_classified_samples.index(1))
 
-		'''dataframe_rna_classified_samples = pandas.DataFrame(
+		dataframe_rna_classified_samples = pandas.DataFrame(
 				data= self.rna_classified_samples,
 				index= list_position_rna_classified_samples,
 				columns= self.test_data_set.columns)
 
 		print(dataframe_rna_classified_samples)
 
-		DataSet.saveResults("hybrid/rna_classification", self.iteration, dataframe_rna_classified_samples)
-		'''
-		
+		DataSet.saveResults( self.result_path + "rna_classification/", self.iteration, dataframe_rna_classified_samples)
+		del(dataframe_rna_classified_samples)
+		del(list_position_rna_classified_samples)
 		dataframe_intermediate_range_samples = pandas.DataFrame(
 			data= self.intermediate_range_samples,
 			index= list_position_intermediate_range_samples,
 			columns= self.test_data_set.columns)
 
 		print(dataframe_intermediate_range_samples)
+                
 
 		self.knn.setDataSet(self.data_set)
 		self.knn.setTestDataSet(dataframe_intermediate_range_samples)
-
+		DataSet.saveResults( self.result_path + "knn_classification/", self.iteration, dataframe_intermediate_range_samples)
 
 		self.predictions_knn = self.knn.run()
-		del(self.knn)
 		del(self.data_set)
 		del(dataframe_intermediate_range_samples)
 		
@@ -128,9 +130,8 @@ class HybridClassifier(object):
 		#print(dataframe_intermediate_range_samples)
 		print(self.test_data_set)
 
-		#DataSet.saveResults("hybrid/knn_classification", self.iteration, dataframe_intermediate_range_samples)
 
-		DataSet.saveResults("hybrid/final_method_classification", self.iteration, self.test_data_set)
+		DataSet.saveResults( self.result_path + "final_method_classification/", self.iteration, self.test_data_set)
 		del(self.test_data_set)
 
 	def setDataSet(self, data_set):
@@ -171,3 +172,6 @@ class HybridClassifier(object):
 
 	def getLowerThreshold(self):
 		return lower_threshold
+
+        def setResultPath(self, result_path):
+            self.result_path = result_path

@@ -11,7 +11,7 @@ class EvaluateModule(object):
 	classes = None
 	test_data_set = None
 	iteration = 0
-	path = ""
+	result_path = ""
 	total_samples= 0
 	acc_samples= 0
 	err_samples=0
@@ -31,7 +31,7 @@ class EvaluateModule(object):
 		self.err_samples = 0
 
 		print("RUN evaluate method")
-		result_dataframe = DataSet.loadResult(self.iteration, self.path)
+		result_dataframe = DataSet.loadResult(self.result_path + "final_method_classification/", self.iteration)
 	
 		print(result_dataframe)
 
@@ -68,7 +68,7 @@ class EvaluateModule(object):
 						self.number_false_negatives+=1
 						self.err_samples+=1 
 
-			arquivo = open('results/' + self.path + 'final_info_' + str(self.iteration) + '.txt', 'w') 
+			arquivo = open(self.result_path + 'final_method_classification/final_info_' + str(self.iteration) + '.txt', 'w') 
 			texto = """		MATRIZ DE CONFUSAO
 	             Predicao      
 			 ATAQUE    NORMAL  
@@ -80,7 +80,7 @@ class EvaluateModule(object):
 			"""
 		else:
 			posicao_classe = len(result_dataframe.values[0]) -2
-			arquivo = open('results/' + self.path + 'final_info_' + str(self.iteration) + '.txt', 'w') 
+			arquivo = open(self.result_path + 'final_method_classification/final_info_' + str(self.iteration) + '.txt', 'w') 
 			texto = """		MATRIZ DE CONFUSAO
 	             Predicao      
 			 ACC    ERR  
@@ -132,12 +132,13 @@ class EvaluateModule(object):
 		texto+= """PORCENTAGEM ERROS: """ + str((100/float(self.total_samples)) * self.err_samples) + """ 	|   
 |--------||--------|
 """			
-		texto+="""TEMPO DE EXECUCAO: """ + str(self.tempo_execucao) + """  ||| """
-		#arquivo.write(texto)
-		#data_set_knn = DataSet.loadSubDataSet("results/hybrid/knn_classification/cross_"+ str(self.iteration) + "_final_result.csv") 
+		texto+="""TEMPO DE EXECUCAO: """ + str(self.tempo_execucao) + """  ||| 
+                """
+            
+		data_set_knn = DataSet.loadSubDataSet( self.result_path + "knn_classification/cross_"+ str(self.iteration) + "_final_result.csv") 
 		
-		#print(len(data_set_knn))
-		#texto+= """Exemplos submetidos a segunda classificacao: """ + str(len(data_set_knn))
+		print(len(data_set_knn))
+		texto+= """Exemplos submetidos a segunda classificacao: """ + str(len(data_set_knn))
 		arquivo.write(texto) 
 		arquivo.close()
 		'''
@@ -193,8 +194,8 @@ class EvaluateModule(object):
 	def setTestDataSet(self, test_data_set):
 		self.test_data_set = test_data_set
 
-	def setPath(self, path):
-		self.path = path
+	def setResultPath(self, result_path):
+		self.result_path = result_path
 
 	def setNumberFalsePositives(self, number_false_positives):
 		self.number_false_positives = number_false_positives
