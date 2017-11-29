@@ -2,13 +2,13 @@ import sys, os
 import pandas
 import numpy
 
-sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/../../knn")
-sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/../../rna")
+sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/../../../knn")
+sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/../../../rna")
 
 from knn_module import KnnModule
 from rna_module import RnaModule
 
-sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/..")
+sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/../../..")
 from dataSet import DataSet
 
 class HybridClassifier(object):

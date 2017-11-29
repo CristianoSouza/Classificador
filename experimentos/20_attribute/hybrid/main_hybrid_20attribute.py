@@ -46,7 +46,7 @@ hybrid_classifier.setKnn(knn)
 
 #PREPROCESSADOR PARA ATRIBUTOS CATEGORICOS
 preprocessor = Preprocessor()
-preprocessor.setColumnsCategory(['protocol_type','service','flag'])
+preprocessor.setColumnsCategory(['service','flag'])
 
 evaluate = EvaluateModule()
 

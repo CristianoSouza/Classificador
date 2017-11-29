@@ -1,12 +1,12 @@
 #!/bin/bash
 #SBATCH -p 7d
 #SBATCH -t 7-00:00:00
-#SBATCH --job-name=30_att_hybrid
-#SBATCH -o hybrid_30_attribute.out
+#SBATCH --job-name=20_att_knn
+#SBATCH -o knn_20_attribute.out
 #SBATCH --mail-type=END
 #SBATCH --mail-type=FAIL
 #SBATCH --mail-user=cristianoantonio.souza10@gmail.com
 #SBATCH -n 1	 
 export PATH="/home/wzalewski/anaconda3/bin:$PATH"
 source activate py27tensorflow
-srun python main_30attribute.py
+srun python main_knn_20attribute.py

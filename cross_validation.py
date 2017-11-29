@@ -79,7 +79,7 @@ class CrossValidation(object):
 				#self.evaluate.setPath("clusteredDensityKnn/")
 			elif(isinstance(self.classifier, HybridClassifier)):
 				print("hybrid")
-				self.evaluate.setResultPath( self.result_path)
+				self.evaluate.setResultPath( self.result_path+"final_method_classification/")
 
 			tempo_execucao = time.time() - tempo_inicio
 			self.evaluate.setTempoExecucao(tempo_execucao)

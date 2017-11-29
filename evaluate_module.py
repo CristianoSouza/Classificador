@@ -31,7 +31,7 @@ class EvaluateModule(object):
 		self.err_samples = 0
 
 		print("RUN evaluate method")
-		result_dataframe = DataSet.loadResult(self.result_path + "final_method_classification/", self.iteration)
+		result_dataframe = DataSet.loadResult(self.result_path , self.iteration)
 	
 		print(result_dataframe)
 
@@ -68,7 +68,7 @@ class EvaluateModule(object):
 						self.number_false_negatives+=1
 						self.err_samples+=1 
 
-			arquivo = open(self.result_path + 'final_method_classification/final_info_' + str(self.iteration) + '.txt', 'w') 
+			arquivo = open(self.result_path + 'final_info_' + str(self.iteration) + '.txt', 'w') 
 			texto = """		MATRIZ DE CONFUSAO
 	             Predicao      
 			 ATAQUE    NORMAL  
@@ -80,7 +80,7 @@ class EvaluateModule(object):
 			"""
 		else:
 			posicao_classe = len(result_dataframe.values[0]) -2
-			arquivo = open(self.result_path + 'final_method_classification/final_info_' + str(self.iteration) + '.txt', 'w') 
+			arquivo = open(self.result_path + 'final_info_' + str(self.iteration) + '.txt', 'w') 
 			texto = """		MATRIZ DE CONFUSAO
 	             Predicao      
 			 ACC    ERR  
@@ -135,10 +135,11 @@ class EvaluateModule(object):
 		texto+="""TEMPO DE EXECUCAO: """ + str(self.tempo_execucao) + """  ||| 
                 """
             
-		data_set_knn = DataSet.loadSubDataSet( self.result_path + "knn_classification/cross_"+ str(self.iteration) + "_final_result.csv") 
-		
-		print(len(data_set_knn))
-		texto+= """Exemplos submetidos a segunda classificacao: """ + str(len(data_set_knn))
+                if (DataSet.checkPathBoolean(self.result_path+ "knn_classification/")):
+                    data_set_knn = DataSet.loadSubDataSet( self.result_path + "knn_classification/cross_"+ str(self.iteration) + "_final_result.csv") 
+	        	
+		    texto+= """Exemplos submetidos a segunda classificacao: """ + str(len(data_set_knn))
+		    print(len(data_set_knn))
 		arquivo.write(texto) 
 		arquivo.close()
 		'''
