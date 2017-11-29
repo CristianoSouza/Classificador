@@ -1,24 +1,10 @@
 import sys, os, pandas
-from cross_validation import CrossValidation
-from preprocessor import Preprocessor
-from dataSet import DataSet
 
-data_set = pandas.read_csv("bases/KDD99/teste.csv")
-
-lista = range(0, data_set.shape[0])
-
-tamanho = len(lista)
-print lista
-print(data_set.values[5])
-for a in range(0,tamanho):
-	if ((data_set.values[a][41] == 'smurf.') | (data_set.values[a][41] == "smurf.")):
-		print("smurfff")
-		print(data_set.values[a][41])
-		data_set.loc[a, 'classe'] = '1'	
-		print(data_set.values[a][41])	
-	else:
-		print(data_set.values[a][41])
-
+data_set = pandas.read_csv("bases/NSL_KDD-master/KDDTrain+binary_class.csv")
+print(data_set)
+a = data_set.drop(['protocol_type', 'dst_host_srv_rerror_rate', 'rerror_rate','dst_host_rerror_rate','srv_rerror_rate','duration','hot','wrong_fragment','num_compromised','num_root'],axis=1)
+print(a)
+a.to_csv( "KDDTrain+binary_class_20_attribute.csv", sep=',', index=False)
 
 
 
