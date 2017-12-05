@@ -30,16 +30,16 @@ dts.setFilePath("bases/sub_bases/")
 #dts.setFileName("NSL_KDD-master/SmallTrainingSet.csv")
 #dts.setFileName("NSL_KDD-master/SmallTrainingSetFiveClass.csv")
 
-#dts.setFileName("../../../KDD99/kddcup10%.csv")
+dts.setFileName("../../KDDCUP99/kddcup10%.csv")
 
-dts.setFileName("NSL_KDD-master/KDDTrain+binary_class_30_attribute.csv")
+#ts.setFileName("NSL_KDD-master/KDDTrain+binary_class_30_attribute.csv")
 #os.system('cls' if os.name == 'nt' else 'clear')
 
 print("load data")
 dts.loadData()
 
-
 '''
+
 #CONFIGURACAO DO KNN
 knn = KnnModule()
 knn.setKNeighbors(1)
@@ -66,12 +66,12 @@ clustered_density_knn_classifier.setKnn(clustered_density_knn)
 
 #CONFIGURACAO DA REDE NEURAL 
 rna = RnaModule()
-rna.setNumberNeuronsImputLayer(41)
+rna.setNumberNeuronsImputLayer(6)
 #rna.setNumberNeuronsImputLayer(4)
 rna.setActivationFunctionImputLayer("tanh")
-rna.setImputDimNeurons(41)
+rna.setImputDimNeurons(6)
 #rna.setImputDimNeurons(4)
-rna.setNumberNeuronsHiddenLayer(120)
+rna.setNumberNeuronsHiddenLayer(6)
 rna.setActivationFunctionHiddenLayer("tanh")
 rna.setNumberNeuronsOutputLayer(1)
 rna.setActivationFunctionOutputLayer("tanh")
@@ -96,13 +96,14 @@ evaluate = EvaluateModule()
 cross = CrossValidation()
 
 #DEFINIR A ITERACAO QUE O CROSS VALIDATION ESTA
-cross.setIteration(7)
+cross.setIteration(1)
 
 cross.setPreprocessor(preprocessor)
 #cross.setFilePath("bases/sub_bases_20_nslkdd/")
-cross.setFilePath("bases/sub_bases_train+_nslkdd/")
+#cross.setFilePath("bases/sub_bases_train+_nslkdd/")
 #cross.setFilePath("bases/sub_bases_iris/")
 #cross.setFilePath("bases/sub_bases_winequality-red/")
+cross.setFilePath("bases/sub_bases_nslkdd_tcp_attribute/")
 #cross.setFilePath("bases/sub_bases_SmallTrainingSet/")
 #cross.setFilePath("bases/sub_bases_small_training_set1000/")
 #cross.setFilePath("bases/sub_bases_small_training_set_five_class/")
