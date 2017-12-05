@@ -53,7 +53,7 @@ class DataSet(object):
 			len_posicoes = len(posicoes)
 			print(i)
 
-			arquivo = open("bases/sub_bases/sub_data_set_" + str(i+1) + ".csv", 'w') 
+			arquivo = open( self.file_path + "sub_data_set_" + str(i+1) + ".csv", 'w') 
 			for k in range(0,len(self.dataframe_data_set.columns)):
 				texto = str(self.dataframe_data_set.columns[k])
 				arquivo.write(texto) 
@@ -82,7 +82,7 @@ class DataSet(object):
 		if lista:
 			print("nao vazia")
 			for i in range(0,len(lista)):
-				arquivo = open("bases/sub_bases/sub_data_set_" + str(i+1) + ".csv", 'a') 
+				arquivo = open( self.file_path + "sub_data_set_" + str(i+1) + ".csv", 'a') 
 				print(i)
 				print(lista[i])
 				texto = ""
@@ -137,21 +137,19 @@ class DataSet(object):
 		return pandas.concat(frames)
 
 	@classmethod
-	def loadResult(self, iteration, path):
-		return pandas.read_csv("results/" + path + "cross_" + str(iteration) + "_final_result.csv")
+	def loadResult(self, result_path, iteration):
+		return pandas.read_csv(str(result_path) + "cross_" + str(iteration) + "_final_result.csv")
 
 	@classmethod
-	def saveResults(self, method, iteration, data_frame):
-		file_path = "results/" + method + "/"
-
-		directory = os.path.dirname(file_path)
+	def saveResults(self, result_path, iteration,  data_frame):
+		directory = os.path.dirname(result_path)
 		if not os.path.exists(directory):
 			print("nao existe")
 			os.makedirs(directory)
 		else:
 			print("exists")	
 
-		data_frame.to_csv( file_path + "cross_" + str(iteration) + "_final_result.csv", sep=',', index=False)
+		data_frame.to_csv( str(result_path) + "cross_" + str(iteration) + "_final_result.csv", sep=',', index=False)
 
 	@classmethod
 	def checkPath(self, file_path):
@@ -161,8 +159,13 @@ class DataSet(object):
 			os.makedirs(directory)
 		else:
 			print("exists")	
-
-
+        @classmethod
+        def checkPathBoolean(self, file_path):
+                directory = os.path.dirname(file_path)
+                if (os.path.exists(directory)):
+                    return True
+                else:
+                    return False
 
 
 

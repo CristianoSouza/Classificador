@@ -17,7 +17,6 @@ from clustered_density_knn_classifier import ClusteredDensityKnnClassifier
 
 
 class CrossValidation(object):
-	iteration = 1
 	dts = None
 	classifier = None
 	teste_sub_data_set = None
@@ -25,19 +24,23 @@ class CrossValidation(object):
 	evaluate = None
 	method = None
 	file_path = ""
-	preprocessor = None
+	result_path = ""
+        preprocessor = None
 
 	def __init__(self):
 		print("init")
 		self.evaluate = EvaluateModule()
 
 	def run(self):
-		print("Iniciando Cross validation:")
+		
+                self.classifier.setResultPath(self.result_path)
+                print("Iniciando Cross validation:")
 		#for self.iteration in range(1,11):
 		self.foldExecution()
 
 	def foldExecution(self):
-		for self.iteration in range(1,11):
+		i = self.iteration
+		for self.iteration in range(i,11):
 			print("iteracao")
 			tempo_inicio = time.time()
 			print("-- FOLD " + str(self.iteration) + " --")
@@ -50,32 +53,33 @@ class CrossValidation(object):
 
 				self.training_sub_data_set, self.teste_sub_data_set = self.preprocessor.transformCategory()
 
-			data_set = self.teste_sub_data_set
 			self.classifier.setDataSet(self.training_sub_data_set)
 			self.classifier.setTestDataSet(self.teste_sub_data_set)
 
 			self.classifier.setIteration(self.iteration)
 			self.classifier.run()
 			
+			del(self.training_sub_data_set)
 			self.loadTestData()
 			self.evaluate.setTestDataSet(self.teste_sub_data_set)
 			self.evaluate.setIteration(self.iteration)
 
+
 			if(isinstance(self.classifier, RnaClassifier)):
 				print("rna")
-				self.evaluate.setPath("rna/")
+				self.evaluate.setResultPath( self.result_path)
 			elif(isinstance(self.classifier, KnnClassifier)):
 				print("knn")
-				self.evaluate.setPath("knn/")
+				self.evaluate.setResultPath(self.result_path)
 			elif(isinstance(self.classifier, ClusteredKnnClassifier)):
 				print("clustered knn")
-				self.evaluate.setPath("clusteredKnn/")
+				#self.evaluate.setPath("clusteredKnn/")
 			elif(isinstance(self.classifier, ClusteredDensityKnnClassifier)):
 				print("clustered density knn")
-				self.evaluate.setPath("clusteredDensityKnn/")
+				#self.evaluate.setPath("clusteredDensityKnn/")
 			elif(isinstance(self.classifier, HybridClassifier)):
 				print("hybrid")
-				self.evaluate.setPath("hybrid/final_method_classification/")
+				self.evaluate.setResultPath( self.result_path+"final_method_classification/")
 
 			tempo_execucao = time.time() - tempo_inicio
 			self.evaluate.setTempoExecucao(tempo_execucao)
@@ -95,6 +99,7 @@ class CrossValidation(object):
 					self.training_sub_data_set = new_sub_data_set
 				else:
 					self.training_sub_data_set = DataSet.concatSubDataSet(self.training_sub_data_set, new_sub_data_set)
+				del(new_sub_data_set)
 		print(self.training_sub_data_set)
 
 	def loadTestData(self):
@@ -132,4 +137,7 @@ class CrossValidation(object):
 
 	def setFilePath(self, file_path):
 		self.file_path = file_path
+
+        def setResultPath(self, result_path):
+                self.result_path = result_path
 

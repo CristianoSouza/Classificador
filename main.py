@@ -1,27 +1,9 @@
 
 import sys, os
-from cross_validation import CrossValidation
 from preprocessor import Preprocessor
 from dataSet import DataSet
-sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/hybrid")
-sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/clusteredKnn")
-sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/clusteredDensityKnn")
-sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/rna")
-sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/knn")
-
-from knn_classifier import KnnClassifier
-from rna_classifier import RnaClassifier
-from hybrid_classifier import HybridClassifier
-from clustered_knn_classifier import ClusteredKnnClassifier
-from clustered_density_knn_classifier import ClusteredDensityKnnClassifier
-from rna_module import RnaModule
-from knn_module import KnnModule
-from clustered_knn_module import ClusteredKnnModule
-from clustered_density_knn_module import ClusteredDensityKnnModule
-from evaluate_module import EvaluateModule
-
 dts = DataSet()
-dts.setFilePath("bases/sub_bases/")
+dts.setFilePath("bases/sub_bases_nslkdd_20attribute/")
 #dts.setFileName("base_iris.csv")
 #dts.setFileName("SmallTrainingSet.csv")
 #dts.setFileName("winequality-red.csv")
@@ -32,8 +14,6 @@ dts.setFilePath("bases/sub_bases/")
 
 dts.setFileName("../../KDDCUP99/kddcup10%.csv")
 
-#ts.setFileName("NSL_KDD-master/KDDTrain+binary_class_30_attribute.csv")
-#os.system('cls' if os.name == 'nt' else 'clear')
 
 print("load data")
 dts.loadData()
@@ -41,6 +21,11 @@ dts.loadData()
 '''
 
 #CONFIGURACAO DO KNN
+=======
+
+
+"""#CONFIGURACAO DO KNN
+>>>>>>> ed56cc39600829752d7be63d37372adb5766fcaf
 knn = KnnModule()
 knn.setKNeighbors(1)
 knn_classifier = KnnClassifier()
@@ -66,12 +51,21 @@ clustered_density_knn_classifier.setKnn(clustered_density_knn)
 
 #CONFIGURACAO DA REDE NEURAL 
 rna = RnaModule()
+<<<<<<< HEAD
 rna.setNumberNeuronsImputLayer(6)
 #rna.setNumberNeuronsImputLayer(4)
 rna.setActivationFunctionImputLayer("tanh")
 rna.setImputDimNeurons(6)
 #rna.setImputDimNeurons(4)
 rna.setNumberNeuronsHiddenLayer(6)
+=======
+rna.setNumberNeuronsImputLayer(12)
+#rna.setNumberNeuronsImputLayer(4)
+rna.setActivationFunctionImputLayer("tanh")
+rna.setImputDimNeurons(12)
+#rna.setImputDimNeurons(4)
+rna.setNumberNeuronsHiddenLayer(12)
+>>>>>>> ed56cc39600829752d7be63d37372adb5766fcaf
 rna.setActivationFunctionHiddenLayer("tanh")
 rna.setNumberNeuronsOutputLayer(1)
 rna.setActivationFunctionOutputLayer("tanh")
@@ -89,7 +83,8 @@ hybrid_classifier.setKnn(knn)
 
 #PREPROCESSADOR PARA ATRIBUTOS CATEGORICOS
 preprocessor = Preprocessor()
-preprocessor.setColumnsCategory(['protocol_type','service','flag'])
+#preprocessor.setColumnsCategory(['protocol_type','service','flag'])
+preprocessor.setColumnsCategory(['service','flag'])
 
 evaluate = EvaluateModule()
 
@@ -101,6 +96,12 @@ cross.setIteration(1)
 cross.setPreprocessor(preprocessor)
 #cross.setFilePath("bases/sub_bases_20_nslkdd/")
 #cross.setFilePath("bases/sub_bases_train+_nslkdd/")
+<<<<<<< HEAD
+=======
+#cross.setFilePath("bases/sub_bases_nslkdd_tcp_attribute/")
+cross.setFilePath("bases/sub_bases_nslkdd_12attribute/")
+#cross.setFilePath("bases/sub_bases_nslkdd_20attribute/")
+>>>>>>> ed56cc39600829752d7be63d37372adb5766fcaf
 #cross.setFilePath("bases/sub_bases_iris/")
 #cross.setFilePath("bases/sub_bases_winequality-red/")
 cross.setFilePath("bases/sub_bases_nslkdd_tcp_attribute/")
@@ -108,11 +109,11 @@ cross.setFilePath("bases/sub_bases_nslkdd_tcp_attribute/")
 #cross.setFilePath("bases/sub_bases_small_training_set1000/")
 #cross.setFilePath("bases/sub_bases_small_training_set_five_class/")
 #cross.setFilePath("bases/sub_bases/")
+
 #cross.setClassifier(rna_classifier)
 #cross.setClassifier(knn_classifier)
 #cross.setClassifier(clustered_knn_classifier)
 #cross.setClassifier(clustered_density_knn_classifier)
 cross.setClassifier(hybrid_classifier)
 cross.setEvaluateModule(evaluate)
-cross.run()
-'''
+cross.run()"""

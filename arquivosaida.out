@@ -1,0 +1,8 @@
+Inicio do JOB
+Traceback (most recent call last):
+  File "main.py", line 3, in <module>
+srun: error: node5-ib: task 0: Exited with exit code 1
+    from cross_validation import CrossValidation
+  File "/home/wzalewski/lapsec/Classificador/cross_validation.py", line 1, in <module>
+    import numpy as np
+ImportError: No module named numpy

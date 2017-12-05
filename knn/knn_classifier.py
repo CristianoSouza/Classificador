@@ -1,6 +1,8 @@
 from knn_module import KnnModule
 import pandas
 import os
+import sys
+sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/..")
 from dataSet import DataSet
 
 class KnnClassifier(object):
@@ -8,7 +10,7 @@ class KnnClassifier(object):
 	data_set = None
 	test_data_set = None
 	predictions = []
-
+        result_path = ""
 	knn = None
 
 	def __init__(self):
@@ -29,7 +31,7 @@ class KnnClassifier(object):
 		for i in range(0,len(self.predictions)):
 			print("ALTERANDO VALOR DA CLASSE")
 			data_set.set_value(i,'classe',self.predictions[i])
-		DataSet.saveResults("knn", self.iteration, data_set)
+		DataSet.saveResults(self.result_path, self.iteration, data_set)
 
 	def setDataSet(self, data_set):
 		self.data_set = data_set
@@ -51,3 +53,6 @@ class KnnClassifier(object):
 
 	def setIteration(self, iteration):
 		self.iteration = iteration
+
+        def setResultPath(self, result_path):
+            self.result_path = result_path
