@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "script_binary_class.py", line 6, in <module>
+    lista = range(0, self.dataframe_data_set.shape[0])
+NameError: name 'self' is not defined
+srun: error: node2-ib: task 0: Exited with exit code 1

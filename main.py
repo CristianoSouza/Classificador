@@ -1,27 +1,9 @@
 
 import sys, os
-from cross_validation import CrossValidation
 from preprocessor import Preprocessor
 from dataSet import DataSet
-sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/hybrid")
-sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/clusteredKnn")
-sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/clusteredDensityKnn")
-sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/rna")
-sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/knn")
-
-from knn_classifier import KnnClassifier
-from rna_classifier import RnaClassifier
-from hybrid_classifier import HybridClassifier
-from clustered_knn_classifier import ClusteredKnnClassifier
-from clustered_density_knn_classifier import ClusteredDensityKnnClassifier
-from rna_module import RnaModule
-from knn_module import KnnModule
-from clustered_knn_module import ClusteredKnnModule
-from clustered_density_knn_module import ClusteredDensityKnnModule
-from evaluate_module import EvaluateModule
-
 dts = DataSet()
-dts.setFilePath("bases/sub_bases/")
+dts.setFilePath("bases/sub_bases_nslkdd_20attribute/")
 #dts.setFileName("base_iris.csv")
 #dts.setFileName("SmallTrainingSet.csv")
 #dts.setFileName("winequality-red.csv")
@@ -32,15 +14,15 @@ dts.setFilePath("bases/sub_bases/")
 
 #dts.setFileName("../../../KDD99/kddcup10%.csv")
 
-#dts.setFileName("NSL_KDD-master/KDDTrain+binary_class_12_attribute.csv")
+dts.setFileName("NSL_KDD-master/KDDTrain+binary_class_20_attribute.csv")
 #os.system('cls' if os.name == 'nt' else 'clear')
 
 print("load data")
-#dts.loadData()
+dts.loadData()
 
 
 
-#CONFIGURACAO DO KNN
+"""#CONFIGURACAO DO KNN
 knn = KnnModule()
 knn.setKNeighbors(1)
 knn_classifier = KnnClassifier()
@@ -118,4 +100,4 @@ cross.setFilePath("bases/sub_bases_nslkdd_12attribute/")
 #cross.setClassifier(clustered_density_knn_classifier)
 cross.setClassifier(hybrid_classifier)
 cross.setEvaluateModule(evaluate)
-cross.run()
+cross.run()"""

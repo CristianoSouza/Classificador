@@ -53,7 +53,7 @@ class DataSet(object):
 			len_posicoes = len(posicoes)
 			print(i)
 
-			arquivo = open("bases/sub_bases/sub_data_set_" + str(i+1) + ".csv", 'w') 
+			arquivo = open( self.file_path + "sub_data_set_" + str(i+1) + ".csv", 'w') 
 			for k in range(0,len(self.dataframe_data_set.columns)):
 				texto = str(self.dataframe_data_set.columns[k])
 				arquivo.write(texto) 
@@ -82,7 +82,7 @@ class DataSet(object):
 		if lista:
 			print("nao vazia")
 			for i in range(0,len(lista)):
-				arquivo = open("bases/sub_bases/sub_data_set_" + str(i+1) + ".csv", 'a') 
+				arquivo = open( self.file_path + "sub_data_set_" + str(i+1) + ".csv", 'a') 
 				print(i)
 				print(lista[i])
 				texto = ""

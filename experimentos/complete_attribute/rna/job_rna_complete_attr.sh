@@ -9,4 +9,4 @@
 #SBATCH -n 1	 
 export PATH="/home/wzalewski/anaconda3/bin:$PATH"
 source activate py27tensorflow
-srun python main_rna_complete_attribute.py
+srun python main_rna_completeattribute.py

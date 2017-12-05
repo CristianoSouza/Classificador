@@ -3,7 +3,7 @@ import sys, os
 sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/../../../rna")
 sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/../../../hybrid")
 sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/../../..")
-sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/../../knn")
+sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/../../../knn")
 
 from cross_validation import CrossValidation
 from preprocessor import Preprocessor
@@ -43,7 +43,7 @@ cross.setIteration(1)
 
 cross.setPreprocessor(preprocessor)
 
-cross.setFilePath("bases/sub_bases_nslkdd_30attribute/")
+cross.setFilePath("../../../bases/sub_bases_nslkdd_30attribute/")
 
 cross.setResultPath("../../../results/30_attribute/rna/")
 
