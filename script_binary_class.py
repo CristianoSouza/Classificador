@@ -9,7 +9,8 @@ tamanho = len(lista)
 
 print tamanho
 for a in range(0,tamanho):
-        if( (data_set.values[a]['classe'] == "normal.") | (data_set.values[a]['classe'] == 'normal.')):
+        print (data_set.values[a][41])
+        if( (data_set.values[a][41] == "normal.") | (data_set.values[a][41] == 'normal.')):
             data_set.loc[a,'classe'] = '0'
         else:
             data_set.loc[a,'classe'] = '1'

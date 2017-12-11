@@ -1,6 +1,9 @@
+import sys, os
 from dataSet import DataSet
 from preprocessor import Preprocessor
+sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "hybrid")
 
+from hybrid_classifier import HybridClassifier
 
 class EvaluateModule(object):
 
@@ -16,6 +19,7 @@ class EvaluateModule(object):
 	acc_samples= 0
 	err_samples=0
 	tempo_execucao = 0
+        classifier = None
 
 
 	def __init__(self):
@@ -135,8 +139,8 @@ class EvaluateModule(object):
 		texto+="""TEMPO DE EXECUCAO: """ + str(self.tempo_execucao) + """  ||| 
                 """
             
-                if (DataSet.checkPathBoolean(self.result_path+ "knn_classification/")):
-                    data_set_knn = DataSet.loadSubDataSet( self.result_path + "knn_classification/cross_"+ str(self.iteration) + "_final_result.csv") 
+                if (DataSet.checkPathBoolean(self.result_path + "../knn_classification/")):
+                    data_set_knn = DataSet.loadSubDataSet( self.result_path + "../knn_classification/cross_"+ str(self.iteration) + "_final_result.csv") 
 	        	
 		    texto+= """Exemplos submetidos a segunda classificacao: """ + str(len(data_set_knn))
 		    print(len(data_set_knn))
@@ -230,6 +234,9 @@ class EvaluateModule(object):
 
 	def getClasses(self):
 		return self.classes
+        
+        def setClassifier(self, classifier):
+            self.classifier = classifier
 
 	def setTempoExecucao(self, tempo_execucao):
 		self.tempo_execucao = tempo_execucao

@@ -161,8 +161,11 @@ class DataSet(object):
 			print("exists")	
         @classmethod
         def checkPathBoolean(self, file_path):
+                print(file_path)
                 directory = os.path.dirname(file_path)
-                if (os.path.exists(directory)):
+                print(directory)
+                
+                if (os.path.exists(file_path)):
                     return True
                 else:
                     return False
