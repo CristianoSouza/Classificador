@@ -29,7 +29,7 @@ rna = RnaModule()
 rna.setNumberNeuronsImputLayer(12)
 rna.setActivationFunctionImputLayer("tanh")
 rna.setImputDimNeurons(12)
-rna.setNumberNeuronsHiddenLayer(12)
+rna.setNumberNeuronsHiddenLayer(13)
 rna.setActivationFunctionHiddenLayer("tanh")
 rna.setNumberNeuronsOutputLayer(1)
 rna.setActivationFunctionOutputLayer("tanh")
@@ -59,7 +59,7 @@ cross.setPreprocessor(preprocessor)
 
 cross.setFilePath("../../../bases/sub_bases_nslkdd_12attribute/")
 
-cross.setResultPath("../../../results/12_attribute/hybrid/")
+cross.setResultPath("../../../results/12_attribute/hybrid_oculta_13/")
 
 cross.setClassifier(hybrid_classifier)
 
