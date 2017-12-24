@@ -38,8 +38,8 @@ rna_classifier.setRna(rna)
 
 #METODO HIBRIDO 
 hybrid_classifier = HybridClassifier()
-hybrid_classifier.setLowerThreshold(-0.95)
-hybrid_classifier.setUpperThreshold(0.9)
+hybrid_classifier.setLowerThreshold(-0.88)
+hybrid_classifier.setUpperThreshold(0.90)
 hybrid_classifier.setRna(rna)
 hybrid_classifier.setKnn(knn)
 
@@ -59,7 +59,7 @@ cross.setPreprocessor(preprocessor)
 
 cross.setFilePath("../../../bases/sub_bases_train+_nslkdd/")
 
-cross.setResultPath("../../../results/complete_attribute/hybrid_oculta_095_090_42/")
+cross.setResultPath("../../../results/complete_attribute/hybrid_oculta_088_090_42/")
 
 cross.setClassifier(hybrid_classifier)
 
