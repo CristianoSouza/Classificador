@@ -16,5 +16,5 @@ PORCENTAGEM ACERTOS: 97.150341324 	|
 |--------||--------|
 PORCENTAGEM ERROS: 2.84965867598 	|   
 |--------||--------|
-TEMPO DE EXECUCAO: 1600.81759  ||| 
+TEMPO DE EXECUCAO: 1590.36117816  ||| 
                 Exemplos submetidos a segunda classificacao: 12598
