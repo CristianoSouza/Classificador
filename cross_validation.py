@@ -25,7 +25,7 @@ class CrossValidation(object):
 	method = None
 	file_path = ""
 	result_path = ""
-        preprocessor = None
+	preprocessor = None
 
 	def __init__(self):
 		print("init")
@@ -82,7 +82,9 @@ class CrossValidation(object):
 				self.evaluate.setResultPath( self.result_path+"final_method_classification/")
 
 			tempo_execucao = time.time() - tempo_inicio
-                        self.evaluate.setTempoExecucao(tempo_execucao)
+			self.evaluate.setTempoExecucao(tempo_execucao)
+			self.evaluate.setTrainingTime(self.classifier.getTrainingTime())
+			self.evaluate.setTestTime(self.classifier.getTestTime())
 			self.evaluate.run()
 			
 

@@ -1,6 +1,7 @@
 from knn_module import KnnModule
 import pandas
 import os
+import time
 import sys
 sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/..")
 from dataSet import DataSet
@@ -10,7 +11,9 @@ class KnnClassifier(object):
 	data_set = None
 	test_data_set = None
 	predictions = []
-        result_path = ""
+	result_path = ""
+	training_time = 0
+	test_time = 0
 	knn = None
 
 	def __init__(self):
@@ -21,7 +24,15 @@ class KnnClassifier(object):
 		print(self.data_set)
 		self.knn.setDataSet(self.data_set)
 		self.knn.setTestDataSet(self.test_data_set)
+
+		training_time_start = time.time()
+		self.knn.buildExamplesBase()
+		self.training_time = time.time() - training_time_start
+
+		test_time_start = time.time()
 		self.predictions = self.knn.run()
+		self.test_time = time.time() - test_time_start
+
 		print("Predicao knn: ")
 		print(self.predictions)
 		self.saveResults()
@@ -54,5 +65,11 @@ class KnnClassifier(object):
 	def setIteration(self, iteration):
 		self.iteration = iteration
 
-        def setResultPath(self, result_path):
-            self.result_path = result_path
+	def setResultPath(self, result_path):
+		self.result_path = result_path
+
+	def getTrainingTime(self):
+		return self.training_time
+
+	def getTestTime(self):
+		return self.test_time

@@ -26,22 +26,14 @@ dts.setFilePath("bases/sub_bases_nslkdd_20attribute/")
 #dts.setFileName("NSL_KDD-master/SmallTrainingSet.csv")
 #dts.setFileName("NSL_KDD-master/SmallTrainingSetFiveClass.csv")
 
-dts.setFileName("../../KDDCUP99/kddcup10%.csv")
+#dts.setFileName("../../KDDCUP99/kddcup10%.csv")
 
 
-print("load data")
+#print("load data")
 #dts.loadData()
 
-'''
 
-
-
-
-
-
-
-
-"""#CONFIGURACAO DO KNN
+#CONFIGURACAO DO KNN
 
 
 knn = KnnModule()
@@ -114,7 +106,7 @@ cross.setPreprocessor(preprocessor)
 
 #cross.setFilePath("bases/sub_bases_SmallTrainingSet/")
 cross.setFilePath("bases/sub_bases_small_training_set1000/")
-cross.setResultPath("results/hybrid_test/")
+cross.setResultPath("results/test_time_hibrido/")
 #cross.setFilePath("bases/sub_bases_small_training_set_five_class/")
 #cross.setFilePath("bases/sub_bases/")
 

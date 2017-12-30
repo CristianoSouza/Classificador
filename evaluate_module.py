@@ -19,8 +19,9 @@ class EvaluateModule(object):
 	acc_samples= 0
 	err_samples=0
 	tempo_execucao = 0
-        classifier = None
-
+	classifier = None
+	training_time = 0 
+	test_time = 0
 
 	def __init__(self):
 		print("init")
@@ -138,6 +139,10 @@ class EvaluateModule(object):
 """			
 		texto+="""TEMPO DE EXECUCAO: """ + str(self.tempo_execucao) + """  ||| 
                 """
+		texto+="""TEMPO DE TREINO: """ + str(self.training_time) + """  ||| 
+                """
+		texto+="""TEMPO DE TESTE: """ + str(self.test_time) + """  ||| 
+                """
             
                 if (DataSet.checkPathBoolean(self.result_path + "../knn_classification/")):
                     data_set_knn = DataSet.loadSubDataSet( self.result_path + "../knn_classification/cross_"+ str(self.iteration) + "_final_result.csv") 
@@ -235,8 +240,14 @@ class EvaluateModule(object):
 	def getClasses(self):
 		return self.classes
         
-        def setClassifier(self, classifier):
-            self.classifier = classifier
+	def setClassifier(self, classifier):
+		self.classifier = classifier
 
 	def setTempoExecucao(self, tempo_execucao):
 		self.tempo_execucao = tempo_execucao
+
+	def setTrainingTime(self, training_time):
+		self.training_time = training_time
+
+	def setTestTime(self, test_time):
+		self.test_time = test_time

@@ -9,26 +9,29 @@ class KnnModule(object):
 	test_data_set_samples = []
 	test_data_set_labels = []
 	k_neighbors = 1
+	clf = None
 
 	def __init__(self):
 		print("init knn module")
+
+	def buildExamplesBase(self):
+		print("BASEEE:")
+		print(self.data_set_samples)
+		print("BASEEE:")
+		print(self.test_data_set_samples)
+		print("BASEEE:")  
+		print(self.test_data_set_labels)
+		self.clf = neighbors.KNeighborsClassifier(self.k_neighbors, weights='distance')
+		self.clf.fit(self.data_set_samples, self.data_set_labels)
 
 	def run(self):
 		print("BASEEE:")
 		print(self.data_set_samples)
 		print("BASEEE:")
 		print(self.test_data_set_samples)
-		print("BASEEE:")  
+		print("BASEEEsd:")  
 		print(self.test_data_set_labels)
-		clf = neighbors.KNeighborsClassifier(self.k_neighbors, weights='distance')
-		clf.fit(self.data_set_samples, self.data_set_labels)
-		print("BASEEE:")
-		print(self.data_set_samples)
-		print("BASEEE:")
-		print(self.test_data_set_samples)
-		print("BASEEE:")  
-		print(self.test_data_set_labels)
-		predictions = clf.predict(self.test_data_set_samples)
+		predictions = self.clf.predict(self.test_data_set_samples)
 		return predictions
 
 	def setDataSet(self, data_set):

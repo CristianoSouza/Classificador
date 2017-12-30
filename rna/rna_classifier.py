@@ -2,6 +2,7 @@ from rna_module import RnaModule
 import sys
 import pandas
 import os
+import time
 
 sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/..")
 from dataSet import DataSet
@@ -13,19 +14,25 @@ class RnaClassifier(object):
 	rna = None
 	predictions = None
 	iteration = 0
-        result_path = ""
+	training_time = 0
+	test_time = 0
+	result_path = ""
 
 	def __init__(self):
 		print "aa"
 
 	def run(self):
+		training_time_start = time.time()
 		print("RUN RNA classifier")
 		self.rna.setDataSet(self.data_set)
 		self.rna.setTestDataSet(self.test_data_set)
-
+		
 		self.rna.generateModel()
+		self.training_time = time.time() - training_time_start
 
+		test_time_start = time.time()
 		self.predictions = self.rna.predictClasses()
+		self.test_time = time.time() - test_time_start
 		self.saveResults()
 
 	def saveResults(self):
@@ -55,5 +62,11 @@ class RnaClassifier(object):
 	def setIteration(self, iteration):
 		self.iteration = iteration
 
-        def setResultPath(self, result_path):
-                self.result_path = result_path
+	def setResultPath(self, result_path):
+            self.result_path = result_path
+
+	def getTrainingTime(self):
+		return self.training_time
+
+	def getTestTime(self):
+		return self.test_time

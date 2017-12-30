@@ -1,5 +1,6 @@
 import sys, os
 import pandas
+import time
 import numpy
 
 sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/../../../knn")
@@ -21,7 +22,10 @@ class HybridClassifier(object):
 	lower_threshold = -0.7
 	intermediate_range_samples = []
 	rna_classified_samples = []
-        result_path = ""
+	result_path = ""
+	training_time = 0
+	test_time = 0
+
 
 	def __init__(self):
 		print("init")
@@ -33,18 +37,26 @@ class HybridClassifier(object):
 		print("run hybrid classifier")
 		self.rna.setDataSet(self.data_set)
 		self.rna.setTestDataSet(self.test_data_set)
-
+		self.knn.setDataSet(self.data_set)
+		training_time_start = time.time()
 		self.rna.generateModel()
-		self.predictions_rna = self.rna.predict()
-		#del(self.data_set)
-		
+		self.knn.buildExamplesBase()
+		self.training_time = time.time() - training_time_start
+
+	
 		list_position_rna_classified_samples = []
 		list_position_intermediate_range_samples = []
+
+		test_time_start = time.time()
+		self.predictions_rna = self.rna.predictClasses()
 		print(len(self.predictions_rna))
 		tamanho_predicao = len(self.predictions_rna)
 		tamanho_data_set = len(self.test_data_set.values)
 		posicao_classe = len(self.test_data_set.values[0]) - 2
 		#exit()
+
+
+
 		for i in range(0,len(self.predictions_rna)):
 			#print("indice: " + str(i) + "  total: " + str(tamanho_predicao))
 			#print("Valor original: ") 
@@ -100,11 +112,11 @@ class HybridClassifier(object):
 		print(dataframe_intermediate_range_samples)
                 
 
-		self.knn.setDataSet(self.data_set)
 		self.knn.setTestDataSet(dataframe_intermediate_range_samples)
 		DataSet.saveResults( self.result_path + "knn_classification/", self.iteration, dataframe_intermediate_range_samples)
 
 		self.predictions_knn = self.knn.run()
+		self.test_time = time.time() - test_time_start
 		del(self.data_set)
 		del(dataframe_intermediate_range_samples)
 		
@@ -173,5 +185,11 @@ class HybridClassifier(object):
 	def getLowerThreshold(self):
 		return lower_threshold
 
-        def setResultPath(self, result_path):
-            self.result_path = result_path
+	def setResultPath(self, result_path):
+		self.result_path = result_path
+
+	def getTrainingTime(self):
+		return self.training_time
+
+	def getTestTime(self):
+		return self.test_time
