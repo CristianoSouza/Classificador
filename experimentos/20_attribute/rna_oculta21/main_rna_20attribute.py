@@ -45,7 +45,7 @@ cross.setPreprocessor(preprocessor)
 
 cross.setFilePath("../../../bases/sub_bases_nslkdd_20attribute/")
 
-cross.setResultPath("../../../results/20_attribute/rna_oculta_21/")
+cross.setResultPath("../../../results/20_attribute/rna_oculta_21_time/")
 
 cross.setClassifier(rna_classifier)
 
