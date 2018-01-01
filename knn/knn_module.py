@@ -21,7 +21,7 @@ class KnnModule(object):
 		print(self.test_data_set_samples)
 		print("BASEEE:")  
 		print(self.test_data_set_labels)
-		self.clf = neighbors.KNeighborsClassifier(self.k_neighbors, weights='distance')
+		self.clf = neighbors.KNeighborsClassifier(self.k_neighbors, weights='uniforme', algorithm='brute')
 		self.clf.fit(self.data_set_samples, self.data_set_labels)
 
 	def run(self):
