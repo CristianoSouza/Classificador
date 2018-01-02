@@ -49,7 +49,9 @@ class HybridClassifier(object):
 
 		test_time_start = time.time()
 		self.predictions_rna = self.rna.predictClasses()
-		print(len(self.predictions_rna))
+		
+
+		#print(len(self.predictions_rna))
 		tamanho_predicao = len(self.predictions_rna)
 		tamanho_data_set = len(self.test_data_set.values)
 		posicao_classe = len(self.test_data_set.values[0]) - 2
@@ -67,18 +69,19 @@ class HybridClassifier(object):
 			if(self.predictions_rna[i] > self.upper_threshold):
 				#print("CLASSIFICACAO CONFIAVEL!")
 				self.test_data_set.set_value(i, 'classe', 1)
-			        self.rna_classified_samples.append(self.test_data_set.values[i,:])
-				list_position_rna_classified_samples.append(i)
+				#self.rna_classified_samples.append(self.test_data_set.values[i,:])
+				#list_position_rna_classified_samples.append(i)
 			elif( self.predictions_rna[i] < self.lower_threshold):
 				#print("CLASSIFICACAO CONFIAVEL!")
 				self.test_data_set.set_value(i, 'classe', 0)
-				self.rna_classified_samples.append(self.test_data_set.values[i,:])
-				list_position_rna_classified_samples.append(i)
+				#self.rna_classified_samples.append(self.test_data_set.values[i,:])
+				#list_position_rna_classified_samples.append(i)
 			else:
 				#print("FAIXA INTERMEDIARIA!")
 				self.intermediate_range_samples.append(self.test_data_set.values[i,:])
 				list_position_intermediate_range_samples.append(i)
-	
+		
+		self.test_time = time.time() - test_time_start
 		del(self.predictions_rna)
 		#print("Exemplos classificados pela RNA:")
 		#print(self.rna_classified_samples)
@@ -115,8 +118,10 @@ class HybridClassifier(object):
 		self.knn.setTestDataSet(dataframe_intermediate_range_samples)
 		DataSet.saveResults( self.result_path + "knn_classification/", self.iteration, dataframe_intermediate_range_samples)
 
+		test_time_start = time.time()
 		self.predictions_knn = self.knn.run()
-		self.test_time = time.time() - test_time_start
+		self.test_time = self.test_time + (time.time() - test_time_start)
+		
 		del(self.data_set)
 		del(dataframe_intermediate_range_samples)
 		

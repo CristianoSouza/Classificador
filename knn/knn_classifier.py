@@ -31,11 +31,12 @@ class KnnClassifier(object):
 
 		test_time_start = time.time()
 		self.predictions = self.knn.run()
-		self.test_time = time.time() - test_time_start
-
+	
 		print("Predicao knn: ")
 		print(self.predictions)
 		self.saveResults()
+		
+		self.test_time = time.time() - test_time_start
 
 	def saveResults(self):
 		data_set = self.test_data_set[:] 
