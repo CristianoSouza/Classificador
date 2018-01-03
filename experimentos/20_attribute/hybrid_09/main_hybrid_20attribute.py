@@ -59,7 +59,7 @@ cross.setPreprocessor(preprocessor)
 
 cross.setFilePath("../../../bases/sub_bases_nslkdd_20attribute/")
 
-cross.setResultPath("../../../results/20_attribute/hybrid_09_oculkta_21_final_time/")
+cross.setResultPath("../../../results/20_attribute/hybrid_09_oculkta_21_knn_melhorado_tentando1/")
 
 cross.setClassifier(hybrid_classifier)
 

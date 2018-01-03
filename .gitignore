@@ -1,6 +1,8 @@
 *.[oa]
 *.out
+*/*.out
 *.swp
 *.swo
 *.pyc
+*/*.pyc
 o*~
