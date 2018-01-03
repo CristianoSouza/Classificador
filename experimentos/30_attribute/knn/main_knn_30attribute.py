@@ -39,7 +39,7 @@ cross.setPreprocessor(preprocessor)
 
 cross.setFilePath("../../../bases/sub_bases_nslkdd_30attribute/")
 
-cross.setResultPath("../../../results/30_attribute/knn_brute_time/")
+cross.setResultPath("../../../results/30_attribute/knn_brute_time_pos_saveresult/")
 
 cross.setClassifier(knn_classifier)
 

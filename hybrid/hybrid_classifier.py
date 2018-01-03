@@ -50,6 +50,7 @@ class HybridClassifier(object):
 		test_time_start = time.time()
 		self.predictions_rna = self.rna.predictClasses()
 		
+		self.test_time = time.time() - test_time_start
 
 		#print(len(self.predictions_rna))
 		tamanho_predicao = len(self.predictions_rna)
@@ -81,7 +82,6 @@ class HybridClassifier(object):
 				self.intermediate_range_samples.append(self.test_data_set.values[i,:])
 				list_position_intermediate_range_samples.append(i)
 		
-		self.test_time = time.time() - test_time_start
 		del(self.predictions_rna)
 		#print("Exemplos classificados pela RNA:")
 		#print(self.rna_classified_samples)
