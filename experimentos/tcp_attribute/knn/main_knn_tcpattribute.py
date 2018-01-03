@@ -39,7 +39,7 @@ cross.setPreprocessor(preprocessor)
 
 cross.setFilePath("../../../bases/sub_bases_nslkdd_tcp_attribute/")
 
-cross.setResultPath("../../../results/tcp_attribute/knn_final/")
+cross.setResultPath("../../../results/tcp_attribute/knn_brute_final/")
 
 cross.setClassifier(knn_classifier)
 
