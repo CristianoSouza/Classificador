@@ -16,5 +16,6 @@ PORCENTAGEM ACERTOS: 96.6499960308 	|
 |--------||--------|
 PORCENTAGEM ERROS: 3.3500039692 	|   
 |--------||--------|
-TEMPO DE EXECUCAO: 4.70172190666  ||| 
-                
+TEMPO DE EXECUCAO: 20.0261359215  ||| 
+                TEMPO DE TREINO: 0.00939583778381  ||| 
+                TEMPO DE TESTE: 19.3873159885  ||| 
