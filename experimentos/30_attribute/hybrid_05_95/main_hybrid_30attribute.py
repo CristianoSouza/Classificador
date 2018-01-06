@@ -26,10 +26,10 @@ knn_classifier.setKnn(knn)
 
 #CONFIGURACAO DA REDE NEURAL 
 rna = RnaModule()
-rna.setNumberNeuronsImputLayer(41)
+rna.setNumberNeuronsImputLayer(30)
 rna.setActivationFunctionImputLayer("tanh")
-rna.setImputDimNeurons(41)
-rna.setNumberNeuronsHiddenLayer(42)
+rna.setImputDimNeurons(30)
+rna.setNumberNeuronsHiddenLayer(31)
 rna.setActivationFunctionHiddenLayer("tanh")
 rna.setNumberNeuronsOutputLayer(1)
 rna.setActivationFunctionOutputLayer("tanh")
@@ -38,7 +38,7 @@ rna_classifier.setRna(rna)
 
 #METODO HIBRIDO 
 hybrid_classifier = HybridClassifier()
-hybrid_classifier.setLowerThreshold(0.50)
+hybrid_classifier.setLowerThreshold(0.5)
 hybrid_classifier.setUpperThreshold(0.90)
 hybrid_classifier.setRna(rna)
 hybrid_classifier.setKnn(knn)
@@ -57,9 +57,10 @@ cross.setIteration(1)
 
 cross.setPreprocessor(preprocessor)
 
-cross.setFilePath("../../../bases/sub_bases_train+_nslkdd/")
+cross.setFilePath("../../../bases/sub_bases_nslkdd_30attribute/")
 
-cross.setResultPath("../../../results/complete_attribute/hybrid_05_90_oculta42_knnbrute_time_melhorado_tentando1/")
+cross.setResultPath("../../../results/30_attribute/hybrid_05_090_oculta_31_knnbrute_time_melhorado_tentando1/")
+
 cross.setClassifier(hybrid_classifier)
 
 cross.setEvaluateModule(evaluate)

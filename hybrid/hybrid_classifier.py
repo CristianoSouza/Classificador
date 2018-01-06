@@ -48,7 +48,7 @@ class HybridClassifier(object):
 		list_position_intermediate_range_samples = []
 
 		test_time_start = time.time()
-		self.predictions_rna = self.rna.predictClasses()
+		self.predictions_rna = self.rna.predict()
 		
 		self.test_time = time.time() - test_time_start
 
@@ -64,8 +64,8 @@ class HybridClassifier(object):
 			#print("indice: " + str(i) + "  total: " + str(tamanho_predicao))
 			#print("Valor original: ") 
 			#print(self.test_data_set.values[i,posicao_classe])
-			#print("Valor da predicao: ") 
-			#print(self.predictions_rna[i])
+			print("Valor da predicao: ") 
+			print(self.predictions_rna[i])
 
 			if(self.predictions_rna[i] > self.upper_threshold):
 				#print("CLASSIFICACAO CONFIAVEL!")
