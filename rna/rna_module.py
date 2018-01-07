@@ -42,7 +42,7 @@ class RnaModule(object):
 		print(self.data_set_samples)
 		csv_logger = CSVLogger('training.log')
 		
-		fit = self.model.fit(self.data_set_samples, self.data_set_labels, nb_epoch=150, batch_size=10, callbacks=[csv_logger])
+		fit = self.model.fit(self.data_set_samples, self.data_set_labels, nb_epoch=500, batch_size=10, callbacks=[csv_logger])
 
 	def predict(self):
 		predictions = self.model.predict(self.test_data_set_samples)
