@@ -25,6 +25,7 @@ class HybridClassifier(object):
 	result_path = ""
 	training_time = 0
 	test_time = 0
+	limite_faixa = 0
 
 
 	def __init__(self):
@@ -58,7 +59,24 @@ class HybridClassifier(object):
 		posicao_classe = len(self.test_data_set.values[0]) - 2
 		#exit()
 
+		positivos = 0
+		negativos = 0
+		valor_negativo = 0
+		valor_positivo = 0
+		
+		for i in range(0,len(self.predictions_rna)):
+			if(self.predictions_rna[i] <= 0 ):
+				negativos = negativos + 1
+				valor_negativo = valor_negativo + self.predictions_rna[i]
+			elif(self.predictions_rna[i] >= 0):
+				positivos = positivos + 1
+				valor_positivo = valor_positivo + self.predictions_rna[i]
 
+		self.upper_threshold = valor_positivo / positivos
+		self.lower_threshold = valor_negativo / negativos
+
+		print("TOPO: ", self.upper_threshold)
+		print("baixo: ", self.lower_threshold)
 
 		for i in range(0,len(self.predictions_rna)):
 			#print("indice: " + str(i) + "  total: " + str(tamanho_predicao))
@@ -66,13 +84,12 @@ class HybridClassifier(object):
 			#print(self.test_data_set.values[i,posicao_classe])
 			print("Valor da predicao: ") 
 			print(self.predictions_rna[i])
-
-			if(self.predictions_rna[i] > self.upper_threshold):
+			if(self.predictions_rna[i] > (self.upper_threshold - self.limite_faixa) ):
 				#print("CLASSIFICACAO CONFIAVEL!")
 				self.test_data_set.set_value(i, 'classe', 1)
 				#self.rna_classified_samples.append(self.test_data_set.values[i,:])
 				#list_position_rna_classified_samples.append(i)
-			elif( self.predictions_rna[i] < self.lower_threshold):
+			elif( self.predictions_rna[i] < (self.lower_threshold + self.limite_faixa)):
 				#print("CLASSIFICACAO CONFIAVEL!")
 				self.test_data_set.set_value(i, 'classe', 0)
 				#self.rna_classified_samples.append(self.test_data_set.values[i,:])
@@ -198,3 +215,6 @@ class HybridClassifier(object):
 
 	def getTestTime(self):
 		return self.test_time
+
+	def setLimiteFaixa(self, limite_faixa):
+		self.limite_faixa = limite_faixa

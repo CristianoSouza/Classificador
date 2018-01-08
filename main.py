@@ -76,6 +76,7 @@ rna_classifier.setRna(rna)
 hybrid_classifier = HybridClassifier()
 hybrid_classifier.setLowerThreshold(-0.8)
 hybrid_classifier.setUpperThreshold(0.8)
+hybrid_classifier.setLimiteFaixa(0.1)
 hybrid_classifier.setRna(rna)
 hybrid_classifier.setKnn(knn)
 
@@ -106,7 +107,7 @@ cross.setPreprocessor(preprocessor)
 
 #cross.setFilePath("bases/sub_bases_SmallTrainingSet/")
 cross.setFilePath("bases/sub_bases_small_training_set1000/")
-cross.setResultPath("results/test_time_hibrido/")
+cross.setResultPath("results/test_faixa_hibrido/")
 #cross.setFilePath("bases/sub_bases_small_training_set_five_class/")
 #cross.setFilePath("bases/sub_bases/")
 
