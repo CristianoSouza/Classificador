@@ -1,5 +1,6 @@
 
 import sys, os
+import pandas as pd
 from preprocessor import Preprocessor
 from dataSet import DataSet
 sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/rna")
@@ -74,9 +75,10 @@ rna_classifier.setRna(rna)
 
 #METODO HIBRIDO 
 hybrid_classifier = HybridClassifier()
-hybrid_classifier.setLowerThreshold(-0.8)
-hybrid_classifier.setUpperThreshold(0.8)
-hybrid_classifier.setLimiteFaixa(0.1)
+#hybrid_classifier.setLowerThreshold(-0.8)
+#hybrid_classifier.setUpperThreshold(0.8)
+hybrid_classifier.setLimiteFaixaSup(-0.1)
+hybrid_classifier.setLimiteFaixaInf(0.1)
 hybrid_classifier.setRna(rna)
 hybrid_classifier.setKnn(knn)
 
