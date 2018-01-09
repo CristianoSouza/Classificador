@@ -41,42 +41,25 @@ class HybridClassifier(object):
 		self.rna.setTestDataSet(self.test_data_set)
 		self.knn.setDataSet(self.data_set)
 		training_time_start = time.time()
-		self.rna.generateModel()
-		self.knn.buildExamplesBase()
-		self.training_time = time.time() - training_time_start
-
-	
-		list_position_rna_classified_samples = []
-		list_position_intermediate_range_samples = []
-
-		test_time_start = time.time()
-		self.predictions_rna = self.rna.predict()
-		
-		self.test_time = time.time() - test_time_start
-
-		#print(len(self.predictions_rna))
-		tamanho_predicao = len(self.predictions_rna)
-		tamanho_data_set = len(self.test_data_set.values)
-		posicao_classe = len(self.test_data_set.values[0]) - 2
-		#exit()
+		outputs_training = self.rna.generateModel()
 
 		positivos = 0
 		negativos = 0
 		valor_negativo = 0
 		valor_positivo = 0
 
-		positivos_serie =  pandas.Series([self.predictions_rna[0]])
-		negativos_serie =  pandas.Series([self.predictions_rna[0]])
+		positivos_serie =  pandas.Series([outputs_training[0]])
+		negativos_serie =  pandas.Series([outputs_training[0]])
 		
-		for i in range(0,len(self.predictions_rna)):
-			if(self.predictions_rna[i] <= 0 ):
+		for i in range(0,len(outputs_training)):
+			if(outputs_training[i] <= 0 ):
 				negativos = negativos + 1
-				valor_negativo = valor_negativo + self.predictions_rna[i]
-				negativos_serie[i] = self.predictions_rna[i]
-			elif(self.predictions_rna[i] >= 0):
+				valor_negativo = valor_negativo + outputs_training[i]
+				negativos_serie[i] = outputs_training[i]
+			elif(outputs_training[i] >= 0):
 				positivos = positivos + 1
-				valor_positivo = valor_positivo + self.predictions_rna[i]
-				positivos_serie[i] = self.predictions_rna[i]
+				valor_positivo = valor_positivo + outputs_training[i]
+				positivos_serie[i] = outputs_training[i]
 
 		#self.upper_threshold = valor_positivo / positivos
 		#self.lower_threshold = valor_negativo / negativos
@@ -90,6 +73,23 @@ class HybridClassifier(object):
 		print( negativos_serie.std())
 		print("TOPO: ", self.upper_threshold)
 		print("baixo: ", self.lower_threshold)
+
+		self.knn.buildExamplesBase()
+		self.training_time = time.time() - training_time_start
+
+	
+		list_position_rna_classified_samples = []
+		list_position_intermediate_range_samples = []
+
+		test_time_start = time.time()
+		self.predictions_rna = self.rna.predict()
+		self.test_time = time.time() - test_time_start
+
+		#print(len(self.predictions_rna))
+		tamanho_predicao = len(self.predictions_rna)
+		tamanho_data_set = len(self.test_data_set.values)
+		posicao_classe = len(self.test_data_set.values[0]) - 2
+		#exit()
 
 		for i in range(0,len(self.predictions_rna)):
 			#print("indice: " + str(i) + "  total: " + str(tamanho_predicao))
