@@ -25,7 +25,8 @@ class HybridClassifier(object):
 	result_path = ""
 	training_time = 0
 	test_time = 0
-	limite_faixa = 0
+	limite_faixa_sup = 0
+        limite_faixa_inf = 0
 
 
 	def __init__(self):
@@ -84,12 +85,13 @@ class HybridClassifier(object):
 			#print(self.test_data_set.values[i,posicao_classe])
 			print("Valor da predicao: ") 
 			print(self.predictions_rna[i])
-			if(self.predictions_rna[i] > (self.upper_threshold - self.limite_faixa) ):
+			#if(self.predictions_rna[i] > (self.upper_threshold - self.limite_faixa_sup) ):
+			if(self.predictions_rna[i] > 0 ):
 				#print("CLASSIFICACAO CONFIAVEL!")
 				self.test_data_set.set_value(i, 'classe', 1)
 				#self.rna_classified_samples.append(self.test_data_set.values[i,:])
 				#list_position_rna_classified_samples.append(i)
-			elif( self.predictions_rna[i] < (self.lower_threshold + self.limite_faixa)):
+			elif( self.predictions_rna[i] < (self.lower_threshold + self.limite_faixa_inf)):
 				#print("CLASSIFICACAO CONFIAVEL!")
 				self.test_data_set.set_value(i, 'classe', 0)
 				#self.rna_classified_samples.append(self.test_data_set.values[i,:])
@@ -148,9 +150,9 @@ class HybridClassifier(object):
 		
 		#exit()
 		for i in range(0,len(self.predictions_knn)):
-			print("Predicao knn: ") 
-			print(self.predictions_knn[i])
-			print("list_position")
+			#print("Predicao knn: ") 
+			#print(self.predictions_knn[i])
+			#print("list_position")
 			#print(list_position_intermediate_range_samples[i])
 			#dataframe_intermediate_range_samples.set_value(list_position_intermediate_range_samples[i], 'classe', self.predictions_knn[i])
 			#print(dataframe_intermediate_range_samples.values[i])
@@ -216,5 +218,8 @@ class HybridClassifier(object):
 	def getTestTime(self):
 		return self.test_time
 
-	def setLimiteFaixa(self, limite_faixa):
-		self.limite_faixa = limite_faixa
+	def setLimiteFaixaSup(self, limite_faixa):
+		self.limite_faixa_sup = limite_faixa
+
+        def setLimiteFaixaInf(self, limite_faixa):
+		self.limite_faixa_inf = limite_faixa
