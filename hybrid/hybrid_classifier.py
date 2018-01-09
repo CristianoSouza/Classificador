@@ -1,5 +1,5 @@
 import sys, os
-import pandas
+import pandas 
 import time
 import numpy
 
@@ -64,18 +64,30 @@ class HybridClassifier(object):
 		negativos = 0
 		valor_negativo = 0
 		valor_positivo = 0
+
+		positivos_serie =  pandas.Series([self.predictions_rna[0]])
+		negativos_serie =  pandas.Series([self.predictions_rna[0]])
 		
 		for i in range(0,len(self.predictions_rna)):
 			if(self.predictions_rna[i] <= 0 ):
 				negativos = negativos + 1
 				valor_negativo = valor_negativo + self.predictions_rna[i]
+				negativos_serie[i] = self.predictions_rna[i]
 			elif(self.predictions_rna[i] >= 0):
 				positivos = positivos + 1
 				valor_positivo = valor_positivo + self.predictions_rna[i]
+				positivos_serie[i] = self.predictions_rna[i]
 
-		self.upper_threshold = valor_positivo / positivos
-		self.lower_threshold = valor_negativo / negativos
-
+		#self.upper_threshold = valor_positivo / positivos
+		#self.lower_threshold = valor_negativo / negativos
+		print(positivos_serie.values)
+		print(negativos_serie.values)
+		self.upper_threshold = positivos_serie.median()
+		self.lower_threshold = negativos_serie.median()
+		print( positivos_serie.mean())
+		print( negativos_serie.mean())
+		print( positivos_serie.std())
+		print( negativos_serie.std())
 		print("TOPO: ", self.upper_threshold)
 		print("baixo: ", self.lower_threshold)
 
