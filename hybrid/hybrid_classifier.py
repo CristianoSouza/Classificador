@@ -85,8 +85,8 @@ class HybridClassifier(object):
 			#print(self.test_data_set.values[i,posicao_classe])
 			print("Valor da predicao: ") 
 			print(self.predictions_rna[i])
-			#if(self.predictions_rna[i] > (self.upper_threshold - self.limite_faixa_sup) ):
-			if(self.predictions_rna[i] > 0 ):
+			if(self.predictions_rna[i] > (self.upper_threshold - self.limite_faixa_sup) ):
+			#if(self.predictions_rna[i] > 0 ):
 				#print("CLASSIFICACAO CONFIAVEL!")
 				self.test_data_set.set_value(i, 'classe', 1)
 				#self.rna_classified_samples.append(self.test_data_set.values[i,:])
