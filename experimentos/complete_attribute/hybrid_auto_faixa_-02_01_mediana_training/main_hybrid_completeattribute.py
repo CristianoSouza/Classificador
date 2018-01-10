@@ -61,7 +61,7 @@ cross.setPreprocessor(preprocessor)
 
 cross.setFilePath("../../../bases/sub_bases_train+_nslkdd/")
 
-cross.setResultPath("../../../results/complete_attribute/hybrid_auto_faixa_-02_01_mediana_training/")
+cross.setResultPath("../../../results/complete_attribute/hybrid_auto_faixa_-02_01_mediana_training2/")
 cross.setClassifier(hybrid_classifier)
 
 cross.setEvaluateModule(evaluate)
