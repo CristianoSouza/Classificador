@@ -44,7 +44,7 @@ class RnaModule(object):
 		print(self.data_set_samples)
 		csv_logger = CSVLogger('training.log')
 
-		fit = self.model.fit(self.data_set_samples, self.data_set_labels, nb_epoch=500, verbose=2, callbacks=[csv_logger])
+		fit = self.model.fit(self.data_set_samples, self.data_set_labels, epochs=500, verbose=2, callbacks=[csv_logger])
 
 	def generateHybridModel(self):
 		self.model = Sequential()
@@ -56,9 +56,9 @@ class RnaModule(object):
 		print(self.data_set_samples)
 		csv_logger = CSVLogger('training.log')
                 
-                early_stopping = EarlyStopping(monitor='val_loss', patience=2)
+                early_stopping = EarlyStopping(monitor='loss', patience=2)
 
-		fit = self.model.fit(self.data_set_samples, self.data_set_labels, nb_epoch=500, verbose=2, callbacks=[early_stopping])
+		fit = self.model.fit(self.data_set_samples, self.data_set_labels, epochs=500, verbose=2, callbacks=[early_stopping])
 		
 		# with a Sequential model
 		get_3rd_layer_output = K.function([self.model.layers[0].input], [self.model.layers[2].output])
