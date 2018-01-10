@@ -51,7 +51,7 @@ class HybridClassifier(object):
 
 		positivos_serie =  pandas.Series([outputs_training[0]])
 		negativos_serie =  pandas.Series([outputs_training[0]])
-		
+		serie = pandas.Series([outputs_training[0]])
 		for i in range(0,len(outputs_training)):
 			if(predictions[i] == 0 ):
 				negativos = negativos + 1
@@ -61,6 +61,7 @@ class HybridClassifier(object):
 				positivos = positivos + 1
 				valor_positivo = valor_positivo + outputs_training[i]
 				positivos_serie[i] = outputs_training[i]
+			serie[i] = outputs_training[i]
 
 		#self.upper_threshold = valor_positivo / positivos
 		#self.lower_threshold = valor_negativo / negativos
@@ -77,6 +78,7 @@ class HybridClassifier(object):
 		print( std_negativo )
 		print("TOPO: ", self.upper_threshold)
 		print("baixo: ", self.lower_threshold)
+		quartile3 = serie.quantile(q=0.75)
 		#exit()
 		self.knn.buildExamplesBase()
 		self.training_time = time.time() - training_time_start
@@ -147,8 +149,11 @@ class HybridClassifier(object):
 			del(list_position_rna_classified_samples)
 		else:
 			for i in range(0,len(self.predictions_rna)):
-				self.intermediate_range_samples.append(self.test_data_set.values[i,:])
-				list_position_intermediate_range_samples.append(i)
+				if ( self.predictions_rna[i] > quartile3):
+					self.test_data_set.set_value(i, 'classe', 1)
+				else:
+					self.intermediate_range_samples.append(self.test_data_set.values[i,:])
+					list_position_intermediate_range_samples.append(i)
 
 			print(dataframe_intermediate_range_samples)
 	                
