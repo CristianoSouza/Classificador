@@ -34,7 +34,7 @@ class RnaModule(object):
 	def __init__(self):
 		print("init rna module")
 
-	def generateHybridModel(self):
+	def generateModel(self):
 		self.model = Sequential()
 		self.model.add(Dense(self.number_neurons_imput_layer, input_dim= self.imput_dim_neurons, init='normal', activation=self.activation_function_imput_layer))
 		self.model.add(Dense(self.number_neurons_hidden_layer, init='normal', activation=self.activation_function_hidden_layer))
@@ -44,7 +44,7 @@ class RnaModule(object):
 		print(self.data_set_samples)
 		csv_logger = CSVLogger('training.log')
 
-		fit = self.model.fit(self.data_set_samples, self.data_set_labels, nb_epoch=150, verbose=2, callbacks=[csv_logger])
+		fit = self.model.fit(self.data_set_samples, self.data_set_labels, nb_epoch=500, verbose=2, callbacks=[csv_logger])
 
 	def generateHybridModel(self):
 		self.model = Sequential()
