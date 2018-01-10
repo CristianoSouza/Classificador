@@ -41,7 +41,8 @@ class HybridClassifier(object):
 		self.rna.setTestDataSet(self.test_data_set)
 		self.knn.setDataSet(self.data_set)
 		training_time_start = time.time()
-		outputs_training = self.rna.generateModel()
+		outputs_training, predictions = self.rna.generateHybridModel()
+		print (predictions)
 
 		positivos = 0
 		negativos = 0
@@ -52,11 +53,11 @@ class HybridClassifier(object):
 		negativos_serie =  pandas.Series([outputs_training[0]])
 		
 		for i in range(0,len(outputs_training)):
-			if(outputs_training[i] <= 0 ):
+			if(predictions[i] == 0 ):
 				negativos = negativos + 1
 				valor_negativo = valor_negativo + outputs_training[i]
 				negativos_serie[i] = outputs_training[i]
-			elif(outputs_training[i] >= 0):
+			elif(predictions[i] == 1):
 				positivos = positivos + 1
 				valor_positivo = valor_positivo + outputs_training[i]
 				positivos_serie[i] = outputs_training[i]
@@ -73,7 +74,7 @@ class HybridClassifier(object):
 		print( negativos_serie.std())
 		print("TOPO: ", self.upper_threshold)
 		print("baixo: ", self.lower_threshold)
-
+		#exit()
 		self.knn.buildExamplesBase()
 		self.training_time = time.time() - training_time_start
 

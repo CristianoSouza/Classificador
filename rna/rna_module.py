@@ -10,7 +10,7 @@ from sklearn.preprocessing import LabelEncoder
 import keras.preprocessing.text
 from keras.preprocessing import sequence
 from keras import backend as K
-from keras.callbacks import EarlyStopping
+
 
 
 class RnaModule(object):
@@ -34,7 +34,7 @@ class RnaModule(object):
 	def __init__(self):
 		print("init rna module")
 
-	def generateModel(self):
+	def generateHybridModel(self):
 		self.model = Sequential()
 		self.model.add(Dense(self.number_neurons_imput_layer, input_dim= self.imput_dim_neurons, init='normal', activation=self.activation_function_imput_layer))
 		self.model.add(Dense(self.number_neurons_hidden_layer, init='normal', activation=self.activation_function_hidden_layer))
@@ -44,16 +44,27 @@ class RnaModule(object):
 		print(self.data_set_samples)
 		csv_logger = CSVLogger('training.log')
 
-                early_stopping = EarlyStopping(monitor='val_loss', patience=2)
-            
-		fit = self.model.fit(self.data_set_samples, self.data_set_labels, nb_epoch=500, verbose=2, callbacks=[early_stopping])
+		fit = self.model.fit(self.data_set_samples, self.data_set_labels, nb_epoch=150, verbose=2, callbacks=[csv_logger])
+
+	def generateHybridModel(self):
+		self.model = Sequential()
+		self.model.add(Dense(self.number_neurons_imput_layer, input_dim= self.imput_dim_neurons, init='normal', activation=self.activation_function_imput_layer))
+		self.model.add(Dense(self.number_neurons_hidden_layer, init='normal', activation=self.activation_function_hidden_layer))
+		self.model.add(Dense(self.number_neurons_output_layer, init='normal', activation=self.activation_function_output_layer))
+	
+		self.model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+		print(self.data_set_samples)
+		csv_logger = CSVLogger('training.log')
+
+		fit = self.model.fit(self.data_set_samples, self.data_set_labels, nb_epoch=150, verbose=2, callbacks=[csv_logger])
 		
 		# with a Sequential model
 		get_3rd_layer_output = K.function([self.model.layers[0].input], [self.model.layers[2].output])
 		layer_output = get_3rd_layer_output([self.data_set_samples])[0]
 		print(layer_output)
+		predictions = self.model.predict_classes(self.data_set_samples)
 	
-		return layer_output
+		return layer_output, predictions
 
 	def predict(self):
 		predictions = self.model.predict(self.test_data_set_samples)
