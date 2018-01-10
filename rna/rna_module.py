@@ -10,7 +10,7 @@ from sklearn.preprocessing import LabelEncoder
 import keras.preprocessing.text
 from keras.preprocessing import sequence
 from keras import backend as K
-
+from keras.callbacks import EarlyStopping
 
 
 class RnaModule(object):
@@ -55,8 +55,10 @@ class RnaModule(object):
 		self.model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
 		print(self.data_set_samples)
 		csv_logger = CSVLogger('training.log')
+                
+                early_stopping = EarlyStopping(monitor='val_loss', patience=2)
 
-		fit = self.model.fit(self.data_set_samples, self.data_set_labels, nb_epoch=150, verbose=2, callbacks=[csv_logger])
+		fit = self.model.fit(self.data_set_samples, self.data_set_labels, nb_epoch=500, verbose=2, callbacks=[early_stopping])
 		
 		# with a Sequential model
 		get_3rd_layer_output = K.function([self.model.layers[0].input], [self.model.layers[2].output])
