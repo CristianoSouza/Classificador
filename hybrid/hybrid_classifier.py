@@ -1,7 +1,7 @@
 import sys, os
 import pandas 
 import time
-import numpy
+import numpy as np
 
 sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/../../../knn")
 sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/../../../rna")
@@ -43,43 +43,54 @@ class HybridClassifier(object):
 		training_time_start = time.time()
 		outputs_training, predictions = self.rna.generateHybridModel()
 		print (predictions)
-
+		#print (np.percentile(outputs_training,75))
 		positivos = 0
 		negativos = 0
 		valor_negativo = 0
 		valor_positivo = 0
 
-		positivos_serie =  pandas.Series([outputs_training[0]])
-		negativos_serie =  pandas.Series([outputs_training[0]])
-		serie = pandas.Series([outputs_training[0]])
+		positivos_serie =  []
+		negativos_serie =  []
 		for i in range(0,len(outputs_training)):
 			if(predictions[i] == 0 ):
 				negativos = negativos + 1
 				valor_negativo = valor_negativo + outputs_training[i]
-				negativos_serie[i] = outputs_training[i]
+				negativos_serie.append(outputs_training[i])
 			elif(predictions[i] == 1):
 				positivos = positivos + 1
 				valor_positivo = valor_positivo + outputs_training[i]
-				positivos_serie[i] = outputs_training[i]
-			serie[i] = outputs_training[i]
+				positivos_serie.append(outputs_training[i])
 
 		#self.upper_threshold = valor_positivo / positivos
 		#self.lower_threshold = valor_negativo / negativos
-		print(positivos_serie.values)
-		print(negativos_serie.values)
-		self.upper_threshold = positivos_serie.median()
-		self.lower_threshold = negativos_serie.median()
-		print( positivos_serie.mean())
-		print( negativos_serie.mean())
+		quartile3_total = np.percentile(outputs_training,75)
+		mediana_positivos = np.percentile(positivos_serie,50)
+		mediana_negativos = np.percentile(negativos_serie,50)
+		print (mediana_positivos)
+		print (mediana_negativos)
 
-		std_positivo = positivos_serie.std()
-		print( std_positivo )
-		std_negativo = negativos_serie.std()
-		print( std_negativo )
+		quartile3_sup = np.percentile(positivos_serie,75)
+		#print (quartile3_sup)
+		quartile1_inf = np.percentile(negativos_serie,25)
+		#print (quartile1_inf)
+		quartile3_inf = np.percentile(negativos_serie,75)
+		#print (quartile3_inf)
+
+		
+		#print( np.mean(positivos_serie))
+		#print( np.mean(negativos_serie))
+
+		#std_positivo = np.std(positivos_serie)
+		#print( std_positivo )
+		#std_negativo = np.std(negativos_serie)
+		#print( std_negativo )
+
+		self.upper_threshold = quartile3_sup
+		self.lower_threshold = quartile1_inf
+
 		print("TOPO: ", self.upper_threshold)
 		print("baixo: ", self.lower_threshold)
-		quartile3 = serie.quantile(q=0.75)
-		#exit()
+
 		self.knn.buildExamplesBase()
 		self.training_time = time.time() - training_time_start
 
@@ -107,13 +118,13 @@ class HybridClassifier(object):
 				#print(self.test_data_set.values[i,posicao_classe])
 				print("Valor da predicao: ") 
 				print(self.predictions_rna[i])
-				if(self.predictions_rna[i] > (self.upper_threshold - self.limite_faixa_sup - std_positivo) ):
+				if(self.predictions_rna[i] > (self.upper_threshold) ):
 				#if(self.predictions_rna[i] > 0 ):
 					#print("CLASSIFICACAO CONFIAVEL!")
 					self.test_data_set.set_value(i, 'classe', 1)
 					#self.rna_classified_samples.append(self.test_data_set.values[i,:])
 					#list_position_rna_classified_samples.append(i)
-				elif( self.predictions_rna[i] < (self.lower_threshold + self.limite_faixa_inf - std_negativo)):
+				elif( self.predictions_rna[i] < (self.lower_threshold)):
 					#print("CLASSIFICACAO CONFIAVEL!")
 					self.test_data_set.set_value(i, 'classe', 0)
 					#self.rna_classified_samples.append(self.test_data_set.values[i,:])
@@ -151,7 +162,7 @@ class HybridClassifier(object):
 			del(list_position_rna_classified_samples)
 		else:
 			for i in range(0,len(self.predictions_rna)):
-				if ( self.predictions_rna[i] > quartile3):
+				if ( self.predictions_rna[i] > quartile3_total):
 					self.test_data_set.set_value(i, 'classe', 1)
 				else:
 					self.intermediate_range_samples.append(self.test_data_set.values[i,:])
