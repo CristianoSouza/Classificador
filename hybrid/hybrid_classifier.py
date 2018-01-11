@@ -69,12 +69,12 @@ class HybridClassifier(object):
 		print (mediana_positivos)
 		print (mediana_negativos)
 
-		quartile3_sup = np.percentile(positivos_serie,75)
-		#print (quartile3_sup)
-		quartile1_inf = np.percentile(negativos_serie,25)
-		#print (quartile1_inf)
-		quartile3_inf = np.percentile(negativos_serie,75)
-		#print (quartile3_inf)
+		quartile_sup = np.percentile(positivos_serie,self.percentil_faixa_sup)
+		print (quartile_sup)
+		quartile_inf = np.percentile(negativos_serie,(100 - self.percentil_faixa_inf))
+		print (quartile_inf)
+		exit()
+
 
 		
 		#print( np.mean(positivos_serie))
@@ -85,8 +85,8 @@ class HybridClassifier(object):
 		#std_negativo = np.std(negativos_serie)
 		#print( std_negativo )
 
-		self.upper_threshold = quartile3_sup
-		self.lower_threshold = quartile1_inf
+		self.upper_threshold = quartile_sup
+		self.lower_threshold = quartile_inf
 
 		print("TOPO: ", self.upper_threshold)
 		print("baixo: ", self.lower_threshold)
@@ -106,9 +106,7 @@ class HybridClassifier(object):
 		tamanho_predicao = len(self.predictions_rna)
 		tamanho_data_set = len(self.test_data_set.values)
 		posicao_classe = len(self.test_data_set.values[0]) - 2
-		print(quartile3)
-                #print(negativos_serie.quantile(q=0.75))
-                #exit()
+  
 
 		if (self.verifyClassesPredictions(predictions) == True):
 			print("!")
@@ -270,5 +268,11 @@ class HybridClassifier(object):
 	def setLimiteFaixaSup(self, limite_faixa):
 		self.limite_faixa_sup = limite_faixa
 
-        def setLimiteFaixaInf(self, limite_faixa):
+	def setLimiteFaixaInf(self, limite_faixa):
 		self.limite_faixa_inf = limite_faixa
+	
+	def setPercentilFaixaSup(self, limite_faixa):
+		self.percentil_faixa_sup = limite_faixa
+
+	def setPercentilFaixaInf(self, limite_faixa):
+		self.percentil_faixa_inf = limite_faixa
