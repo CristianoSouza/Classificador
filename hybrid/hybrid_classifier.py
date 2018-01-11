@@ -73,7 +73,7 @@ class HybridClassifier(object):
 		print (quartile_sup)
 		quartile_inf = np.percentile(negativos_serie,(100 - self.percentil_faixa_inf))
 		print (quartile_inf)
-		exit()
+		#exit()
 
 
 		
