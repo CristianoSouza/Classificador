@@ -58,7 +58,7 @@ class RnaModule(object):
                 
                 early_stopping = EarlyStopping(monitor='loss', patience=2)
 
-		fit = self.model.fit(self.data_set_samples, self.data_set_labels, epochs=500, verbose=2, callbacks=[early_stopping])
+		fit = self.model.fit(self.data_set_samples, self.data_set_labels, nb_epoch=500, verbose=2, callbacks=[early_stopping])
 		
 		# with a Sequential model
 		get_3rd_layer_output = K.function([self.model.layers[0].input], [self.model.layers[2].output])

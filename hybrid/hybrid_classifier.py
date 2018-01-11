@@ -64,18 +64,6 @@ class HybridClassifier(object):
 		#self.upper_threshold = valor_positivo / positivos
 		#self.lower_threshold = valor_negativo / negativos
 		quartile3_total = np.percentile(outputs_training,75)
-		mediana_positivos = np.percentile(positivos_serie,50)
-		mediana_negativos = np.percentile(negativos_serie,50)
-		print (mediana_positivos)
-		print (mediana_negativos)
-
-		quartile_sup = np.percentile(positivos_serie,self.percentil_faixa_sup)
-		print (quartile_sup)
-		quartile_inf = np.percentile(negativos_serie,(100 - self.percentil_faixa_inf))
-		print (quartile_inf)
-		#exit()
-
-
 		
 		#print( np.mean(positivos_serie))
 		#print( np.mean(negativos_serie))
@@ -85,11 +73,6 @@ class HybridClassifier(object):
 		#std_negativo = np.std(negativos_serie)
 		#print( std_negativo )
 
-		self.upper_threshold = quartile_sup
-		self.lower_threshold = quartile_inf
-
-		print("TOPO: ", self.upper_threshold)
-		print("baixo: ", self.lower_threshold)
 
 		self.knn.buildExamplesBase()
 		self.training_time = time.time() - training_time_start
@@ -110,6 +93,24 @@ class HybridClassifier(object):
 
 		if (self.verifyClassesPredictions(predictions) == True):
 			print("!")
+
+			mediana_positivos = np.percentile(positivos_serie,50)
+			mediana_negativos = np.percentile(negativos_serie,50)
+			print (mediana_positivos)
+			print (mediana_negativos)
+
+			quartile_sup = np.percentile(positivos_serie,self.percentil_faixa_sup)
+			print (quartile_sup)
+			quartile_inf = np.percentile(negativos_serie,(100 - self.percentil_faixa_inf))
+			print (quartile_inf)
+			#exit()
+
+			self.upper_threshold = quartile_sup
+			self.lower_threshold = quartile_inf
+
+			print("TOPO: ", self.upper_threshold)
+			print("baixo: ", self.lower_threshold)
+
 			for i in range(0,len(self.predictions_rna)):
 				#print("indice: " + str(i) + "  total: " + str(tamanho_predicao))
 				#print("Valor original: ") 
