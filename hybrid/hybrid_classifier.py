@@ -105,13 +105,13 @@ class HybridClassifier(object):
 				#print(self.test_data_set.values[i,posicao_classe])
 				print("Valor da predicao: ") 
 				print(self.predictions_rna[i])
-				if(self.predictions_rna[i] > (self.upper_threshold - (self.limite_faixa_sup * std_positivo)) ):
+				if(self.predictions_rna[i] > (self.upper_threshold - self.limite_faixa_sup - std_positivo) ):
 				#if(self.predictions_rna[i] > 0 ):
 					#print("CLASSIFICACAO CONFIAVEL!")
 					self.test_data_set.set_value(i, 'classe', 1)
 					#self.rna_classified_samples.append(self.test_data_set.values[i,:])
 					#list_position_rna_classified_samples.append(i)
-				elif( self.predictions_rna[i] < (self.lower_threshold + (self.limite_faixa_inf * std_negativo))):
+				elif( self.predictions_rna[i] < (self.lower_threshold + self.limite_faixa_inf - std_negativo)):
 					#print("CLASSIFICACAO CONFIAVEL!")
 					self.test_data_set.set_value(i, 'classe', 0)
 					#self.rna_classified_samples.append(self.test_data_set.values[i,:])
@@ -155,8 +155,6 @@ class HybridClassifier(object):
 					self.intermediate_range_samples.append(self.test_data_set.values[i,:])
 					list_position_intermediate_range_samples.append(i)
 
-			print(dataframe_intermediate_range_samples)
-	                
 
 		dataframe_intermediate_range_samples = pandas.DataFrame(
 			data= self.intermediate_range_samples,
