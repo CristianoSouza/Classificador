@@ -90,12 +90,14 @@ class HybridClassifier(object):
 		test_time_start = time.time()
 		self.predictions_rna = self.rna.predict()
 		self.test_time = time.time() - test_time_start
-
+                
 		#print(len(self.predictions_rna))
 		tamanho_predicao = len(self.predictions_rna)
 		tamanho_data_set = len(self.test_data_set.values)
 		posicao_classe = len(self.test_data_set.values[0]) - 2
-		#exit()
+		print(quartile3)
+                #print(negativos_serie.quantile(q=0.75))
+                #exit()
 
 		if (self.verifyClassesPredictions(predictions) == True):
 			print("!")
