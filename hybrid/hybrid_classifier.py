@@ -94,8 +94,17 @@ class HybridClassifier(object):
 		tamanho_predicao = len(self.predictions_rna)
 		tamanho_data_set = len(self.test_data_set.values)
 		posicao_classe = len(self.test_data_set.values[0]) - 2
-  
+  		
+  		arquivo_up = open('INFO_up_' + str(self.iteration) + '.txt', 'w')
+  		arquivo_inf = open('INFO_inf_' + str(self.iteration) + '.txt', 'w') 
+  		arquivo_inter = open('INFO_inter_' + str(self.iteration) + '.txt', 'w') 
 
+  		texto_up = """INICIO
+  		"""
+  		texto_inf = """INICIO
+  		"""
+  		texto_inter = """INICIO
+  		"""
 		if (self.verifyClassesPredictions(predictions) == True):
 			print("!")
 
@@ -124,21 +133,34 @@ class HybridClassifier(object):
 				print(self.predictions_rna[i])
 				if(self.predictions_rna[i] > (self.upper_threshold) ):
 				#if(self.predictions_rna[i] > 0 ):
+					texto_up += """[""" + str(i) + """] -- [""" + str(self.test_data_set.values[i,(posicao_classe+1)]) + """]= """ + str(self.predictions_rna[i]) + """ -- """ + str(self.test_data_set.values[i,posicao_classe]) + """
+				"""
 					#print("CLASSIFICACAO CONFIAVEL!")
 					self.test_data_set.set_value(i, 'classe', 1)
 					#self.rna_classified_samples.append(self.test_data_set.values[i,:])
 					#list_position_rna_classified_samples.append(i)
 				elif( self.predictions_rna[i] < (self.lower_threshold)):
 					#print("CLASSIFICACAO CONFIAVEL!")
+					texto_inf += """[""" + str(i) + """] -- [""" + str(self.test_data_set.values[i,(posicao_classe+1)]) + """]= """ + str(self.predictions_rna[i]) + """ -- """ + str(self.test_data_set.values[i,posicao_classe]) + """
+				"""
 					self.test_data_set.set_value(i, 'classe', 0)
 					#self.rna_classified_samples.append(self.test_data_set.values[i,:])
 					#list_position_rna_classified_samples.append(i)
 				else:
 					#print("FAIXA INTERMEDIARIA!")
+					texto_inter += """[""" + str(i) + """] -- [""" + str(self.test_data_set.values[i,(posicao_classe+1)]) + """]= """ + str(self.predictions_rna[i]) + """ -- """ + str(self.test_data_set.values[i,posicao_classe]) + """
+				"""
 					self.intermediate_range_samples.append(self.test_data_set.values[i,:])
 					list_position_intermediate_range_samples.append(i)
 
-			
+
+			arquivo_up.write(texto_up) 
+			arquivo_up.close()
+			arquivo_inf.write(texto_inf) 
+			arquivo_inf.close()
+			arquivo_inter.write(texto_inter) 
+			arquivo_inter.close()
+
 			del(self.predictions_rna)
 			#print("Exemplos classificados pela RNA:")
 			#print(self.rna_classified_samples)

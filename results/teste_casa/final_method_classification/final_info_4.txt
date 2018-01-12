@@ -16,7 +16,7 @@ PORCENTAGEM ACERTOS: 97.0 	|
 |--------||--------|
 PORCENTAGEM ERROS: 3.0 	|   
 |--------||--------|
-TEMPO DE EXECUCAO: 7.74404001236  ||| 
-                TEMPO DE TREINO: 6.84279894829  ||| 
-                TEMPO DE TESTE: 0.0361142158508  ||| 
-                Exemplos submetidos a segunda classificacao: 43
+TEMPO DE EXECUCAO: 6.29987001419  ||| 
+                TEMPO DE TREINO: 5.25067090988  ||| 
+                TEMPO DE TESTE: 0.0355730056763  ||| 
+                Exemplos submetidos a segunda classificacao: 36
