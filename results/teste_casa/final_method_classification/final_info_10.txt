@@ -4,19 +4,19 @@
 		   |--------||--------|
 	ATAQUE |   48    ||   1    |
 		   |--------||--------|
-	NORMAL |   3    ||   48    |
+	NORMAL |   2    ||   49    |
 		   |--------||--------|
 			TOTAL DE EXEMPLOS: 100 	|   
 |--------||--------|
-TOTAL DE EXEMPLOS CORRETOS: 96 	|   
+TOTAL DE EXEMPLOS CORRETOS: 97 	|   
 |--------||--------|
-TOTAL DE EXEMPLOS ERRADOS: 4 	|   
+TOTAL DE EXEMPLOS ERRADOS: 3 	|   
 |--------||--------|
-PORCENTAGEM ACERTOS: 96.0 	|   
+PORCENTAGEM ACERTOS: 97.0 	|   
 |--------||--------|
-PORCENTAGEM ERROS: 4.0 	|   
+PORCENTAGEM ERROS: 3.0 	|   
 |--------||--------|
-TEMPO DE EXECUCAO: 2.87741303444  ||| 
-                TEMPO DE TREINO: 2.33060312271  ||| 
-                TEMPO DE TESTE: 0.0128729343414  ||| 
-                Exemplos submetidos a segunda classificacao: 84
+TEMPO DE EXECUCAO: 9.32936096191  ||| 
+                TEMPO DE TREINO: 8.45394206047  ||| 
+                TEMPO DE TESTE: 0.0326058864594  ||| 
+                Exemplos submetidos a segunda classificacao: 30

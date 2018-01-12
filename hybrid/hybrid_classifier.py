@@ -41,7 +41,7 @@ class HybridClassifier(object):
 		self.rna.setTestDataSet(self.test_data_set)
 		self.knn.setDataSet(self.data_set)
 		training_time_start = time.time()
-		outputs_training, predictions = self.rna.generateHybridModel()
+		outputs_training, predictions, history = self.rna.generateHybridModel()
 		print (predictions)
 		#print (np.percentile(outputs_training,75))
 		positivos = 0
@@ -72,6 +72,11 @@ class HybridClassifier(object):
 		#print( std_positivo )
 		#std_negativo = np.std(negativos_serie)
 		#print( std_negativo )
+		arquivo = open('RNA_loss' + str(self.iteration) + '.txt', 'w') 
+		texto = """RNA LOSS""" + str(history.history['loss']) + """ -- """
+		texto = """RNA ACC""" + str(history.history['acc']) + """ -- """
+		arquivo.write(texto) 
+		arquivo.close()
 
 
 		self.knn.buildExamplesBase()
