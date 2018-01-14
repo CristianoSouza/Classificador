@@ -54,9 +54,9 @@ class RnaModule(object):
 		self.model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
 		print(self.data_set_samples)
 		csv_logger = CSVLogger('training.log')
-		early_stopping = EarlyStopping(monitor='loss', patience=20)
+		#early_stopping = EarlyStopping(monitor='loss', patience=20)
 
-		fit = self.model.fit(self.data_set_samples, self.data_set_labels, nb_epoch=500, verbose=2, callbacks=[early_stopping])
+		fit = self.model.fit(self.data_set_samples, self.data_set_labels, nb_epoch=500, verbose=2)
 		# with a Sequential model
 		get_3rd_layer_output = K.function([self.model.layers[0].input], [self.model.layers[2].output])
 		layer_output = get_3rd_layer_output([self.data_set_samples])[0]

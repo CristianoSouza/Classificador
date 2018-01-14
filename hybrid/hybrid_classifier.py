@@ -188,8 +188,8 @@ class HybridClassifier(object):
 			del(list_position_rna_classified_samples)
 		else:
 			for i in range(0,len(self.predictions_rna)):
-                            self.intermediate_range_samples.append(self.test_data_set.values[i,:])
-                            list_position_intermediate_range_samples.append(i)
+				self.intermediate_range_samples.append(self.test_data_set.values[i,:])
+				list_position_intermediate_range_samples.append(i)
 
 
 		dataframe_intermediate_range_samples = pandas.DataFrame(
