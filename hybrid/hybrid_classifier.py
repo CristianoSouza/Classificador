@@ -63,7 +63,7 @@ class HybridClassifier(object):
 
 		#self.upper_threshold = valor_positivo / positivos
 		#self.lower_threshold = valor_negativo / negativos
-		quartile3_total = np.percentile(outputs_training,75)
+		quartile3_total = np.percentile(outputs_training,90)
 		
 		#print( np.mean(positivos_serie))
 		#print( np.mean(negativos_serie))
