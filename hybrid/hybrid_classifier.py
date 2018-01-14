@@ -63,7 +63,7 @@ class HybridClassifier(object):
 
 		#self.upper_threshold = valor_positivo / positivos
 		#self.lower_threshold = valor_negativo / negativos
-		quartile3_total = np.percentile(outputs_training,90)
+		#quartile3_total = np.percentile(outputs_training,90)
 		
 		#print( np.mean(positivos_serie))
 		#print( np.mean(negativos_serie))
@@ -188,11 +188,8 @@ class HybridClassifier(object):
 			del(list_position_rna_classified_samples)
 		else:
 			for i in range(0,len(self.predictions_rna)):
-				if ( self.predictions_rna[i] > quartile3_total):
-					self.test_data_set.set_value(i, 'classe', 1)
-				else:
-					self.intermediate_range_samples.append(self.test_data_set.values[i,:])
-					list_position_intermediate_range_samples.append(i)
+                            self.intermediate_range_samples.append(self.test_data_set.values[i,:])
+                            list_position_intermediate_range_samples.append(i)
 
 
 		dataframe_intermediate_range_samples = pandas.DataFrame(
