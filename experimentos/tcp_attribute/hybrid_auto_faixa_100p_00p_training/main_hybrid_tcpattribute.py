@@ -63,7 +63,7 @@ cross.setPreprocessor(preprocessor)
 
 cross.setFilePath("../../../bases/sub_bases_nslkdd_tcp_attribute/")
 
-cross.setResultPath("../../../results/tcp_attribute/hybrid_auto_faixa_100p_00p_training/")
+cross.setResultPath("../../../results/tcp_attribute/hybrid_auto_faixa_100p_00p_training2/")
 
 cross.setClassifier(hybrid_classifier)
 
