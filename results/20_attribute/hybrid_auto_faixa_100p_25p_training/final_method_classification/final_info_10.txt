@@ -2,9 +2,9 @@
 	             Predicao      
 			 ATAQUE    NORMAL  
 		   |--------||--------|
-	ATAQUE |   5925    ||   11    |
+	ATAQUE |   5924    ||   12    |
 		   |--------||--------|
-	NORMAL |   25    ||   6637    |
+	NORMAL |   24    ||   6638    |
 		   |--------||--------|
 			TOTAL DE EXEMPLOS: 12598 	|   
 |--------||--------|
@@ -16,7 +16,7 @@ PORCENTAGEM ACERTOS: 99.7142403556 	|
 |--------||--------|
 PORCENTAGEM ERROS: 0.285759644388 	|   
 |--------||--------|
-TEMPO DE EXECUCAO: 197.119146109  ||| 
-                TEMPO DE TREINO: 163.370324135  ||| 
-                TEMPO DE TESTE: 14.1193521023  ||| 
-                Exemplos submetidos a segunda classificacao: 8291
+TEMPO DE EXECUCAO: 180.713009119  ||| 
+                TEMPO DE TREINO: 152.44053793  ||| 
+                TEMPO DE TESTE: 20.7982239723  ||| 
+                Exemplos submetidos a segunda classificacao: 12598
