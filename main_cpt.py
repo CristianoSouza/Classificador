@@ -3,7 +3,7 @@ import sys, os
 from preprocessor import Preprocessor
 from dataSet import DataSet
 dts = DataSet()
-dts.setFilePath("experimento5/bases/sub_bases_train+_nslkdd/")
+dts.setFilePath("experimento7/bases/sub_bases_train+_nslkdd/")
 #dts.setFileName("base_iris.csv")
 #dts.setFileName("SmallTrainingSet.csv")
 #dts.setFileName("winequality-red.csv")
