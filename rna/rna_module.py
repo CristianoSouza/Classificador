@@ -43,7 +43,8 @@ class RnaModule(object):
 		self.model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
 		print(self.data_set_samples)
 		csv_logger = CSVLogger('training.log')
-		fit = self.model.fit(self.data_set_samples, self.data_set_labels, epochs=500, verbose=2, callbacks=[csv_logger])
+		early_stopping = EarlyStopping(monitor='loss',patience=20)
+                fit = self.model.fit(self.data_set_samples, self.data_set_labels, epochs=500, verbose=2, callbacks=[early_stopping])
 
 	def generateHybridModel(self):
 		self.model = Sequential()
