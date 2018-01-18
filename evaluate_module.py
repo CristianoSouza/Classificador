@@ -163,13 +163,13 @@ class EvaluateModule(object):
 """
 		if (DataSet.checkPathBoolean(self.result_path + "../knn_classification/")):
 			data_set_knn = DataSet.loadSubDataSet( self.result_path + "../knn_classification/cross_"+ str(self.iteration) + "_final_result.csv") 
-		texto+= """Exemplos submetidos a segunda classificacao: """ + str(len(data_set_knn))
-		arquivoKNN = open(self.result_path + 'KNN.txt', 'a+') 
-		textoKNN= str(len(data_set_knn)) + """
-"""  
-		arquivoKNN.write(textoKNN) 
-		arquivoKNN.close()
-		print(len(data_set_knn))
+			texto+= """Exemplos submetidos a segunda classificacao: """ + str(len(data_set_knn))
+			arquivoKNN = open(self.result_path + 'KNN.txt', 'a+') 
+			textoKNN= str(len(data_set_knn)) + """
+	"""  
+			arquivoKNN.write(textoKNN) 
+			arquivoKNN.close()
+			print(len(data_set_knn))
 		arquivo.write(texto) 
 		arquivo.close()
 	
