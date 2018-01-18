@@ -166,7 +166,7 @@ class EvaluateModule(object):
 			texto+= """Exemplos submetidos a segunda classificacao: """ + str(len(data_set_knn))
 			arquivoKNN = open(self.result_path + 'KNN.txt', 'a+') 
 			textoKNN= str(len(data_set_knn)) + """
-	"""  
+"""  
 			arquivoKNN.write(textoKNN) 
 			arquivoKNN.close()
 			print(len(data_set_knn))
