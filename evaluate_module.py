@@ -140,36 +140,36 @@ class EvaluateModule(object):
 				texto+=  """ 	|   """ + str(acc_classes[i]) + """    || 	""" + str(err_classes[i]) + """ | 		
 |--------||--------|
 """
-				texto+= """TOTAL DE EXEMPLOS: """ + str(self.total_samples) + """ 	|   
+		texto+= """TOTAL DE EXEMPLOS: """ + str(self.total_samples) + """ 	|   
 |--------||--------|
 """
-				texto+= """TOTAL DE EXEMPLOS CORRETOS: """ + str(self.acc_samples) + """ 	|   
+		texto+= """TOTAL DE EXEMPLOS CORRETOS: """ + str(self.acc_samples) + """ 	|   
 |--------||--------|
 """
-				texto+= """TOTAL DE EXEMPLOS ERRADOS: """ + str(self.err_samples) + """ 	|   
+		texto+= """TOTAL DE EXEMPLOS ERRADOS: """ + str(self.err_samples) + """ 	|   
 |--------||--------|
 """
-				texto+= """PORCENTAGEM ACERTOS: """ + str((100/float(self.total_samples)) * self.acc_samples) + """ 	|   
+		texto+= """PORCENTAGEM ACERTOS: """ + str((100/float(self.total_samples)) * self.acc_samples) + """ 	|   
 |--------||--------|
 """
-				texto+= """PORCENTAGEM ERROS: """ + str((100/float(self.total_samples)) * self.err_samples) + """ 	|   
+		texto+= """PORCENTAGEM ERROS: """ + str((100/float(self.total_samples)) * self.err_samples) + """ 	|   
 |--------||--------|
 """			
-				texto+="""TEMPO DE EXECUCAO: """ + str(self.tempo_execucao) + """  ||| 
+		texto+="""TEMPO DE EXECUCAO: """ + str(self.tempo_execucao) + """  ||| 
 """
-				texto+="""TEMPO DE TREINO: """ + str(self.training_time) + """  ||| 
+		texto+="""TEMPO DE TREINO: """ + str(self.training_time) + """  ||| 
 """
-				texto+="""TEMPO DE TESTE: """ + str(self.test_time) + """  ||| 
+		texto+="""TEMPO DE TESTE: """ + str(self.test_time) + """  ||| 
 """
-				if (DataSet.checkPathBoolean(self.result_path + "../knn_classification/")):
-					data_set_knn = DataSet.loadSubDataSet( self.result_path + "../knn_classification/cross_"+ str(self.iteration) + "_final_result.csv") 
-				texto+= """Exemplos submetidos a segunda classificacao: """ + str(len(data_set_knn))
-				arquivoKNN = open(self.result_path + 'KNN.txt', 'a+') 
-				textoKNN= str(len(data_set_knn)) + """
+		if (DataSet.checkPathBoolean(self.result_path + "../knn_classification/")):
+			data_set_knn = DataSet.loadSubDataSet( self.result_path + "../knn_classification/cross_"+ str(self.iteration) + "_final_result.csv") 
+		texto+= """Exemplos submetidos a segunda classificacao: """ + str(len(data_set_knn))
+		arquivoKNN = open(self.result_path + 'KNN.txt', 'a+') 
+		textoKNN= str(len(data_set_knn)) + """
 """  
-				arquivoKNN.write(textoKNN) 
-				arquivoKNN.close()
-		    	print(len(data_set_knn))
+		arquivoKNN.write(textoKNN) 
+		arquivoKNN.close()
+    	print(len(data_set_knn))
 		
 		arquivo.write(texto) 
 		arquivo.close()
