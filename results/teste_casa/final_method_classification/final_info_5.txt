@@ -4,19 +4,6 @@
 		   |--------||--------|
 	ATAQUE |   47    ||   0    |
 		   |--------||--------|
-	NORMAL |   1    ||   52    |
+	NORMAL |   2    ||   51    |
 		   |--------||--------|
-			TOTAL DE EXEMPLOS: 100 	|   
-|--------||--------|
-TOTAL DE EXEMPLOS CORRETOS: 99 	|   
-|--------||--------|
-TOTAL DE EXEMPLOS ERRADOS: 1 	|   
-|--------||--------|
-PORCENTAGEM ACERTOS: 99.0 	|   
-|--------||--------|
-PORCENTAGEM ERROS: 1.0 	|   
-|--------||--------|
-TEMPO DE EXECUCAO: 9.98075699806  ||| 
-                TEMPO DE TREINO: 8.62231683731  ||| 
-                TEMPO DE TESTE: 0.0745549201965  ||| 
-                Exemplos submetidos a segunda classificacao: 45
+			

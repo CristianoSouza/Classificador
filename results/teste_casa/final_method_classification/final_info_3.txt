@@ -2,21 +2,8 @@
 	             Predicao      
 			 ATAQUE    NORMAL  
 		   |--------||--------|
-	ATAQUE |   47    ||   7    |
+	ATAQUE |   50    ||   4    |
 		   |--------||--------|
 	NORMAL |   1    ||   45    |
 		   |--------||--------|
-			TOTAL DE EXEMPLOS: 100 	|   
-|--------||--------|
-TOTAL DE EXEMPLOS CORRETOS: 92 	|   
-|--------||--------|
-TOTAL DE EXEMPLOS ERRADOS: 8 	|   
-|--------||--------|
-PORCENTAGEM ACERTOS: 92.0 	|   
-|--------||--------|
-PORCENTAGEM ERROS: 8.0 	|   
-|--------||--------|
-TEMPO DE EXECUCAO: 12.3507730961  ||| 
-                TEMPO DE TREINO: 11.3914041519  ||| 
-                TEMPO DE TESTE: 0.0338191986084  ||| 
-                Exemplos submetidos a segunda classificacao: 31
+			
