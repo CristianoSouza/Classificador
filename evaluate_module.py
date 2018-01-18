@@ -169,8 +169,7 @@ class EvaluateModule(object):
 """  
 		arquivoKNN.write(textoKNN) 
 		arquivoKNN.close()
-    	print(len(data_set_knn))
-		
+		print(len(data_set_knn))
 		arquivo.write(texto) 
 		arquivo.close()
 	
