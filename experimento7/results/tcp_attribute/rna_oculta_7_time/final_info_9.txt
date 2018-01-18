@@ -1,0 +1,21 @@
+		MATRIZ DE CONFUSAO
+	             Predicao      
+			 ATAQUE    NORMAL  
+		   |--------||--------|
+	ATAQUE |   5274    ||   630    |
+		   |--------||--------|
+	NORMAL |   70    ||   6624    |
+		   |--------||--------|
+			TOTAL DE EXEMPLOS: 12598 	|   
+|--------||--------|
+TOTAL DE EXEMPLOS CORRETOS: 11898 	|   
+|--------||--------|
+TOTAL DE EXEMPLOS ERRADOS: 700 	|   
+|--------||--------|
+PORCENTAGEM ACERTOS: 94.4435624702 	|   
+|--------||--------|
+PORCENTAGEM ERROS: 5.55643752977 	|   
+|--------||--------|
+TEMPO DE EXECUCAO: 99.6287739277  ||| 
+TEMPO DE TREINO: 98.7869989872  ||| 
+TEMPO DE TESTE: 0.172641992569  ||| 
