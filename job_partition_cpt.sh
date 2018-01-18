@@ -1,8 +1,8 @@
 #!/bin/bash
 #SBATCH -p 7d
 #SBATCH -t 7-00:00:00
-#SBATCH --job-name=part_20
-#SBATCH -o pre_processamento_partition.out
+#SBATCH --job-name=part_cpt
+#SBATCH -o pre_processamento_partition_cpt.out
 #SBATCH --mail-type=END
 #SBATCH --mail-type=FAIL
 #SBATCH --mail-user=cristianoantonio.souza10@gmail.com
