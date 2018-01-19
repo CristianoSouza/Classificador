@@ -43,7 +43,7 @@ cross.setIteration(1)
 
 cross.setPreprocessor(preprocessor)
 
-cross.setFilePath("../../../bases/sub_bases_nslkdd_20attribute/")
+cross.setFilePath("../../bases/sub_bases_nslkdd_20_attribute/")
 
 cross.setResultPath("../../results/20_attribute/rna_oculta_21_time/")
 

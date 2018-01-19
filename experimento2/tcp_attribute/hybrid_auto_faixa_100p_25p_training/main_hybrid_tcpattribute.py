@@ -61,7 +61,7 @@ cross.setIteration(1)
 
 cross.setPreprocessor(preprocessor)
 
-cross.setFilePath("../../../bases/sub_bases_nslkdd_tcp_attribute/")
+cross.setFilePath("../../bases/sub_bases_nslkdd_tcp_attribute/")
 
 cross.setResultPath("../../results/tcp_attribute/hybrid_auto_faixa_100p_25p_training/")
 
