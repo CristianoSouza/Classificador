@@ -5,13 +5,13 @@
 
  	|   0    || 	0 | 		
 |--------||--------|
- 	|   12598    || 	0 | 		
+ 	|   12603    || 	0 | 		
 |--------||--------|
  	|   0    || 	0 | 		
 |--------||--------|
-TOTAL DE EXEMPLOS: 12598 	|   
+TOTAL DE EXEMPLOS: 12603 	|   
 |--------||--------|
-TOTAL DE EXEMPLOS CORRETOS: 12598 	|   
+TOTAL DE EXEMPLOS CORRETOS: 12603 	|   
 |--------||--------|
 TOTAL DE EXEMPLOS ERRADOS: 0 	|   
 |--------||--------|
@@ -19,6 +19,6 @@ PORCENTAGEM ACERTOS: 100.0 	|
 |--------||--------|
 PORCENTAGEM ERROS: 0.0 	|   
 |--------||--------|
-TEMPO DE EXECUCAO: 86.4830400944  ||| 
-TEMPO DE TREINO: 85.3836150169  ||| 
-TEMPO DE TESTE: 0.1665828228  ||| 
+TEMPO DE EXECUCAO: 66.1703009605  ||| 
+TEMPO DE TREINO: 65.3299779892  ||| 
+TEMPO DE TESTE: 0.126280069351  ||| 
