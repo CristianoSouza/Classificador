@@ -23,7 +23,7 @@ rna = RnaModule()
 rna.setNumberNeuronsImputLayer(6)
 rna.setActivationFunctionImputLayer("tanh")
 rna.setImputDimNeurons(6)
-rna.setNumberNeuronsHiddenLayer(6)
+rna.setNumberNeuronsHiddenLayer(7)
 rna.setActivationFunctionHiddenLayer("tanh")
 rna.setNumberNeuronsOutputLayer(1)
 rna.setActivationFunctionOutputLayer("tanh")
@@ -43,7 +43,7 @@ cross.setPreprocessor(preprocessor)
 
 cross.setFilePath("../../../bases/sub_bases_nslkdd_tcp_attribute/")
 
-cross.setResultPath("../../../results/tcp_attribute/rna/")
+cross.setResultPath("../../../results/tcp_attribute/rna_oculta_7/")
 
 cross.setClassifier(rna_classifier)
 
