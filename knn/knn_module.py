@@ -15,22 +15,10 @@ class KnnModule(object):
 		print("init knn module")
 
 	def buildExamplesBase(self):
-		print("BASEEE:")
-		print(self.data_set_samples)
-		print("BASEEE:")
-		print(self.test_data_set_samples)
-		print("BASEEE:")  
-		print(self.test_data_set_labels)
 		self.clf = neighbors.KNeighborsClassifier(self.k_neighbors, weights='uniform', algorithm='brute')
 		self.clf.fit(self.data_set_samples, self.data_set_labels)
 
 	def run(self):
-		print("BASEEE:")
-		print(self.data_set_samples)
-		print("BASEEE:")
-		print(self.test_data_set_samples)
-		print("BASEEEsd:")  
-		print(self.test_data_set_labels)
 		predictions = self.clf.predict(self.test_data_set_samples)
 		return predictions
 

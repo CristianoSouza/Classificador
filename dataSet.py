@@ -35,14 +35,13 @@ class DataSet(object):
 		for a in range(0,tamanho):
 			#self.dataframe_data_set.scdet_value(a,'po', 15)
 			self.dataframe_data_set.loc[a, 'posicaoOriginal'] = a
-		print("saiu for")
 
 		directory = os.path.dirname(self.file_path)
 		if not os.path.exists(directory):
-			print("nao existe")
+			print("nom ecsiste")
 			os.makedirs(directory)
 		else:
-			print("exists")	
+			print("ecsiste")	
 
 		data_set = []
 		data_set_posicoes = []
@@ -51,7 +50,6 @@ class DataSet(object):
 			sub_data_set = []
 			posicoes = random.sample(lista,self.partition_size)
 			len_posicoes = len(posicoes)
-			print(i)
 
 			arquivo = open( self.file_path + "sub_data_set_" + str(i+1) + ".csv", 'w') 
 			for k in range(0,len(self.dataframe_data_set.columns)):
@@ -78,13 +76,9 @@ class DataSet(object):
 				arquivo.write(texto) 
 			arquivo.close()
 
-		print(lista)
 		if lista:
-			print("nao vazia")
 			for i in range(0,len(lista)):
 				arquivo = open( self.file_path + "sub_data_set_" + str(i+1) + ".csv", 'a') 
-				print(i)
-				print(lista[i])
 				texto = ""
 				linha = self.dataframe_data_set.values[lista[i],:]
 				for k in range(0,len_attributes):
@@ -97,33 +91,8 @@ class DataSet(object):
 				arquivo.write(texto) 
 				arquivo.close()
 
-		#sub_data_set.append(self.dataframe_data_set.values[posicoes[j],:])
-		#print(sub_data_set)
-
-
-			'''sub_dataframe = pandas.DataFrame(
-				data= sub_data_set,
-				#index=range((i*self.partition_size),((i*self.partition_size) + self.partition_size) ), 
-				index= range(0,len(sub_data_set)),
-				columns= self.dataframe_data_set.columns )
-				
-			print(sub_dataframe)
-			print()
-			file_path = "bases/sub_bases/"
-
-			directory = os.path.dirname(file_path)
-			if not os.path.exists(directory):
-				print("nao existe")
-				os.makedirs(directory)
-			else:
-				print("exists")	
-
-			sub_dataframe.to_csv("bases/sub_bases/sub_data_set_" + str(i+1) + ".csv", sep=',')
-'''
 	def partitionDataSet(self):
-		print('Quatidade de exemplos:', self.dataframe_data_set.shape[0])
 		self.partition_size = (self.dataframe_data_set.shape[0] / 10)
-		print('10 Particoes de tamanho: ', self.partition_size)	
 		self.selectExamples()
 
 	@classmethod
@@ -159,16 +128,17 @@ class DataSet(object):
 			os.makedirs(directory)
 		else:
 			print("exists")	
-        @classmethod
-        def checkPathBoolean(self, file_path):
-                print(file_path)
-                directory = os.path.dirname(file_path)
-                print(directory)
-                
-                if (os.path.exists(file_path)):
-                    return True
-                else:
-                    return False
+	
+	@classmethod
+	def checkPathBoolean(self, file_path):
+		print(file_path)
+		directory = os.path.dirname(file_path)
+		print(directory)
+		
+		if (os.path.exists(file_path)):
+			return True
+		else:
+		return False
 
 
 

@@ -20,8 +20,6 @@ class KnnClassifier(object):
 		print "Knn classifier"
 
 	def run(self):
-		print "RUN Knn classifier"
-		print(self.data_set)
 		self.knn.setDataSet(self.data_set)
 		self.knn.setTestDataSet(self.test_data_set)
 
@@ -32,8 +30,6 @@ class KnnClassifier(object):
 		test_time_start = time.time()
 		self.predictions = self.knn.run()
 	
-		print("Predicao knn: ")
-		print(self.predictions)
 		self.saveResults()
 		
 		self.test_time = time.time() - test_time_start
@@ -41,7 +37,6 @@ class KnnClassifier(object):
 	def saveResults(self):
 		data_set = self.test_data_set[:] 
 		for i in range(0,len(self.predictions)):
-			print("ALTERANDO VALOR DA CLASSE")
 			data_set.set_value(i,'classe',self.predictions[i])
 		DataSet.saveResults(self.result_path, self.iteration, data_set)
 

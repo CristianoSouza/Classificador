@@ -32,18 +32,13 @@ class CrossValidation(object):
 		self.evaluate = EvaluateModule()
 
 	def run(self):
-		
-                self.classifier.setResultPath(self.result_path)
-                print("Iniciando Cross validation:")
-		#for self.iteration in range(1,11):
+		self.classifier.setResultPath(self.result_path)
 		self.foldExecution()
 
 	def foldExecution(self):
 		i = self.iteration
 		for self.iteration in range(i,11):
-			print("iteracao")
 			tempo_inicio = time.time()
-			print("-- FOLD " + str(self.iteration) + " --")
 			self.loadTrainingData()
 			self.loadTestData()
 
@@ -91,11 +86,7 @@ class CrossValidation(object):
 	def loadTrainingData(self):
 		for i in range(1,11):
 			if( (11 - i) != self.iteration):
-				print("Carregando sub base " + str(i) + "...")
 				new_sub_data_set = DataSet.loadSubDataSet(self.file_path + "sub_data_set_" + str(i) + ".csv")
-				
-				print("AAAA")
-				print(new_sub_data_set.values)
 
 				if (i==1):
 					self.training_sub_data_set = new_sub_data_set
@@ -105,10 +96,7 @@ class CrossValidation(object):
 		print(self.training_sub_data_set)
 
 	def loadTestData(self):
-		print("Carregando sub base para teste: sub base " + str(11-self.iteration) + "...")
-
 		self.teste_sub_data_set = DataSet.loadSubDataSet(self.file_path + "sub_data_set_" + str(11-self.iteration) + ".csv")
-		print(self.teste_sub_data_set)
 
 	def setMethod(self, method):
 		self.method = method
@@ -140,6 +128,6 @@ class CrossValidation(object):
 	def setFilePath(self, file_path):
 		self.file_path = file_path
 
-        def setResultPath(self, result_path):
-                self.result_path = result_path
+	def setResultPath(self, result_path):
+		self.result_path = result_path
 
