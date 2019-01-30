@@ -1,0 +1,26 @@
+ESTATISTICA 
+
+
+ANOVA
+
+resultado <-read.table("~/resultados")
+
+levels(resultado$grupo)
+
+library("ggpubr")
+
+ggboxplot(resultado, x = "grupo", y = "valor", 
+          color = "grupo", palette = c("#00AFBB", "#E7B800", "#FC4E07"),
+          order = c("grupo1", "grupo2", "grupo3"),
+          ylab = "Acurrácia", xlab = "Cenário")
+
+ggline(resultado, x = "grupo", y = "weight", 
+       add = c("mean_se", "jitter"), 
+       order = c("grupo1", "grupo2", "grupo3"),
+       ylab = "Acurrácia", xlab = "Cenário")
+
+res.aov <- aov(valor ~ grupo, data = resultado)
+
+summary(res.aov)
+
+####Como o valor p é inferior ao nível de significância 0,05, podemos concluir que há diferenças significativas entre os grupos destacados com "*" no resumo do modelo.
